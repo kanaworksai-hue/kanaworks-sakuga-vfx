@@ -16,21 +16,34 @@ HOMEPAGE = 'https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx'
 LICENSE_NAME = 'KanaWorks_AI VFX Asset License (see LICENSE.md)'
 
 ELEMENTS = ('water', 'fire', 'thunder', 'wind', 'poison', 'ice', 'rock', 'light', 'dark')
-# form -> (loops by default, ground-rooted)
+# form (the middle part of an id) -> (loops by default, ground-rooted)
 FORMS = {
     'projectile': (True, False),
     'impact': (False, False),
     'column': (False, True),
     'vortex': (False, False),
     'strike': (False, True),
+    'area': (False, False),
+    'beam': (True, False),
+    'buff': (False, False),
+    'shield': (True, False),
+    'cast': (False, False),
+    'charge': (False, False),
+    'slash': (False, False),
+    'aura': (True, True),
 }
 BLENDS = ('alpha', 'additive')
 ID_RE = re.compile(r'^([a-z]+)_([a-z]+)_(\d{2})$')
 DATE_RE = re.compile(r'^\d{4}-\d{2}-\d{2}$')
 SEMVER_RE = re.compile(r'^\d+\.\d+\.\d+$')
 
-# Catalog field order (also the order written back by `sync`).
-FIELDS = ('id', 'element', 'form', 'grid', 'cell', 'frames', 'fps', 'loop', 'blend', 'bottom_inset', 'added', 'version')
+# Catalog field order (also the order written back by `sync`). The recipe fields come from recipes.py.
+CORE_FIELDS = ('id', 'element', 'form', 'grid', 'cell', 'frames', 'fps', 'loop', 'blend', 'bottom_inset', 'added',
+               'version')
+RECIPE_FIELDS = ('category', 'style', 'base_id', 'anchor', 'orientation', 'world_size_m', 'duration_s',
+                 'contact_frame', 'loop_range', 'pairs', 'tags', 'use_cases', 'fx')
+FIELDS = CORE_FIELDS + RECIPE_FIELDS
+SHARED = 'assets/_shared'
 
 
 def say(*parts):
@@ -59,15 +72,38 @@ def load_catalog(path=CATALOG):
     return read_json(path)
 
 
+def _compact(v):
+    return json.dumps(v, ensure_ascii=False, separators=(', ', ': '))
+
+
+def format_asset(asset):
+    """One asset as a small block: the sheet fields on the first line, the recipe below (one fx layer per line)."""
+    core = {k: asset[k] for k in CORE_FIELDS if k in asset}
+    core.update({k: v for k, v in asset.items() if k not in FIELDS})
+    first = _compact(core)
+    rest = [k for k in RECIPE_FIELDS if k in asset]
+    if not rest:
+        return '    ' + first
+    lines = ['    ' + first[:-1] + ',']
+    meta = [k for k in rest if k not in ('pairs', 'tags', 'use_cases', 'fx')]
+    if meta:
+        lines.append('     ' + ', '.join(f'{json.dumps(k)}: {_compact(asset[k])}' for k in meta) + ',')
+    for k in ('pairs', 'tags', 'use_cases'):
+        if k in asset:
+            lines.append(f'     {json.dumps(k)}: {_compact(asset[k])},')
+    if 'fx' in asset:
+        fx = asset['fx'] or {}
+        inner = [f'       {json.dumps(k)}: {_compact(v)}' for k, v in fx.items()]
+        lines.append('     "fx": {\n' + ',\n'.join(inner) + '},')
+    lines[-1] = lines[-1][:-1] + '}'
+    return '\n'.join(lines)
+
+
 def format_catalog(catalog):
-    """Pretty JSON with one asset per line, so adding an asset is adding one line."""
+    """Pretty JSON, one block per asset: the sheet fields on one line, then its generated recipe."""
     head = {k: v for k, v in catalog.items() if k != 'assets'}
     lines = json.dumps(head, indent=2, ensure_ascii=False)[:-2].rstrip()   # drop the closing brace
-    rows = []
-    for asset in catalog.get('assets', []):
-        ordered = {k: asset[k] for k in FIELDS if k in asset}
-        ordered.update({k: v for k, v in asset.items() if k not in ordered})
-        rows.append('    ' + json.dumps(ordered, ensure_ascii=False, separators=(', ', ': ')))
+    rows = [format_asset(asset) for asset in catalog.get('assets', [])]
     body = ',\n'.join(rows)
     sep = ',\n' if head else ''
     return lines + sep + '  "assets": [\n' + body + ('\n' if rows else '') + '  ]\n}\n'
@@ -91,8 +127,9 @@ def sidecar_path(entry, root=ROOT):
 
 def pivot(entry):
     """Pivot in normalized cell coordinates, origin top-left, y down (sprite-sheet convention).
-    Ground-rooted forms put it on the root of the shape; everything else is centred."""
-    if FORMS.get(entry['form'], (False, False))[1]:
+    Ground-rooted forms put it on the root of the shape (unless the recipe turns them sideways or flat, like a
+    beam); everything else is centred."""
+    if FORMS.get(entry['form'], (False, False))[1] and entry.get('orientation', 'upright') == 'upright':
         return [0.5, round(1.0 - float(entry.get('bottom_inset', 0.0)), 4)]
     return [0.5, 0.5]
 
@@ -119,6 +156,7 @@ def sidecar(entry, defaults=None):
         'credit': CREDIT,
         'license': LICENSE_NAME,
         'homepage': HOMEPAGE,
+        **{k: entry[k] for k in RECIPE_FIELDS if k in entry},
     }
 
 

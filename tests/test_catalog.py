@@ -19,7 +19,7 @@ def test_repository_catalog_validates_cleanly():
     assert [w for w in warnings if 'preview' in w] == [], 'run: python tools/sakuga.py build'
 
 
-def test_catalog_is_one_line_per_asset_and_ids_follow_the_naming_rule():
+def test_catalog_is_one_block_per_asset_and_ids_follow_the_naming_rule():
     text = (ROOT / 'catalog.json').read_text(encoding='utf-8')
     cat = load_catalog(ROOT / 'catalog.json')
     assert format_catalog(cat) == text, 'run: python tools/sakuga.py sync'
@@ -39,8 +39,11 @@ def test_sidecars_stay_compatible_with_the_effekseer_vfx_skill_and_add_playback_
         assert s['frames'] <= s['grid'][0] * s['grid'][1]
         assert s['source'] == f"{a['id']}.png"
         assert s['fps'] == 30 and s['blend'] in ('alpha', 'additive') and s['credit'].startswith('VFX: KanaWorks_AI')
-        assert s['loop'] == (a['form'] == 'projectile')
-        if FORMS[a['form']][1]:
+        if a['form'] in ('projectile', 'shield', 'aura'):
+            assert s['loop'] is True
+        if a['form'] in ('charge', 'slash') or (a['form'] in ('impact', 'column', 'strike') and a['style'] == 'classic'):
+            assert s['loop'] is False
+        if FORMS[a['form']][1] and a['orientation'] == 'upright':
             assert s['bottom_inset'] > 0 and s['pivot'] == [0.5, round(1 - s['bottom_inset'], 4)]
         else:
             assert s['pivot'] == [0.5, 0.5]

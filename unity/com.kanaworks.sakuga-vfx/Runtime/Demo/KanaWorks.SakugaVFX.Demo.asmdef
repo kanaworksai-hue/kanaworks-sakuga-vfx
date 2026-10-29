@@ -1,0 +1,9 @@
+{
+  "name": "KanaWorks.SakugaVFX.Demo",
+  "rootNamespace": "KanaWorks.SakugaVFX.Demo",
+  "references": ["KanaWorks.SakugaVFX", "Unity.InputSystem"],
+  "versionDefines": [
+    { "name": "com.unity.inputsystem", "expression": "1.0.0", "define": "SAKUGA_INPUT_SYSTEM" }
+  ],
+  "autoReferenced": true
+}

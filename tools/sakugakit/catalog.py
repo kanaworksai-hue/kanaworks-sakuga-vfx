@@ -6,9 +6,10 @@ from pathlib import Path
 
 from PIL import Image
 
-from . import images
-from .common import (BLENDS, DATE_RE, ELEMENTS, FIELDS, FORMS, ID_RE, ROOT, SEMVER_RE, asset_dir, asset_png,
-                     dump_json, load_catalog, published, read_json, save_catalog, sidecar, sidecar_path, write_text)
+from . import images, recipes
+from .common import (BLENDS, DATE_RE, ELEMENTS, FIELDS, FORMS, ID_RE, RECIPE_FIELDS, ROOT, SEMVER_RE,
+                     asset_dir, asset_png, dump_json, load_catalog, published, read_json, save_catalog, sidecar,
+                     sidecar_path, write_text)
 
 PNG_SIGNATURE = b'\x89PNG\r\n\x1a\n'
 PNG_PIXEL_CHUNKS = {b'IHDR', b'PLTE', b'tRNS', b'IDAT', b'IEND'}
@@ -71,16 +72,25 @@ def check_entry_fields(a):
     return errs
 
 
-def complete(entry, defaults, measured):
-    """Fill derived and default fields of an entry from its sheet."""
-    out = dict(entry)
+def complete(entry, defaults, measured, ids=(), coverage=None):
+    """Fill derived and default fields of an entry from its sheet, then its generated recipe.
+    `ids` are all published ids (for pairs); `coverage` is the per-frame opaque area (for the contact frame)."""
+    out = {k: v for k, v in entry.items() if k not in RECIPE_FIELDS}
     out['cell'] = measured['cell']
     out['frames'] = min(int(entry.get('frames') or measured['frames']), measured['frames'])
     out['bottom_inset'] = measured['bottom_inset']
     out.setdefault('fps', defaults.get('fps', 30))
     out.setdefault('loop', FORMS[entry['form']][0])
     out.setdefault('blend', defaults.get('blend', 'alpha'))
-    return {k: out[k] for k in FIELDS if k in out} | {k: v for k, v in out.items() if k not in FIELDS}
+    contact = None
+    if coverage is not None:
+        contact = recipes.contact_from_coverage(coverage[:out['frames']], out['loop'])
+    elif 'contact_frame' in entry:
+        contact = entry['contact_frame']
+    out.update(recipes.recipe(out, ids, contact))
+    ordered = {k: out[k] for k in FIELDS if k in out}
+    ordered.update({k: v for k, v in out.items() if k not in FIELDS})
+    return ordered
 
 
 def validate(root=ROOT):
@@ -94,6 +104,7 @@ def validate(root=ROOT):
     defaults = cat.get('defaults', {})
     seen = set()
     assets = published(cat)
+    ids = [a.get('id') for a in assets]
     for a in cat.get('assets', []):
         if a.get('status', 'published') not in ('published', 'planned'):
             errors.append(f'{a.get("id", "?")}: status must be published or planned')
@@ -119,7 +130,16 @@ def validate(root=ROOT):
         except ValueError as exc:
             errors.append(f'{a["id"]}: {exc}')
             continue
-        want = complete(a, defaults, measured)
+        want = complete(a, defaults, measured, ids, images.coverage(im, a['grid'], a.get('frames')))
+        missing = [k for k in RECIPE_FIELDS if k not in a]
+        if missing:
+            errors.append(f'{a["id"]}: catalog lacks the recipe fields {missing} (run: python tools/sakuga.py sync)')
+        else:
+            errors += recipes.check(a)
+            stale = [k for k in RECIPE_FIELDS if a[k] != want[k]]
+            if stale:
+                errors.append(f'{a["id"]}: recipe fields {stale} differ from tools/sakugakit/recipes.py '
+                              '(run: python tools/sakuga.py sync)')
         for k in ('cell', 'frames', 'fps', 'loop', 'blend'):
             if k not in a:
                 errors.append(f'{a["id"]}: catalog lacks "{k}" (run: python tools/sakuga.py sync)')
@@ -153,6 +173,8 @@ def validate(root=ROOT):
     if adir.is_dir():
         known = {(a['element'], a['id']) for a in assets if 'element' in a and 'id' in a}
         for el in sorted(p for p in adir.iterdir() if p.is_dir()):
+            if el.name.startswith('_'):                      # assets/_shared: textures and sounds every effect uses
+                continue
             for d in sorted(p for p in el.iterdir() if p.is_dir()):
                 if (el.name, d.name) not in known:
                     errors.append(f'assets/{el.name}/{d.name}: folder has no catalog line')
@@ -166,9 +188,19 @@ def sync(root=ROOT, ids=None):
     defaults = cat.get('defaults', {})
     changed = []
     new_assets = []
+    all_ids = [a.get('id') for a in published(cat)]
     for a in cat.get('assets', []):
-        if a.get('status', 'published') != 'published' or (ids and a.get('id') not in ids):
+        if a.get('status', 'published') != 'published':
             new_assets.append(a)
+            continue
+        if ids and a.get('id') not in ids:
+            # not re-measured, but its recipe still follows recipes.py and the current set of ids (pairs)
+            full = complete(a, defaults, {'cell': a['cell'], 'frames': a['frames'], 'bottom_inset': a['bottom_inset']},
+                            all_ids) if all(k in a for k in ('cell', 'frames', 'bottom_inset')) else a
+            if full != a:
+                changed.append(f'{a["id"]}: recipe updated')
+            new_assets.append(full)
+            _write_sidecar(full, defaults, root, changed)
             continue
         errs = check_entry_fields(a)
         if errs:
@@ -182,18 +214,23 @@ def sync(root=ROOT, ids=None):
         if png_extra_chunks(png.read_bytes()) or mode != 'RGBA':
             images.save_png(im, png)
             changed.append(f'{a["id"]}: sheet re-saved without metadata')
-        full = complete(a, defaults, images.measure(im, a['grid']))
+        full = complete(a, defaults, images.measure(im, a['grid']), all_ids,
+                        images.coverage(im, a['grid'], a.get('frames')))
         if full != a:
             changed.append(f'{a["id"]}: catalog fields updated')
         new_assets.append(full)
-        side = sidecar_path(full, root)
-        text = dump_json(sidecar(full, defaults))
-        if not side.is_file() or side.read_text(encoding='utf-8') != text:
-            write_text(side, text)
-            changed.append(f'{a["id"]}: sidecar written')
+        _write_sidecar(full, defaults, root, changed)
     cat['assets'] = new_assets
     save_catalog(cat, root / 'catalog.json')
     return changed
+
+
+def _write_sidecar(entry, defaults, root, changed):
+    side = sidecar_path(entry, root)
+    text = dump_json(sidecar(entry, defaults))
+    if not side.is_file() or side.read_text(encoding='utf-8') != text:
+        write_text(side, text)
+        changed.append(f'{entry["id"]}: sidecar written')
 
 
 def add(sheet, asset_id, grid, root=ROOT, fps=None, loop=None, blend=None, added=None, version='1.0.0', force=False):
@@ -229,5 +266,5 @@ def add(sheet, asset_id, grid, root=ROOT, fps=None, loop=None, blend=None, added
     else:
         cat['assets'].append(entry)
     save_catalog(cat, root / 'catalog.json')
-    sync(root, ids={asset_id})
+    sync(root, ids={asset_id})                             # measures the new sheet; the others get fresh pairs
     return asset_png(entry, root)

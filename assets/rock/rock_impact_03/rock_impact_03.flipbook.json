@@ -1,0 +1,131 @@
+{
+  "grid": [
+    8,
+    8
+  ],
+  "cell": [
+    256,
+    256
+  ],
+  "frames": 64,
+  "bottom_inset": 0.2055,
+  "source": "rock_impact_03.png",
+  "id": "rock_impact_03",
+  "element": "rock",
+  "form": "impact",
+  "fps": 30,
+  "loop": false,
+  "blend": "alpha",
+  "pivot": [
+    0.5,
+    0.5
+  ],
+  "alpha": "straight",
+  "version": "1.0.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "area",
+  "style": "stone",
+  "base_id": "rock_impact_01",
+  "anchor": "ground",
+  "orientation": "billboard",
+  "world_size_m": 3.5,
+  "duration_s": 2.13,
+  "contact_frame": 3,
+  "loop_range": null,
+  "pairs": {
+    "cast": "rock_charge_01",
+    "projectile": null,
+    "impact": null
+  },
+  "tags": [
+    "area",
+    "crater",
+    "earth",
+    "fissure",
+    "heavy",
+    "impact",
+    "line",
+    "rock",
+    "slam",
+    "stone"
+  ],
+  "use_cases": [
+    "ground slam crater",
+    "ground AoE",
+    "hazard zone",
+    "debuff field"
+  ],
+  "fx": {
+    "flash": {
+      "color": "#ecdbc5",
+      "size": 1.05,
+      "frames": 2
+    },
+    "ring": {
+      "color": "#dbbb94",
+      "size": 4.62,
+      "duration": 0.42,
+      "plane": "ground"
+    },
+    "sparks": {
+      "count": 5,
+      "speed": 5.29,
+      "color": "#d3ac7b",
+      "gravity": 1.0,
+      "drag": 1.0,
+      "size": 0.079,
+      "life": 0.5,
+      "direction": "up"
+    },
+    "debris": {
+      "count": 6,
+      "speed": 6.61,
+      "color": "#d0a773",
+      "gravity": 1.0,
+      "size": 0.331,
+      "life": 1.1
+    },
+    "smoke": {
+      "count": 5,
+      "color": "#b89a72",
+      "size": 2.27,
+      "rise": 0.4,
+      "life": 1.5,
+      "delay": 0.08
+    },
+    "decal": {
+      "texture": "decal_rock.png",
+      "size": 3.85,
+      "life": 3.63,
+      "tint": "#eee0ce"
+    },
+    "light": {
+      "color": "#c8975a",
+      "intensity": 1.2,
+      "range": 7.7,
+      "curve": [
+        -0.1,
+        0.0,
+        0.0,
+        1.0,
+        1.06,
+        0.6,
+        2.13,
+        0.0
+      ]
+    },
+    "trail": null,
+    "shake": {
+      "amplitude": 0.111,
+      "duration": 0.25
+    },
+    "hit_stop_s": 0.0,
+    "sfx": {
+      "cast": "rock_cast.wav",
+      "loop": null,
+      "impact": "rock_impact.wav"
+    }
+  }
+}

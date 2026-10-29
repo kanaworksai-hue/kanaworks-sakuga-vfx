@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>KanaWorks SAKUGA VFX</title>
-<meta name="description" content="Free hand-drawn anime-style game VFX flipbooks for Unity, Godot and the web. VFX: KanaWorks_AI (@KanaWorks_AI).">
+<meta name="description" content="Free anime-style game VFX flipbooks with a hand-drawn look for Unity, Godot and the web. VFX: KanaWorks_AI (@KanaWorks_AI).">
 <link rel="icon" href="../docs/brand/kanaworks-mark.png">
 <style>
   :root {
@@ -64,7 +64,7 @@
 <body>
 <header>
   <div class="brand"><img src="../docs/brand/kanaworks-mark.png" alt=""><h1>KanaWorks <b>SAKUGA</b> VFX</h1></div>
-  <p class="lead">Free hand-drawn anime-style game VFX flipbooks: transparent sprite sheets with a sidecar for Unity, Godot,
+  <p class="lead">Free anime-style game VFX flipbooks with a hand-drawn look: transparent sprite sheets with a sidecar for Unity, Godot,
     PixiJS, Phaser, Three.js or any engine. Click an effect to preview it and download it.</p>
   <div class="credit"><span>Credit wherever you use or repost them:</span><code id="credit">VFX: KanaWorks_AI (@KanaWorks_AI)</code>
     <button id="copy" type="button">Copy</button></div>
@@ -158,7 +158,7 @@ async function open(a) {
   const links = [[`${folder(a)}${a.id}.png`, 'PNG 2048'], [sidecar, 'flipbook.json']];
   const m = manifest?.assets?.[a.id];
   if (m) {
-    links.unshift([`${ROOT}downloads/${m.zip}`, `All formats (.zip, ${Math.round(m.bytes / 1024)} KB)`]);
+    links.unshift([`${manifest.release}${m.zip}`, `All formats (.zip, ${Math.round(m.bytes / 1024)} KB)`]);
     links.push([`${folder(a)}${a.id}_1024.png`, 'PNG 1024'], [`${folder(a)}${a.id}_add.png`, 'Additive (black)'],
       [`${folder(a)}${a.id}.atlas.json`, 'atlas.json (Pixi/Phaser)']);
   }
@@ -198,7 +198,7 @@ $('#copy').onclick = async () => {
 if (manifest) {
   const names = { unity: 'Unity (URP)', godot: 'Godot 4', web: 'Web (Canvas / Pixi / Phaser / Three)', flipbooks: 'All sheets (any engine)' };
   $('#packages').innerHTML = '<span style="color:var(--dim)">Packages:</span>' + Object.entries(manifest.packages).map(([k, p]) =>
-    `<a class="btn" href="${ROOT}downloads/${p.file}" download>${names[k] ?? k} (${(p.bytes / 1048576).toFixed(1)} MB)</a>`).join('');
+    `<a class="btn" href="${manifest.release}${p.file}">${names[k] ?? k} (${(p.bytes / 1048576).toFixed(1)} MB)</a>`).join('');
 }
 render();
 </script>

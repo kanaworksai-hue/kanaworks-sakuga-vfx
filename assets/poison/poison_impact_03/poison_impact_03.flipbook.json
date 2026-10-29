@@ -1,0 +1,127 @@
+{
+  "grid": [
+    8,
+    8
+  ],
+  "cell": [
+    256,
+    256
+  ],
+  "frames": 64,
+  "bottom_inset": 0.0988,
+  "source": "poison_impact_03.png",
+  "id": "poison_impact_03",
+  "element": "poison",
+  "form": "impact",
+  "fps": 30,
+  "loop": false,
+  "blend": "alpha",
+  "pivot": [
+    0.5,
+    0.5
+  ],
+  "alpha": "straight",
+  "version": "1.0.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "area",
+  "style": "miasma",
+  "base_id": "poison_impact_01",
+  "anchor": "ground",
+  "orientation": "billboard",
+  "world_size_m": 3.5,
+  "duration_s": 2.13,
+  "contact_frame": 1,
+  "loop_range": [
+    30,
+    63
+  ],
+  "pairs": {
+    "cast": "poison_charge_01",
+    "projectile": null,
+    "impact": null
+  },
+  "tags": [
+    "area",
+    "cloud",
+    "curse",
+    "debuff",
+    "impact",
+    "miasma",
+    "poison",
+    "spore",
+    "toxic",
+    "venom"
+  ],
+  "use_cases": [
+    "toxic cloud debuff area",
+    "ground AoE",
+    "hazard zone",
+    "debuff field"
+  ],
+  "fx": {
+    "flash": {
+      "color": "#e9c6f4",
+      "size": 1.05,
+      "frames": 2
+    },
+    "ring": {
+      "color": "#d695eb",
+      "size": 4.62,
+      "duration": 0.42,
+      "plane": "ground"
+    },
+    "sparks": {
+      "count": 6,
+      "speed": 4.23,
+      "color": "#cd7de6",
+      "gravity": 1.5,
+      "drag": 1.0,
+      "size": 0.119,
+      "life": 0.7,
+      "direction": "up"
+    },
+    "debris": null,
+    "smoke": {
+      "count": 6,
+      "color": "#6b3a7a",
+      "size": 2.62,
+      "rise": 0.25,
+      "life": 2.0,
+      "delay": 0.08
+    },
+    "decal": {
+      "texture": "decal_poison.png",
+      "size": 3.85,
+      "life": 3.63,
+      "tint": "#eccef6"
+    },
+    "light": {
+      "color": "#c05ce0",
+      "intensity": 1.44,
+      "range": 7.7,
+      "curve": [
+        -0.1,
+        0.0,
+        0.0,
+        1.0,
+        1.06,
+        0.6,
+        2.13,
+        0.0
+      ]
+    },
+    "trail": null,
+    "shake": {
+      "amplitude": 0.02,
+      "duration": 0.19
+    },
+    "hit_stop_s": 0.0,
+    "sfx": {
+      "cast": "poison_cast.wav",
+      "loop": null,
+      "impact": "poison_impact.wav"
+    }
+  }
+}

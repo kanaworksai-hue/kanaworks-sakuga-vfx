@@ -24,5 +24,92 @@
   "version": "1.0.0",
   "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
   "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
-  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx"
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "impact",
+  "style": "classic",
+  "base_id": "dark_impact_01",
+  "anchor": "center",
+  "orientation": "billboard",
+  "world_size_m": 2.0,
+  "duration_s": 2.13,
+  "contact_frame": 2,
+  "loop_range": null,
+  "pairs": {
+    "cast": null,
+    "projectile": "dark_projectile_01",
+    "impact": null
+  },
+  "tags": [
+    "classic",
+    "dark",
+    "impact",
+    "shadow",
+    "void"
+  ],
+  "use_cases": [
+    "shadow burst",
+    "curse hit",
+    "hit effect",
+    "projectile impact",
+    "melee hit",
+    "explosion",
+    "on-hit feedback"
+  ],
+  "fx": {
+    "flash": {
+      "color": "#eac5f1",
+      "size": 1.5,
+      "frames": 3
+    },
+    "ring": {
+      "color": "#d894e6",
+      "size": 2.2,
+      "duration": 0.4,
+      "plane": "view"
+    },
+    "sparks": {
+      "count": 16,
+      "speed": 5.0,
+      "color": "#cf7be0",
+      "gravity": 0.0,
+      "drag": 3.0,
+      "size": 0.07,
+      "life": 0.6,
+      "direction": "radial"
+    },
+    "debris": null,
+    "smoke": null,
+    "decal": {
+      "texture": "decal_dark.png",
+      "size": 1.8,
+      "life": 3.0,
+      "tint": "#ffffff"
+    },
+    "light": {
+      "color": "#c35ad8",
+      "intensity": 3.0,
+      "range": 4.4,
+      "curve": [
+        0.0,
+        1.0,
+        0.08,
+        0.7,
+        0.35,
+        0.15,
+        0.6,
+        0.0
+      ]
+    },
+    "trail": null,
+    "shake": {
+      "amplitude": 0.1,
+      "duration": 0.24
+    },
+    "hit_stop_s": 0.06,
+    "sfx": {
+      "cast": null,
+      "loop": null,
+      "impact": "dark_impact.wav"
+    }
+  }
 }

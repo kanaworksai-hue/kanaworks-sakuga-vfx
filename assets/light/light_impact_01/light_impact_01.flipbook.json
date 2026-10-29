@@ -24,5 +24,92 @@
   "version": "1.0.0",
   "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
   "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
-  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx"
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "impact",
+  "style": "classic",
+  "base_id": "light_impact_01",
+  "anchor": "center",
+  "orientation": "billboard",
+  "world_size_m": 2.0,
+  "duration_s": 2.13,
+  "contact_frame": 2,
+  "loop_range": null,
+  "pairs": {
+    "cast": null,
+    "projectile": null,
+    "impact": null
+  },
+  "tags": [
+    "classic",
+    "divine",
+    "holy",
+    "impact",
+    "light"
+  ],
+  "use_cases": [
+    "holy burst",
+    "smite",
+    "hit effect",
+    "projectile impact",
+    "melee hit",
+    "explosion",
+    "on-hit feedback"
+  ],
+  "fx": {
+    "flash": {
+      "color": "#fff4d6",
+      "size": 1.5,
+      "frames": 3
+    },
+    "ring": {
+      "color": "#ffebb3",
+      "size": 2.2,
+      "duration": 0.4,
+      "plane": "view"
+    },
+    "sparks": {
+      "count": 20,
+      "speed": 5.0,
+      "color": "#ffe6a1",
+      "gravity": -0.1,
+      "drag": 2.0,
+      "size": 0.06,
+      "life": 0.7,
+      "direction": "radial"
+    },
+    "debris": null,
+    "smoke": null,
+    "decal": {
+      "texture": "decal_light.png",
+      "size": 1.8,
+      "life": 3.0,
+      "tint": "#ffffff"
+    },
+    "light": {
+      "color": "#ffe08a",
+      "intensity": 5.0,
+      "range": 4.4,
+      "curve": [
+        0.0,
+        1.0,
+        0.08,
+        0.7,
+        0.35,
+        0.15,
+        0.6,
+        0.0
+      ]
+    },
+    "trail": null,
+    "shake": {
+      "amplitude": 0.06,
+      "duration": 0.22
+    },
+    "hit_stop_s": 0.04,
+    "sfx": {
+      "cast": null,
+      "loop": null,
+      "impact": "light_impact.wav"
+    }
+  }
 }

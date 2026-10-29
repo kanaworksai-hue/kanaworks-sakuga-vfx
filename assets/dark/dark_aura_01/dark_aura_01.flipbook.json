@@ -1,0 +1,97 @@
+{
+  "grid": [
+    8,
+    5
+  ],
+  "cell": [
+    224,
+    400
+  ],
+  "frames": 40,
+  "bottom_inset": 0.065,
+  "source": "dark_aura_01.png",
+  "id": "dark_aura_01",
+  "element": "dark",
+  "form": "aura",
+  "fps": 30,
+  "loop": true,
+  "blend": "alpha",
+  "pivot": [
+    0.5,
+    0.935
+  ],
+  "alpha": "straight",
+  "version": "1.0.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "aura",
+  "style": "classic",
+  "base_id": "dark_aura_01",
+  "anchor": "ground",
+  "orientation": "upright",
+  "world_size_m": 2.4,
+  "duration_s": 1.33,
+  "contact_frame": 0,
+  "loop_range": [
+    0,
+    39
+  ],
+  "pairs": {
+    "cast": "dark_charge_01",
+    "projectile": null,
+    "impact": null
+  },
+  "tags": [
+    "aura",
+    "classic",
+    "dark",
+    "shadow",
+    "void"
+  ],
+  "use_cases": [
+    "status aura",
+    "power-up loop",
+    "buff loop",
+    "enrage"
+  ],
+  "fx": {
+    "flash": null,
+    "ring": {
+      "color": "#d894e6",
+      "size": 1.58,
+      "duration": 0.36,
+      "plane": "ground"
+    },
+    "sparks": {
+      "count": 10,
+      "speed": 5.48,
+      "color": "#cf7be0",
+      "gravity": -0.15,
+      "drag": 3.0,
+      "size": 0.077,
+      "life": 0.6,
+      "direction": "rise"
+    },
+    "debris": null,
+    "smoke": null,
+    "decal": null,
+    "light": {
+      "color": "#c35ad8",
+      "intensity": 1.8,
+      "range": 5.28,
+      "curve": [
+        0.0,
+        1.0
+      ]
+    },
+    "trail": null,
+    "shake": null,
+    "hit_stop_s": 0.0,
+    "sfx": {
+      "cast": "charge.wav",
+      "loop": "aura_loop.wav",
+      "impact": null
+    }
+  }
+}

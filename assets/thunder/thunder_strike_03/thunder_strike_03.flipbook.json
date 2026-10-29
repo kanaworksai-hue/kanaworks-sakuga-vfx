@@ -1,0 +1,105 @@
+{
+  "grid": [
+    8,
+    5
+  ],
+  "cell": [
+    256,
+    256
+  ],
+  "frames": 40,
+  "bottom_inset": 0.2812,
+  "source": "thunder_strike_03.png",
+  "id": "thunder_strike_03",
+  "element": "thunder",
+  "form": "strike",
+  "fps": 30,
+  "loop": true,
+  "blend": "alpha",
+  "pivot": [
+    0.5,
+    0.5
+  ],
+  "alpha": "straight",
+  "version": "1.0.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "beam",
+  "style": "plasma",
+  "base_id": "thunder_strike_01",
+  "anchor": "center",
+  "orientation": "travel",
+  "world_size_m": 4.0,
+  "duration_s": 1.33,
+  "contact_frame": 0,
+  "loop_range": [
+    0,
+    39
+  ],
+  "pairs": {
+    "cast": "thunder_charge_01",
+    "projectile": null,
+    "impact": "thunder_impact_01"
+  },
+  "tags": [
+    "beam",
+    "chain",
+    "electric",
+    "electric field",
+    "lightning",
+    "plasma",
+    "sci-fi",
+    "strike",
+    "stun",
+    "thunder"
+  ],
+  "use_cases": [
+    "lightning beam",
+    "zap segment",
+    "continuous beam",
+    "chain attack",
+    "laser"
+  ],
+  "fx": {
+    "flash": {
+      "color": "#bcefff",
+      "size": 1.5,
+      "frames": 2
+    },
+    "ring": null,
+    "sparks": {
+      "count": 16,
+      "speed": 12.73,
+      "color": "#65d9ff",
+      "gravity": 0.3,
+      "drag": 4.0,
+      "size": 0.071,
+      "life": 0.3,
+      "direction": "forward"
+    },
+    "debris": null,
+    "smoke": null,
+    "decal": null,
+    "light": {
+      "color": "#3fd0ff",
+      "intensity": 7.2,
+      "range": 8.8,
+      "curve": [
+        0.0,
+        1.0
+      ]
+    },
+    "trail": null,
+    "shake": {
+      "amplitude": 0.045,
+      "duration": 0.21
+    },
+    "hit_stop_s": 0.0,
+    "sfx": {
+      "cast": "thunder_cast.wav",
+      "loop": "thunder_travel_loop.wav",
+      "impact": null
+    }
+  }
+}

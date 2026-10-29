@@ -1,0 +1,95 @@
+{
+  "grid": [
+    8,
+    5
+  ],
+  "cell": [
+    256,
+    256
+  ],
+  "frames": 40,
+  "bottom_inset": 0.3008,
+  "source": "ice_projectile_03.png",
+  "id": "ice_projectile_03",
+  "element": "ice",
+  "form": "projectile",
+  "fps": 30,
+  "loop": true,
+  "blend": "alpha",
+  "pivot": [
+    0.5,
+    0.5
+  ],
+  "alpha": "straight",
+  "version": "1.0.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "projectile",
+  "style": "snow",
+  "base_id": "ice_projectile_01",
+  "anchor": "center",
+  "orientation": "billboard",
+  "world_size_m": 1.0,
+  "duration_s": 1.33,
+  "contact_frame": 0,
+  "loop_range": [
+    0,
+    39
+  ],
+  "pairs": {
+    "cast": "ice_charge_01",
+    "projectile": null,
+    "impact": "ice_impact_01"
+  },
+  "tags": [
+    "freeze",
+    "frost",
+    "ice",
+    "projectile",
+    "root",
+    "slow",
+    "snow",
+    "soft"
+  ],
+  "use_cases": [
+    "snowball",
+    "slow bolt",
+    "ice shard",
+    "frost bolt",
+    "ice arrow",
+    "spell projectile",
+    "magic bolt",
+    "ranged attack"
+  ],
+  "fx": {
+    "flash": null,
+    "ring": null,
+    "sparks": null,
+    "debris": null,
+    "smoke": null,
+    "decal": null,
+    "light": {
+      "color": "#d8d0ff",
+      "intensity": 1.5,
+      "range": 2.2,
+      "curve": [
+        0.0,
+        1.0
+      ]
+    },
+    "trail": {
+      "color": "#ded7ff",
+      "rate": 14,
+      "size": 0.5,
+      "life": 0.35
+    },
+    "shake": null,
+    "hit_stop_s": 0.0,
+    "sfx": {
+      "cast": "ice_cast.wav",
+      "loop": "ice_travel_loop.wav",
+      "impact": null
+    }
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "grid": [
+    8,
+    7
+  ],
+  "cell": [
+    224,
+    400
+  ],
+  "frames": 56,
+  "bottom_inset": 0.025,
+  "source": "rock_column_02.png",
+  "id": "rock_column_02",
+  "element": "rock",
+  "form": "column",
+  "fps": 30,
+  "loop": false,
+  "blend": "alpha",
+  "pivot": [
+    0.5,
+    0.975
+  ],
+  "alpha": "straight",
+  "version": "1.0.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "column",
+  "style": "magma",
+  "base_id": "rock_column_01",
+  "anchor": "ground",
+  "orientation": "upright",
+  "world_size_m": 3.2,
+  "duration_s": 1.87,
+  "contact_frame": 2,
+  "loop_range": null,
+  "pairs": {
+    "cast": "rock_charge_01",
+    "projectile": null,
+    "impact": null
+  },
+  "tags": [
+    "column",
+    "earth",
+    "ember",
+    "lava",
+    "magma",
+    "rock",
+    "stone",
+    "volcano"
+  ],
+  "use_cases": [
+    "lava spike",
+    "earth spike",
+    "rock pillar",
+    "ground eruption",
+    "AoE pillar",
+    "boss attack",
+    "summon"
+  ],
+  "fx": {
+    "flash": {
+      "color": "#ffcbaf",
+      "size": 1.44,
+      "frames": 2
+    },
+    "ring": {
+      "color": "#ff9e6a",
+      "size": 4.58,
+      "duration": 0.43,
+      "plane": "ground"
+    },
+    "sparks": {
+      "count": 10,
+      "speed": 5.06,
+      "color": "#ff8848",
+      "gravity": -0.1,
+      "drag": 1.0,
+      "size": 0.076,
+      "life": 1.0,
+      "direction": "up"
+    },
+    "debris": {
+      "count": 14,
+      "speed": 6.32,
+      "color": "#ff803c",
+      "gravity": 1.0,
+      "size": 0.316,
+      "life": 1.1
+    },
+    "smoke": {
+      "count": 5,
+      "color": "#3a3030",
+      "size": 2.08,
+      "rise": 0.8,
+      "life": 1.6,
+      "delay": 0.08
+    },
+    "decal": {
+      "texture": "decal_rock.png",
+      "size": 3.52,
+      "life": 3.37,
+      "tint": "#ffd2ba"
+    },
+    "light": {
+      "color": "#ff6a1a",
+      "intensity": 1.95,
+      "range": 7.04,
+      "curve": [
+        -0.1,
+        0.0,
+        0.0,
+        1.0,
+        0.94,
+        0.6,
+        1.87,
+        0.0
+      ]
+    },
+    "trail": null,
+    "shake": {
+      "amplitude": 0.304,
+      "duration": 0.36
+    },
+    "hit_stop_s": 0.0,
+    "sfx": {
+      "cast": "rock_cast.wav",
+      "loop": null,
+      "impact": "rock_impact.wav"
+    }
+  }
+}

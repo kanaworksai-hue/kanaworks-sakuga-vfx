@@ -1,0 +1,118 @@
+{
+  "grid": [
+    8,
+    8
+  ],
+  "cell": [
+    256,
+    256
+  ],
+  "frames": 64,
+  "bottom_inset": 0.1133,
+  "source": "wind_impact_02.png",
+  "id": "wind_impact_02",
+  "element": "wind",
+  "form": "impact",
+  "fps": 30,
+  "loop": false,
+  "blend": "alpha",
+  "pivot": [
+    0.5,
+    0.5
+  ],
+  "alpha": "straight",
+  "version": "1.0.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "impact",
+  "style": "tornado",
+  "base_id": "wind_impact_01",
+  "anchor": "center",
+  "orientation": "billboard",
+  "world_size_m": 2.0,
+  "duration_s": 2.13,
+  "contact_frame": 1,
+  "loop_range": null,
+  "pairs": {
+    "cast": null,
+    "projectile": null,
+    "impact": null
+  },
+  "tags": [
+    "air",
+    "gust",
+    "impact",
+    "multi hit",
+    "shuriken",
+    "tornado",
+    "wind"
+  ],
+  "use_cases": [
+    "multi-slash hit",
+    "shuriken",
+    "wind slash hit",
+    "gust hit",
+    "hit effect",
+    "projectile impact",
+    "melee hit",
+    "explosion"
+  ],
+  "fx": {
+    "flash": {
+      "color": "#bceee3",
+      "size": 1.5,
+      "frames": 3
+    },
+    "ring": {
+      "color": "#82e0ca",
+      "size": 2.2,
+      "duration": 0.4,
+      "plane": "view"
+    },
+    "sparks": {
+      "count": 14,
+      "speed": 7.0,
+      "color": "#65d9be",
+      "gravity": 0.0,
+      "drag": 3.0,
+      "size": 0.07,
+      "life": 0.45,
+      "direction": "radial"
+    },
+    "debris": null,
+    "smoke": null,
+    "decal": {
+      "texture": "decal_wind.png",
+      "size": 1.8,
+      "life": 3.0,
+      "tint": "#c5f1e7"
+    },
+    "light": {
+      "color": "#3fcfae",
+      "intensity": 1.2,
+      "range": 4.4,
+      "curve": [
+        0.0,
+        1.0,
+        0.08,
+        0.7,
+        0.35,
+        0.15,
+        0.6,
+        0.0
+      ]
+    },
+    "trail": null,
+    "shake": {
+      "amplitude": 0.06,
+      "duration": 0.22
+    },
+    "hit_stop_s": 0.03,
+    "sfx": {
+      "cast": null,
+      "loop": null,
+      "impact": "wind_impact.wav"
+    }
+  }
+}

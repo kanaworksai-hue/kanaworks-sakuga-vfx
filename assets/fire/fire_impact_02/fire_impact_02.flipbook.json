@@ -1,0 +1,127 @@
+{
+  "grid": [
+    8,
+    8
+  ],
+  "cell": [
+    256,
+    256
+  ],
+  "frames": 64,
+  "bottom_inset": 0.1598,
+  "source": "fire_impact_02.png",
+  "id": "fire_impact_02",
+  "element": "fire",
+  "form": "impact",
+  "fps": 30,
+  "loop": false,
+  "blend": "alpha",
+  "pivot": [
+    0.5,
+    0.5
+  ],
+  "alpha": "straight",
+  "version": "1.0.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "impact",
+  "style": "soulfire",
+  "base_id": "fire_impact_01",
+  "anchor": "center",
+  "orientation": "billboard",
+  "world_size_m": 2.0,
+  "duration_s": 2.13,
+  "contact_frame": 3,
+  "loop_range": null,
+  "pairs": {
+    "cast": null,
+    "projectile": "fire_projectile_02",
+    "impact": null
+  },
+  "tags": [
+    "blue fire",
+    "burn",
+    "fire",
+    "flame",
+    "impact",
+    "magic",
+    "soulfire",
+    "spirit",
+    "undead"
+  ],
+  "use_cases": [
+    "magic fire hit",
+    "soul wisps rise",
+    "fire explosion",
+    "burn hit",
+    "hit effect",
+    "projectile impact",
+    "melee hit",
+    "explosion"
+  ],
+  "fx": {
+    "flash": {
+      "color": "#c6d7ff",
+      "size": 1.5,
+      "frames": 3
+    },
+    "ring": {
+      "color": "#95b4ff",
+      "size": 2.2,
+      "duration": 0.4,
+      "plane": "view"
+    },
+    "sparks": {
+      "count": 22,
+      "speed": 6.0,
+      "color": "#7da3ff",
+      "gravity": -0.15,
+      "drag": 2.5,
+      "size": 0.06,
+      "life": 0.75,
+      "direction": "radial"
+    },
+    "debris": null,
+    "smoke": {
+      "count": 5,
+      "color": "#4b4141",
+      "size": 1.0,
+      "rise": 0.9,
+      "life": 1.4,
+      "delay": 0.08
+    },
+    "decal": {
+      "texture": "decal_fire.png",
+      "size": 1.8,
+      "life": 3.0,
+      "tint": "#cedcff"
+    },
+    "light": {
+      "color": "#5c8cff",
+      "intensity": 4.0,
+      "range": 4.4,
+      "curve": [
+        0.0,
+        1.0,
+        0.08,
+        0.7,
+        0.35,
+        0.15,
+        0.6,
+        0.0
+      ]
+    },
+    "trail": null,
+    "shake": {
+      "amplitude": 0.12,
+      "duration": 0.25
+    },
+    "hit_stop_s": 0.03,
+    "sfx": {
+      "cast": null,
+      "loop": null,
+      "impact": "fire_impact.wav"
+    }
+  }
+}

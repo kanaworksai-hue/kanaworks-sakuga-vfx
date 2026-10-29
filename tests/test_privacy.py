@@ -41,6 +41,9 @@ BANNED = {
 }
 FORBIDDEN_SUFFIXES = {'.mp4', '.mov', '.webm', '.mkv', '.avi', '.m4v', '.log', '.fbx', '.glb', '.gltf', '.blend', '.obj',
                       '.vrm', '.pmx', '.psd', '.wav', '.mp3', '.ogg'}
+# Our own generated sound effects ship here, as tag-free PCM WAV (checked chunk by chunk below).
+AUDIO_DIR = 'assets/_shared/sfx/'
+WAV_PIXEL_CHUNKS = {b'fmt ', b'data', b'fact'}
 FORBIDDEN_NAMES = re.compile(r'prompt|generation|\.env$|credential', re.I)
 
 PNG_SIGNATURE = b'\x89PNG\r\n\x1a\n'
@@ -152,6 +155,18 @@ def webp_metadata(data):
     return extra
 
 
+def wav_metadata(data):
+    if data[:4] != b'RIFF' or data[8:12] != b'WAVE':
+        return ['not a WAV']
+    extra, offset = [], 12
+    while offset + 8 <= len(data):
+        kind, size = data[offset:offset + 4], struct.unpack('<I', data[offset + 4:offset + 8])[0]
+        if kind not in WAV_PIXEL_CHUNKS:
+            extra.append(kind.decode('latin-1'))
+        offset += 8 + size + (size & 1)
+    return extra
+
+
 def gif_metadata(data):
     if data[:6] not in (b'GIF87a', b'GIF89a'):
         return ['not a GIF']
@@ -159,6 +174,9 @@ def gif_metadata(data):
 
 
 def file_hits(path, terms=()):
+    rel = path.relative_to(ROOT).as_posix() if path.is_relative_to(ROOT) else path.name
+    if path.suffix.lower() == '.wav' and rel.startswith(AUDIO_DIR):
+        return wav_metadata(path.read_bytes())
     if path.suffix.lower() in FORBIDDEN_SUFFIXES:
         return [f'{path.suffix} files are not published here']
     hits = [f'file name "{path.name}"'] if FORBIDDEN_NAMES.search(path.name) else []
@@ -192,6 +210,10 @@ def test_scanner_catches_each_kind_of_leak():
     assert png_metadata(clean) == [] and png_metadata(tagged) == ['tEXt'] and png_metadata(clean + b'x')
     webp = b'RIFF' + struct.pack('<I', 20) + b'WEBP' + b'EXIF' + struct.pack('<I', 2) + b'xx'
     assert webp_metadata(webp) == ['EXIF']
+    fmt = struct.pack('<4sIHHIIHH', b'fmt ', 16, 1, 1, 8000, 16000, 2, 16)
+    wav = b'RIFF' + struct.pack('<I', 4 + len(fmt) + 8) + b'WAVE' + fmt + b'data' + struct.pack('<I', 0)
+    tagged_wav = wav + b'LIST' + struct.pack('<I', 4) + b'INFO'
+    assert wav_metadata(wav) == [] and wav_metadata(tagged_wav) == ['LIST']
 
 
 def test_no_published_file_leaks_personal_machine_or_secret_data():

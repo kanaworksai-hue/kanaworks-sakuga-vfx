@@ -3,7 +3,7 @@
 <div align="center">
 
 <!-- TODO(banner): docs/assets/banner.jpg 는 다른 세션에서 제작 중. 이 경로를 유지. -->
-<img src="docs/assets/banner.jpg" alt="KanaWorks SAKUGA VFX: 무료 손그림 애니메이션풍 게임 이펙트 플립북" width="820">
+<img src="docs/assets/banner.jpg" alt="KanaWorks SAKUGA VFX: 무료 손그림풍 애니메이션 게임 이펙트 플립북" width="820">
 
 <p>
   <a href="LICENSE.md"><img alt="Assets: KanaWorks_AI VFX Asset License" src="https://img.shields.io/badge/assets-KanaWorks__AI_VFX_License-ff6aa2?style=flat-square"></a>
@@ -20,7 +20,7 @@
 
 </div>
 
-**손으로 그린 애니메이션풍(작화) 게임 이펙트를 무료로 제공하는 라이브러리입니다.** 불, 물, 번개, 바람, 독 등의 이펙트를
+**손그림풍 애니메이션(작화) 게임 이펙트를 무료로 제공하는 라이브러리입니다.** 불, 물, 번개, 바람, 독 등의 이펙트를
 배경이 투명한 플립북 스프라이트 시트로 제공하며, Unity, Godot, 웹, 그리고 스프라이트 시트를 재생할 수 있는 모든 엔진에서
 바로 쓸 수 있습니다.
 
@@ -65,10 +65,107 @@ AI 도구로 이펙트를 만들 수 없거나 이펙트 아티스트를 고용�
 | <img src="assets/rock/rock_impact_01/preview.webp" width="72" alt="rock_impact_01"> | [`rock_impact_01`](assets/rock/rock_impact_01/) | rock | impact | 64 (8x8) | 아니요 | 2026-10-29 |
 | <img src="assets/thunder/thunder_strike_01/preview.webp" width="72" alt="thunder_strike_01"> | [`thunder_strike_01`](assets/thunder/thunder_strike_01/) | thunder | strike | 56 (8x7) | 아니요 | 2026-10-29 |
 | <img src="assets/wind/wind_impact_01/preview.webp" width="72" alt="wind_impact_01"> | [`wind_impact_01`](assets/wind/wind_impact_01/) | wind | impact | 41 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/dark/dark_impact_02/preview.webp" width="72" alt="dark_impact_02"> | [`dark_impact_02`](assets/dark/dark_impact_02/) | dark | impact | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/dark/dark_impact_03/preview.webp" width="72" alt="dark_impact_03"> | [`dark_impact_03`](assets/dark/dark_impact_03/) | dark | impact | 64 (8x8) | 예 | 2026-10-29 |
+| <img src="assets/dark/dark_projectile_02/preview.webp" width="72" alt="dark_projectile_02"> | [`dark_projectile_02`](assets/dark/dark_projectile_02/) | dark | projectile | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/dark/dark_projectile_03/preview.webp" width="72" alt="dark_projectile_03"> | [`dark_projectile_03`](assets/dark/dark_projectile_03/) | dark | projectile | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/fire/fire_impact_02/preview.webp" width="72" alt="fire_impact_02"> | [`fire_impact_02`](assets/fire/fire_impact_02/) | fire | impact | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/fire/fire_impact_03/preview.webp" width="72" alt="fire_impact_03"> | [`fire_impact_03`](assets/fire/fire_impact_03/) | fire | impact | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/fire/fire_projectile_02/preview.webp" width="72" alt="fire_projectile_02"> | [`fire_projectile_02`](assets/fire/fire_projectile_02/) | fire | projectile | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/fire/fire_projectile_03/preview.webp" width="72" alt="fire_projectile_03"> | [`fire_projectile_03`](assets/fire/fire_projectile_03/) | fire | projectile | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/ice/ice_impact_02/preview.webp" width="72" alt="ice_impact_02"> | [`ice_impact_02`](assets/ice/ice_impact_02/) | ice | impact | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/ice/ice_impact_03/preview.webp" width="72" alt="ice_impact_03"> | [`ice_impact_03`](assets/ice/ice_impact_03/) | ice | impact | 64 (8x8) | 예 | 2026-10-29 |
+| <img src="assets/ice/ice_projectile_02/preview.webp" width="72" alt="ice_projectile_02"> | [`ice_projectile_02`](assets/ice/ice_projectile_02/) | ice | projectile | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/ice/ice_projectile_03/preview.webp" width="72" alt="ice_projectile_03"> | [`ice_projectile_03`](assets/ice/ice_projectile_03/) | ice | projectile | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/light/light_column_02/preview.webp" width="72" alt="light_column_02"> | [`light_column_02`](assets/light/light_column_02/) | light | column | 56 (8x7) | 아니요 | 2026-10-29 |
+| <img src="assets/light/light_column_03/preview.webp" width="72" alt="light_column_03"> | [`light_column_03`](assets/light/light_column_03/) | light | column | 56 (8x7) | 아니요 | 2026-10-29 |
+| <img src="assets/light/light_impact_02/preview.webp" width="72" alt="light_impact_02"> | [`light_impact_02`](assets/light/light_impact_02/) | light | impact | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/light/light_impact_03/preview.webp" width="72" alt="light_impact_03"> | [`light_impact_03`](assets/light/light_impact_03/) | light | impact | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/poison/poison_impact_02/preview.webp" width="72" alt="poison_impact_02"> | [`poison_impact_02`](assets/poison/poison_impact_02/) | poison | impact | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/poison/poison_impact_03/preview.webp" width="72" alt="poison_impact_03"> | [`poison_impact_03`](assets/poison/poison_impact_03/) | poison | impact | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/poison/poison_projectile_02/preview.webp" width="72" alt="poison_projectile_02"> | [`poison_projectile_02`](assets/poison/poison_projectile_02/) | poison | projectile | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/poison/poison_projectile_03/preview.webp" width="72" alt="poison_projectile_03"> | [`poison_projectile_03`](assets/poison/poison_projectile_03/) | poison | projectile | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/rock/rock_column_02/preview.webp" width="72" alt="rock_column_02"> | [`rock_column_02`](assets/rock/rock_column_02/) | rock | column | 56 (8x7) | 아니요 | 2026-10-29 |
+| <img src="assets/rock/rock_column_03/preview.webp" width="72" alt="rock_column_03"> | [`rock_column_03`](assets/rock/rock_column_03/) | rock | column | 56 (8x7) | 아니요 | 2026-10-29 |
+| <img src="assets/rock/rock_impact_02/preview.webp" width="72" alt="rock_impact_02"> | [`rock_impact_02`](assets/rock/rock_impact_02/) | rock | impact | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/rock/rock_impact_03/preview.webp" width="72" alt="rock_impact_03"> | [`rock_impact_03`](assets/rock/rock_impact_03/) | rock | impact | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/thunder/thunder_impact_02/preview.webp" width="72" alt="thunder_impact_02"> | [`thunder_impact_02`](assets/thunder/thunder_impact_02/) | thunder | impact | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/thunder/thunder_impact_03/preview.webp" width="72" alt="thunder_impact_03"> | [`thunder_impact_03`](assets/thunder/thunder_impact_03/) | thunder | impact | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/thunder/thunder_strike_02/preview.webp" width="72" alt="thunder_strike_02"> | [`thunder_strike_02`](assets/thunder/thunder_strike_02/) | thunder | strike | 56 (8x7) | 아니요 | 2026-10-29 |
+| <img src="assets/thunder/thunder_strike_03/preview.webp" width="72" alt="thunder_strike_03"> | [`thunder_strike_03`](assets/thunder/thunder_strike_03/) | thunder | strike | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/water/water_column_02/preview.webp" width="72" alt="water_column_02"> | [`water_column_02`](assets/water/water_column_02/) | water | column | 56 (8x7) | 아니요 | 2026-10-29 |
+| <img src="assets/water/water_column_03/preview.webp" width="72" alt="water_column_03"> | [`water_column_03`](assets/water/water_column_03/) | water | column | 56 (8x7) | 예 | 2026-10-29 |
+| <img src="assets/water/water_impact_02/preview.webp" width="72" alt="water_impact_02"> | [`water_impact_02`](assets/water/water_impact_02/) | water | impact | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/water/water_impact_03/preview.webp" width="72" alt="water_impact_03"> | [`water_impact_03`](assets/water/water_impact_03/) | water | impact | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/wind/wind_impact_02/preview.webp" width="72" alt="wind_impact_02"> | [`wind_impact_02`](assets/wind/wind_impact_02/) | wind | impact | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/wind/wind_impact_03/preview.webp" width="72" alt="wind_impact_03"> | [`wind_impact_03`](assets/wind/wind_impact_03/) | wind | impact | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/wind/wind_vortex_02/preview.webp" width="72" alt="wind_vortex_02"> | [`wind_vortex_02`](assets/wind/wind_vortex_02/) | wind | vortex | 56 (8x7) | 아니요 | 2026-10-29 |
+| <img src="assets/wind/wind_vortex_03/preview.webp" width="72" alt="wind_vortex_03"> | [`wind_vortex_03`](assets/wind/wind_vortex_03/) | wind | vortex | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/dark/dark_aura_01/preview.webp" width="72" alt="dark_aura_01"> | [`dark_aura_01`](assets/dark/dark_aura_01/) | dark | aura | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/dark/dark_charge_01/preview.webp" width="72" alt="dark_charge_01"> | [`dark_charge_01`](assets/dark/dark_charge_01/) | dark | charge | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/dark/dark_shield_01/preview.webp" width="72" alt="dark_shield_01"> | [`dark_shield_01`](assets/dark/dark_shield_01/) | dark | shield | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/dark/dark_slash_01/preview.webp" width="72" alt="dark_slash_01"> | [`dark_slash_01`](assets/dark/dark_slash_01/) | dark | slash | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/fire/fire_aura_01/preview.webp" width="72" alt="fire_aura_01"> | [`fire_aura_01`](assets/fire/fire_aura_01/) | fire | aura | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/fire/fire_charge_01/preview.webp" width="72" alt="fire_charge_01"> | [`fire_charge_01`](assets/fire/fire_charge_01/) | fire | charge | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/fire/fire_shield_01/preview.webp" width="72" alt="fire_shield_01"> | [`fire_shield_01`](assets/fire/fire_shield_01/) | fire | shield | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/fire/fire_slash_01/preview.webp" width="72" alt="fire_slash_01"> | [`fire_slash_01`](assets/fire/fire_slash_01/) | fire | slash | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/ice/ice_aura_01/preview.webp" width="72" alt="ice_aura_01"> | [`ice_aura_01`](assets/ice/ice_aura_01/) | ice | aura | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/ice/ice_charge_01/preview.webp" width="72" alt="ice_charge_01"> | [`ice_charge_01`](assets/ice/ice_charge_01/) | ice | charge | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/ice/ice_shield_01/preview.webp" width="72" alt="ice_shield_01"> | [`ice_shield_01`](assets/ice/ice_shield_01/) | ice | shield | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/ice/ice_slash_01/preview.webp" width="72" alt="ice_slash_01"> | [`ice_slash_01`](assets/ice/ice_slash_01/) | ice | slash | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/light/light_aura_01/preview.webp" width="72" alt="light_aura_01"> | [`light_aura_01`](assets/light/light_aura_01/) | light | aura | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/light/light_charge_01/preview.webp" width="72" alt="light_charge_01"> | [`light_charge_01`](assets/light/light_charge_01/) | light | charge | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/light/light_shield_01/preview.webp" width="72" alt="light_shield_01"> | [`light_shield_01`](assets/light/light_shield_01/) | light | shield | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/light/light_slash_01/preview.webp" width="72" alt="light_slash_01"> | [`light_slash_01`](assets/light/light_slash_01/) | light | slash | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/poison/poison_aura_01/preview.webp" width="72" alt="poison_aura_01"> | [`poison_aura_01`](assets/poison/poison_aura_01/) | poison | aura | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/poison/poison_charge_01/preview.webp" width="72" alt="poison_charge_01"> | [`poison_charge_01`](assets/poison/poison_charge_01/) | poison | charge | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/poison/poison_shield_01/preview.webp" width="72" alt="poison_shield_01"> | [`poison_shield_01`](assets/poison/poison_shield_01/) | poison | shield | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/poison/poison_slash_01/preview.webp" width="72" alt="poison_slash_01"> | [`poison_slash_01`](assets/poison/poison_slash_01/) | poison | slash | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/rock/rock_aura_01/preview.webp" width="72" alt="rock_aura_01"> | [`rock_aura_01`](assets/rock/rock_aura_01/) | rock | aura | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/rock/rock_charge_01/preview.webp" width="72" alt="rock_charge_01"> | [`rock_charge_01`](assets/rock/rock_charge_01/) | rock | charge | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/rock/rock_shield_01/preview.webp" width="72" alt="rock_shield_01"> | [`rock_shield_01`](assets/rock/rock_shield_01/) | rock | shield | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/rock/rock_slash_01/preview.webp" width="72" alt="rock_slash_01"> | [`rock_slash_01`](assets/rock/rock_slash_01/) | rock | slash | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/thunder/thunder_aura_01/preview.webp" width="72" alt="thunder_aura_01"> | [`thunder_aura_01`](assets/thunder/thunder_aura_01/) | thunder | aura | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/thunder/thunder_charge_01/preview.webp" width="72" alt="thunder_charge_01"> | [`thunder_charge_01`](assets/thunder/thunder_charge_01/) | thunder | charge | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/thunder/thunder_shield_01/preview.webp" width="72" alt="thunder_shield_01"> | [`thunder_shield_01`](assets/thunder/thunder_shield_01/) | thunder | shield | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/thunder/thunder_slash_01/preview.webp" width="72" alt="thunder_slash_01"> | [`thunder_slash_01`](assets/thunder/thunder_slash_01/) | thunder | slash | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/water/water_aura_01/preview.webp" width="72" alt="water_aura_01"> | [`water_aura_01`](assets/water/water_aura_01/) | water | aura | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/water/water_charge_01/preview.webp" width="72" alt="water_charge_01"> | [`water_charge_01`](assets/water/water_charge_01/) | water | charge | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/water/water_shield_01/preview.webp" width="72" alt="water_shield_01"> | [`water_shield_01`](assets/water/water_shield_01/) | water | shield | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/water/water_slash_01/preview.webp" width="72" alt="water_slash_01"> | [`water_slash_01`](assets/water/water_slash_01/) | water | slash | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/wind/wind_aura_01/preview.webp" width="72" alt="wind_aura_01"> | [`wind_aura_01`](assets/wind/wind_aura_01/) | wind | aura | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/wind/wind_charge_01/preview.webp" width="72" alt="wind_charge_01"> | [`wind_charge_01`](assets/wind/wind_charge_01/) | wind | charge | 64 (8x8) | 아니요 | 2026-10-29 |
+| <img src="assets/wind/wind_shield_01/preview.webp" width="72" alt="wind_shield_01"> | [`wind_shield_01`](assets/wind/wind_shield_01/) | wind | shield | 40 (8x5) | 예 | 2026-10-29 |
+| <img src="assets/wind/wind_slash_01/preview.webp" width="72" alt="wind_slash_01"> | [`wind_slash_01`](assets/wind/wind_slash_01/) | wind | slash | 64 (8x8) | 아니요 | 2026-10-29 |
 <!-- assets:end -->
 
 형태(form): `projectile`은 날아가는 동안 루프, `impact`는 명중 시 한 번 재생, `column`은 땅에서 솟아오르는 기둥, `vortex`는
-제자리에서 소용돌이, `strike`는 위에서 땅으로 내리꽂힘. 이름은 `속성_형태_번호`(`element_form_NN`)입니다.
+제자리에서 소용돌이, `strike`는 위에서 땅으로 내리꽂힘, `shield`는 캐릭터 주위에서 루프, `aura`는 캐릭터 발밑에서 루프,
+`charge`는 시전·차지(같은 속성의 모든 projectile과 짝을 이룸), `slash`는 근접 공격 히트. 이름은 `속성_형태_번호`
+(`element_form_NN`)이며, `_01`은 기본 스타일, `_02`와 `_03`은 스타일 변형입니다(예: `fire_projectile_02`는 소울파이어,
+`fire_projectile_03`은 메테오). 각 이펙트의 카테고리는 레시피가 정합니다(변형은 `area`, `beam`, `buff`일 수도 있습니다).
+
+## 레이어드 이펙트(레시피)
+
+모든 이펙트에는 그림을 바로 쓸 수 있는 스킬 이펙트로 만들어 주는 **레시피**도 있습니다(`catalog.json`과 각 사이드카에
+기록). 카테고리와 용도, 함께 쓰는 이펙트(차지, 투사체, 명중), 놓는 방식(중심 또는 지면, 빌보드·직립·바닥에 평평하게·비행
+방향을 따라 회전), 미터 단위 크기, 명중 프레임, 그리고 보조 레이어(명중 플래시, 충격파 링, 불꽃, 파편, 셀 스타일 연기, 지면
+데칼, 강도 커브가 있는 라이트, 카메라 셰이크, 히트 스톱, 사운드)가 들어 있습니다. Unity 패키지는 이를 바탕으로
+`<id>_fx.prefab`을, Godot 애드온은 `SakugaEffect3D`를 만들고, `web/sakuga-fx.js`는 캔버스에서 재생합니다. 공용 흰색 텍스처,
+데칼, 사운드는 [`assets/_shared/`](assets/_shared/)에 있습니다.
+
+```sh
+python tools/sakuga.py suggest "ice arrow hitting a slime"
+#  17.5  ice_projectile_02  projectile glacier  ice lance, ice arrow, ice shard
+#  ...
+#  chain: ice_charge_01 -> ice_projectile_02 -> ice_impact_01
+```
+
+```csharp
+SakugaFX.Cast("ice_projectile_02", hand.position, slime, p => slime.Damage(10));   // Unity: charge, flight, impact
+```
+
+코딩 에이전트는 [AGENTS.md](AGENTS.md)(그리고 [llms.txt](llms.txt))부터 읽으세요.
 
 ## 다운로드
 
@@ -204,6 +301,16 @@ python -m pytest -q               # 검증·개인정보·패키지 테스트
 
 `python tools/sakuga.py install unity <UnityProject>` / `install godot <GodotProject>`로 패키지와 시트를 프로젝트에 복사해
 테스트할 수 있습니다. CI는 푸시마다 테스트를 실행하고, `v*` 태그는 zip을 GitHub 릴리스로, 갤러리를 GitHub Pages로 게시합니다.
+
+```
+assets/<element>/<id>/   <id>.png, <id>.flipbook.json, preview.webp
+catalog.json             one line per effect
+tools/                   validate, sync, add, build, install (MIT)
+unity/                   UPM package com.kanaworks.sakuga-vfx (MIT)
+godot/                   addon + demo scenes (MIT)
+web/                     player, gallery, examples (MIT)
+tests/                   pytest
+```
 
 <br>
 

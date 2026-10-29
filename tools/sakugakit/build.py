@@ -12,7 +12,7 @@ from pathlib import Path
 
 from . import images
 from .catalog import validate
-from .common import (CREDIT, HOMEPAGE, LIBRARY, ROOT, SLUG, asset_dir, asset_png, dump_json, load_catalog, published,
+from .common import (CREDIT, HOMEPAGE, LIBRARY, ROOT, SHARED, SLUG, asset_dir, asset_png, dump_json, load_catalog, published,
                      say, sidecar, write_text)
 
 ZIP_TIME = (2026, 1, 1, 0, 0, 0)
@@ -20,6 +20,7 @@ GODOT_ADDON = 'addons/kanaworks_sakuga_vfx'
 GODOT_DEMO = 'sakuga_demo'
 UNITY_PACKAGE = 'com.kanaworks.sakuga-vfx'
 UNITY_FLIPBOOKS = 'Assets/KanaWorksSakugaVFX/Flipbooks'
+UNITY_SHARED = 'Assets/KanaWorksSakugaVFX/Shared'
 
 CREDIT_TXT = f"""{LIBRARY}
 {HOMEPAGE}
@@ -126,6 +127,16 @@ detect_3d/compress_to=0
 """
 
 
+GODOT_EFFECT_SCENE = """[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="{script}" id="1_fx"]
+
+[node name="Sakuga{name}" type="Node3D"]
+script = ExtResource("1_fx")
+effect_id = "{id}"
+"""
+
+
 # ------------------------------------------------------------------ zips
 def zip_dir(src, dest, prefix=''):
     """Deterministic zip: sorted entries, fixed timestamps, no OS junk."""
@@ -217,8 +228,17 @@ def stage_unity(root, assets, defaults, dest):
         d.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(asset_png(a, root), d / f"{a['id']}.png")
         write_text(d / f"{a['id']}.flipbook.json", dump_json(sidecar(a, defaults)))
+    copy_shared(root, dest / UNITY_SHARED)
     shutil.copyfile(Path(root) / 'LICENSE.md', base / 'LICENSE.md')
     write_text(base / 'CREDIT.txt', CREDIT_TXT)
+    return dest
+
+
+def copy_shared(root, dest):
+    """assets/_shared (textures, decals, sounds, shared.json) as it is in the repository."""
+    src = Path(root) / SHARED
+    if src.is_dir():
+        _copytree(src, Path(dest))
     return dest
 
 
@@ -237,8 +257,17 @@ def stage_godot(root, assets, defaults, dest):
         write_text(d / f"{a['id']}.png.import", GODOT_IMPORT.format(path=f"{res}/{a['id']}.png"))
         write_text(d / f"{a['id']}.flipbook.json", dump_json(sidecar(a, defaults)))
         write_text(d / f"{a['id']}.tres", spriteframes_tres(a, defaults, f"{res}/{a['id']}.png"))
-        listing.append({'id': a['id'], 'element': a['element'], 'form': a['form'], 'frames': f"{res}/{a['id']}.tres"})
+        listing.append({'id': a['id'], 'element': a['element'], 'form': a['form'], 'category': a.get('category', a['form']),
+                        'frames': f"{res}/{a['id']}.tres", 'sidecar': f"{res}/{a['id']}.flipbook.json"})
     write_text(addon / 'flipbooks' / 'index.json', dump_json({'credit': CREDIT, 'assets': listing}))
+    # one ready-made SakugaEffect3D scene per category, set to the classic effect of that category
+    firsts = {}
+    for a in sorted(assets, key=lambda x: (x.get('style') != 'classic', x['id'])):
+        firsts.setdefault(a.get('category', a['form']), a['id'])
+    for cat, aid in sorted(firsts.items()):
+        write_text(addon / 'effects' / f'sakuga_{cat}.tscn', GODOT_EFFECT_SCENE.format(
+            name=''.join(w.title() for w in cat.split('_')), id=aid, script=f'res://{GODOT_ADDON}/sakuga_effect_3d.gd'))
+    copy_shared(root, addon / 'shared')
     shutil.copyfile(Path(root) / 'LICENSE.md', addon / 'LICENSE.md')
     write_text(addon / 'CREDIT.txt', CREDIT_TXT)
     return dest
@@ -254,12 +283,37 @@ def stage_web(root, assets, flip_root, dest, catalog):
     _copytree(Path(root) / 'web', dest / 'web')
     for a in assets:
         _copytree(flip_root / a['element'] / a['id'], dest / 'assets' / a['element'] / a['id'])
+    copy_shared(root, dest / SHARED)
     _copytree(Path(root) / 'docs' / 'brand', dest / 'docs' / 'brand')
     write_text(dest / 'catalog.json', dump_json(catalog))
     shutil.copyfile(Path(root) / 'LICENSE.md', dest / 'LICENSE.md')
     write_text(dest / 'CREDIT.txt', CREDIT_TXT)
     write_text(dest / 'index.html', REDIRECT)
     return dest
+
+
+OVERVIEW_MAX = 24
+
+
+def overview_pick(sheets, limit=OVERVIEW_MAX):
+    """A varied sample for the README animation (all 90 would make a 12 MB file): round-robin over categories,
+    classic looks first, then the style variants, so every kind of effect shows up."""
+    by_cat = {}
+    for e, im in sorted(sheets, key=lambda x: (x[0].get('style', 'classic') != 'classic', x[0]['id'])):
+        by_cat.setdefault(e.get('category', e['form']), []).append((e, im))
+    picked, elements = [], set()
+    while len(picked) < limit and any(by_cat.values()):
+        for cat in sorted(by_cat):
+            if not by_cat[cat] or len(picked) >= limit:
+                continue
+            # prefer an element this category has not shown yet
+            lst = by_cat[cat]
+            i = next((k for k, (e, _) in enumerate(lst) if (cat, e['element']) not in elements and e['element'] not in
+                      {p['element'] for p, _ in picked[-3:]}), 0)
+            e, im = lst.pop(i)
+            elements.add((cat, e['element']))
+            picked.append((e, im))
+    return picked
 
 
 def build(root=ROOT, out=None, previews=True, readmes=True, site=True):
@@ -286,7 +340,7 @@ def build(root=ROOT, out=None, previews=True, readmes=True, site=True):
             images.preview(im, a, asset_dir(a, root) / 'preview.webp')
             say(f'  preview   {a["id"]}')
     if previews:
-        images.overview(sheets, root / 'docs' / 'assets' / 'overview.webp')
+        images.overview(overview_pick(sheets), root / 'docs' / 'assets' / 'overview.webp')
         say('  overview  docs/assets/overview.webp')
     if readmes:
         for name in update_readmes(root, assets):
@@ -305,6 +359,7 @@ def build(root=ROOT, out=None, previews=True, readmes=True, site=True):
     shutil.copyfile(root / 'LICENSE.md', pack / 'LICENSE.md')
     write_text(pack / 'CREDIT.txt', CREDIT_TXT)
     write_text(pack / 'catalog.json', dump_json(catalog))
+    copy_shared(root, pack / '_shared')
     zips['flipbooks'] = zip_dir(pack, downloads / f'{tag}-flipbooks.zip', f'{tag}-flipbooks/')
     zips['unity'] = zip_dir(stage_unity(root, assets, defaults, out / 'stage' / 'unity'), downloads / f'{tag}-unity.zip')
     zips['godot'] = zip_dir(stage_godot(root, assets, defaults, out / 'stage' / 'godot'), downloads / f'{tag}-godot.zip')
@@ -322,12 +377,14 @@ def build(root=ROOT, out=None, previews=True, readmes=True, site=True):
     say(f'  zip       downloads/assets/<id>.zip x{len(per_asset)}')
 
     all_zips = list(zips.values()) + list(per_asset.values())
-    write_text(downloads / 'SHA256SUMS.txt', ''.join(f'{sha256(z)}  {z.relative_to(downloads).as_posix()}\n'
+    write_text(downloads / 'SHA256SUMS.txt', ''.join(f'{sha256(z)}  {z.name}\n'   # flat, like the release assets
                                                     for z in sorted(all_zips)))
     manifest = {
         'version': version,
+        # the zips are GitHub release assets (Pages has a 1 GB limit), so the site links there
+        'release': f'{HOMEPAGE}/releases/download/v{version}/',
         'packages': {k: {'file': z.name, 'bytes': z.stat().st_size} for k, z in zips.items()},
-        'assets': {aid: {'zip': f'assets/{z.name}', 'bytes': z.stat().st_size,
+        'assets': {aid: {'zip': z.name, 'bytes': z.stat().st_size,
                          'files': [f'{stem}.png' for stem, _, _ in variant_names(aid)]
                          + [f'{stem}.atlas.json' for stem, _, _ in variant_names(aid)]}
                    for aid, z in per_asset.items()},
@@ -336,7 +393,8 @@ def build(root=ROOT, out=None, previews=True, readmes=True, site=True):
     if site:
         s = out / 'site'
         _copytree(web, s)
-        _copytree(downloads, s / 'downloads')
+        (s / 'downloads').mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(downloads / 'manifest.json', s / 'downloads' / 'manifest.json')
         write_text(s / 'catalog.json', dump_json({**catalog, 'downloads': 'downloads/manifest.json'}))
         write_text(s / '.nojekyll', '')
         say('  site      dist/site (GitHub Pages)')

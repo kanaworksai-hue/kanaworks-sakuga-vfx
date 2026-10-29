@@ -6,6 +6,8 @@ __pycache__/
 # Godot development project: flipbooks are copied in by `python tools/sakuga.py install godot godot`
 /godot/.godot/
 /godot/addons/kanaworks_sakuga_vfx/flipbooks/
+/godot/addons/kanaworks_sakuga_vfx/effects/
+/godot/addons/kanaworks_sakuga_vfx/shared/
 /godot/addons/kanaworks_sakuga_vfx/LICENSE.md
 /godot/addons/kanaworks_sakuga_vfx/CREDIT.txt
 *.uid

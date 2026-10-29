@@ -24,5 +24,85 @@
   "version": "1.0.0",
   "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
   "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
-  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx"
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "vortex",
+  "style": "classic",
+  "base_id": "wind_vortex_01",
+  "anchor": "ground",
+  "orientation": "billboard",
+  "world_size_m": 2.8,
+  "duration_s": 2.13,
+  "contact_frame": 0,
+  "loop_range": null,
+  "pairs": {
+    "cast": "wind_charge_01",
+    "projectile": null,
+    "impact": null
+  },
+  "tags": [
+    "air",
+    "classic",
+    "gust",
+    "vortex",
+    "wind"
+  ],
+  "use_cases": [
+    "tornado",
+    "whirlwind",
+    "pull AoE",
+    "crowd control"
+  ],
+  "fx": {
+    "flash": null,
+    "ring": {
+      "color": "#8defd9",
+      "size": 2.46,
+      "duration": 0.38,
+      "plane": "ground"
+    },
+    "sparks": {
+      "count": 11,
+      "speed": 8.28,
+      "color": "#72ebd0",
+      "gravity": 0.0,
+      "drag": 3.0,
+      "size": 0.083,
+      "life": 0.45,
+      "direction": "swirl"
+    },
+    "debris": null,
+    "smoke": null,
+    "decal": {
+      "texture": "decal_wind.png",
+      "size": 3.08,
+      "life": 3.63,
+      "tint": "#ffffff"
+    },
+    "light": {
+      "color": "#4fe6c4",
+      "intensity": 0.96,
+      "range": 6.16,
+      "curve": [
+        -0.1,
+        0.0,
+        0.0,
+        1.0,
+        1.06,
+        0.6,
+        2.13,
+        0.0
+      ]
+    },
+    "trail": null,
+    "shake": {
+      "amplitude": 0.021,
+      "duration": 0.19
+    },
+    "hit_stop_s": 0.0,
+    "sfx": {
+      "cast": "wind_cast.wav",
+      "loop": "wind_travel_loop.wav",
+      "impact": null
+    }
+  }
 }

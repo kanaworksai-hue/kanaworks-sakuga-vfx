@@ -24,5 +24,68 @@
   "version": "1.0.0",
   "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
   "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
-  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx"
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "projectile",
+  "style": "classic",
+  "base_id": "dark_projectile_01",
+  "anchor": "center",
+  "orientation": "billboard",
+  "world_size_m": 1.0,
+  "duration_s": 1.33,
+  "contact_frame": 0,
+  "loop_range": [
+    0,
+    39
+  ],
+  "pairs": {
+    "cast": "dark_charge_01",
+    "projectile": null,
+    "impact": "dark_impact_01"
+  },
+  "tags": [
+    "classic",
+    "dark",
+    "projectile",
+    "shadow",
+    "void"
+  ],
+  "use_cases": [
+    "shadow bolt",
+    "dark orb",
+    "spell projectile",
+    "magic bolt",
+    "ranged attack",
+    "bullet",
+    "tower shot"
+  ],
+  "fx": {
+    "flash": null,
+    "ring": null,
+    "sparks": null,
+    "debris": null,
+    "smoke": null,
+    "decal": null,
+    "light": {
+      "color": "#c35ad8",
+      "intensity": 1.8,
+      "range": 2.2,
+      "curve": [
+        0.0,
+        1.0
+      ]
+    },
+    "trail": {
+      "color": "#cc73de",
+      "rate": 14,
+      "size": 0.5,
+      "life": 0.35
+    },
+    "shake": null,
+    "hit_stop_s": 0.0,
+    "sfx": {
+      "cast": "dark_cast.wav",
+      "loop": "dark_travel_loop.wav",
+      "impact": null
+    }
+  }
 }

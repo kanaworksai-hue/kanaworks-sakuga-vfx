@@ -1,0 +1,101 @@
+{
+  "grid": [
+    8,
+    5
+  ],
+  "cell": [
+    256,
+    256
+  ],
+  "frames": 40,
+  "bottom_inset": 0.1094,
+  "source": "rock_shield_01.png",
+  "id": "rock_shield_01",
+  "element": "rock",
+  "form": "shield",
+  "fps": 30,
+  "loop": true,
+  "blend": "alpha",
+  "pivot": [
+    0.5,
+    0.5
+  ],
+  "alpha": "straight",
+  "version": "1.0.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "shield",
+  "style": "classic",
+  "base_id": "rock_shield_01",
+  "anchor": "center",
+  "orientation": "billboard",
+  "world_size_m": 2.6,
+  "duration_s": 1.33,
+  "contact_frame": 0,
+  "loop_range": [
+    0,
+    39
+  ],
+  "pairs": {
+    "cast": "rock_charge_01",
+    "projectile": null,
+    "impact": null
+  },
+  "tags": [
+    "classic",
+    "earth",
+    "rock",
+    "shield",
+    "stone"
+  ],
+  "use_cases": [
+    "barrier",
+    "protection bubble",
+    "block",
+    "invulnerable"
+  ],
+  "fx": {
+    "flash": {
+      "color": "#f2dfbc",
+      "size": 0.98,
+      "frames": 2
+    },
+    "ring": {
+      "color": "#e6c484",
+      "size": 2.86,
+      "duration": 0.4,
+      "plane": "ground"
+    },
+    "sparks": {
+      "count": 3,
+      "speed": 4.56,
+      "color": "#e1b667",
+      "gravity": -1.15,
+      "drag": 1.0,
+      "size": 0.068,
+      "life": 0.5,
+      "direction": "rise"
+    },
+    "debris": null,
+    "smoke": null,
+    "decal": null,
+    "light": {
+      "color": "#d9a441",
+      "intensity": 0.9,
+      "range": 5.72,
+      "curve": [
+        0.0,
+        1.0
+      ]
+    },
+    "trail": null,
+    "shake": null,
+    "hit_stop_s": 0.0,
+    "sfx": {
+      "cast": "charge.wav",
+      "loop": "shield_loop.wav",
+      "impact": null
+    }
+  }
+}

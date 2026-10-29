@@ -1,0 +1,102 @@
+{
+  "grid": [
+    8,
+    8
+  ],
+  "cell": [
+    256,
+    256
+  ],
+  "frames": 64,
+  "bottom_inset": 0.1555,
+  "source": "thunder_slash_01.png",
+  "id": "thunder_slash_01",
+  "element": "thunder",
+  "form": "slash",
+  "fps": 30,
+  "loop": false,
+  "blend": "alpha",
+  "pivot": [
+    0.5,
+    0.5
+  ],
+  "alpha": "straight",
+  "version": "1.0.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "slash",
+  "style": "classic",
+  "base_id": "thunder_slash_01",
+  "anchor": "center",
+  "orientation": "billboard",
+  "world_size_m": 2.4,
+  "duration_s": 2.13,
+  "contact_frame": 0,
+  "loop_range": null,
+  "pairs": {
+    "cast": null,
+    "projectile": null,
+    "impact": null
+  },
+  "tags": [
+    "classic",
+    "electric",
+    "lightning",
+    "slash",
+    "thunder"
+  ],
+  "use_cases": [
+    "melee swing",
+    "sword slash",
+    "claw attack",
+    "combo hit"
+  ],
+  "fx": {
+    "flash": {
+      "color": "#e5d4ff",
+      "size": 1.44,
+      "frames": 2
+    },
+    "ring": null,
+    "sparks": {
+      "count": 26,
+      "speed": 9.86,
+      "color": "#c49cff",
+      "gravity": 0.3,
+      "drag": 4.0,
+      "size": 0.055,
+      "life": 0.3,
+      "direction": "forward"
+    },
+    "debris": null,
+    "smoke": null,
+    "decal": null,
+    "light": {
+      "color": "#b583ff",
+      "intensity": 4.2,
+      "range": 5.28,
+      "curve": [
+        0.0,
+        1.0,
+        0.08,
+        0.7,
+        0.35,
+        0.15,
+        0.6,
+        0.0
+      ]
+    },
+    "trail": null,
+    "shake": {
+      "amplitude": 0.105,
+      "duration": 0.24
+    },
+    "hit_stop_s": 0.08,
+    "sfx": {
+      "cast": null,
+      "loop": null,
+      "impact": "slash.wav"
+    }
+  }
+}

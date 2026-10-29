@@ -3,7 +3,7 @@
 <div align="center">
 
 <!-- TODO(banner): docs/assets/banner.jpg 由另一个会话制作，保持此路径。 -->
-<img src="docs/assets/banner.jpg" alt="KanaWorks SAKUGA VFX：免费的手绘动画风游戏特效序列帧" width="820">
+<img src="docs/assets/banner.jpg" alt="KanaWorks SAKUGA VFX：免费的手绘风动画游戏特效序列帧" width="820">
 
 <p>
   <a href="LICENSE.md"><img alt="Assets: KanaWorks_AI VFX Asset License" src="https://img.shields.io/badge/assets-KanaWorks__AI_VFX_License-ff6aa2?style=flat-square"></a>
@@ -20,7 +20,7 @@
 
 </div>
 
-**一个免费的手绘动画风（作画系）游戏特效库。** 火、水、雷、风、毒等特效，以透明背景的序列帧精灵图（flipbook）形式提供，
+**一个免费的手绘风动画（作画系）游戏特效库。** 火、水、雷、风、毒等特效，以透明背景的序列帧精灵图（flipbook）形式提供，
 可以直接用于 Unity、Godot、网页，以及任何能播放精灵图的引擎。
 
 它是为想要好看的技能特效、却不会用 AI 工具制作、也没有预算请特效师的人准备的：学生、独立开发者、小团队、Game Jam、视频创作者。
@@ -64,10 +64,106 @@
 | <img src="assets/rock/rock_impact_01/preview.webp" width="72" alt="rock_impact_01"> | [`rock_impact_01`](assets/rock/rock_impact_01/) | rock | impact | 64 (8x8) | 否 | 2026-10-29 |
 | <img src="assets/thunder/thunder_strike_01/preview.webp" width="72" alt="thunder_strike_01"> | [`thunder_strike_01`](assets/thunder/thunder_strike_01/) | thunder | strike | 56 (8x7) | 否 | 2026-10-29 |
 | <img src="assets/wind/wind_impact_01/preview.webp" width="72" alt="wind_impact_01"> | [`wind_impact_01`](assets/wind/wind_impact_01/) | wind | impact | 41 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/dark/dark_impact_02/preview.webp" width="72" alt="dark_impact_02"> | [`dark_impact_02`](assets/dark/dark_impact_02/) | dark | impact | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/dark/dark_impact_03/preview.webp" width="72" alt="dark_impact_03"> | [`dark_impact_03`](assets/dark/dark_impact_03/) | dark | impact | 64 (8x8) | 是 | 2026-10-29 |
+| <img src="assets/dark/dark_projectile_02/preview.webp" width="72" alt="dark_projectile_02"> | [`dark_projectile_02`](assets/dark/dark_projectile_02/) | dark | projectile | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/dark/dark_projectile_03/preview.webp" width="72" alt="dark_projectile_03"> | [`dark_projectile_03`](assets/dark/dark_projectile_03/) | dark | projectile | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/fire/fire_impact_02/preview.webp" width="72" alt="fire_impact_02"> | [`fire_impact_02`](assets/fire/fire_impact_02/) | fire | impact | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/fire/fire_impact_03/preview.webp" width="72" alt="fire_impact_03"> | [`fire_impact_03`](assets/fire/fire_impact_03/) | fire | impact | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/fire/fire_projectile_02/preview.webp" width="72" alt="fire_projectile_02"> | [`fire_projectile_02`](assets/fire/fire_projectile_02/) | fire | projectile | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/fire/fire_projectile_03/preview.webp" width="72" alt="fire_projectile_03"> | [`fire_projectile_03`](assets/fire/fire_projectile_03/) | fire | projectile | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/ice/ice_impact_02/preview.webp" width="72" alt="ice_impact_02"> | [`ice_impact_02`](assets/ice/ice_impact_02/) | ice | impact | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/ice/ice_impact_03/preview.webp" width="72" alt="ice_impact_03"> | [`ice_impact_03`](assets/ice/ice_impact_03/) | ice | impact | 64 (8x8) | 是 | 2026-10-29 |
+| <img src="assets/ice/ice_projectile_02/preview.webp" width="72" alt="ice_projectile_02"> | [`ice_projectile_02`](assets/ice/ice_projectile_02/) | ice | projectile | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/ice/ice_projectile_03/preview.webp" width="72" alt="ice_projectile_03"> | [`ice_projectile_03`](assets/ice/ice_projectile_03/) | ice | projectile | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/light/light_column_02/preview.webp" width="72" alt="light_column_02"> | [`light_column_02`](assets/light/light_column_02/) | light | column | 56 (8x7) | 否 | 2026-10-29 |
+| <img src="assets/light/light_column_03/preview.webp" width="72" alt="light_column_03"> | [`light_column_03`](assets/light/light_column_03/) | light | column | 56 (8x7) | 否 | 2026-10-29 |
+| <img src="assets/light/light_impact_02/preview.webp" width="72" alt="light_impact_02"> | [`light_impact_02`](assets/light/light_impact_02/) | light | impact | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/light/light_impact_03/preview.webp" width="72" alt="light_impact_03"> | [`light_impact_03`](assets/light/light_impact_03/) | light | impact | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/poison/poison_impact_02/preview.webp" width="72" alt="poison_impact_02"> | [`poison_impact_02`](assets/poison/poison_impact_02/) | poison | impact | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/poison/poison_impact_03/preview.webp" width="72" alt="poison_impact_03"> | [`poison_impact_03`](assets/poison/poison_impact_03/) | poison | impact | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/poison/poison_projectile_02/preview.webp" width="72" alt="poison_projectile_02"> | [`poison_projectile_02`](assets/poison/poison_projectile_02/) | poison | projectile | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/poison/poison_projectile_03/preview.webp" width="72" alt="poison_projectile_03"> | [`poison_projectile_03`](assets/poison/poison_projectile_03/) | poison | projectile | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/rock/rock_column_02/preview.webp" width="72" alt="rock_column_02"> | [`rock_column_02`](assets/rock/rock_column_02/) | rock | column | 56 (8x7) | 否 | 2026-10-29 |
+| <img src="assets/rock/rock_column_03/preview.webp" width="72" alt="rock_column_03"> | [`rock_column_03`](assets/rock/rock_column_03/) | rock | column | 56 (8x7) | 否 | 2026-10-29 |
+| <img src="assets/rock/rock_impact_02/preview.webp" width="72" alt="rock_impact_02"> | [`rock_impact_02`](assets/rock/rock_impact_02/) | rock | impact | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/rock/rock_impact_03/preview.webp" width="72" alt="rock_impact_03"> | [`rock_impact_03`](assets/rock/rock_impact_03/) | rock | impact | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/thunder/thunder_impact_02/preview.webp" width="72" alt="thunder_impact_02"> | [`thunder_impact_02`](assets/thunder/thunder_impact_02/) | thunder | impact | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/thunder/thunder_impact_03/preview.webp" width="72" alt="thunder_impact_03"> | [`thunder_impact_03`](assets/thunder/thunder_impact_03/) | thunder | impact | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/thunder/thunder_strike_02/preview.webp" width="72" alt="thunder_strike_02"> | [`thunder_strike_02`](assets/thunder/thunder_strike_02/) | thunder | strike | 56 (8x7) | 否 | 2026-10-29 |
+| <img src="assets/thunder/thunder_strike_03/preview.webp" width="72" alt="thunder_strike_03"> | [`thunder_strike_03`](assets/thunder/thunder_strike_03/) | thunder | strike | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/water/water_column_02/preview.webp" width="72" alt="water_column_02"> | [`water_column_02`](assets/water/water_column_02/) | water | column | 56 (8x7) | 否 | 2026-10-29 |
+| <img src="assets/water/water_column_03/preview.webp" width="72" alt="water_column_03"> | [`water_column_03`](assets/water/water_column_03/) | water | column | 56 (8x7) | 是 | 2026-10-29 |
+| <img src="assets/water/water_impact_02/preview.webp" width="72" alt="water_impact_02"> | [`water_impact_02`](assets/water/water_impact_02/) | water | impact | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/water/water_impact_03/preview.webp" width="72" alt="water_impact_03"> | [`water_impact_03`](assets/water/water_impact_03/) | water | impact | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/wind/wind_impact_02/preview.webp" width="72" alt="wind_impact_02"> | [`wind_impact_02`](assets/wind/wind_impact_02/) | wind | impact | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/wind/wind_impact_03/preview.webp" width="72" alt="wind_impact_03"> | [`wind_impact_03`](assets/wind/wind_impact_03/) | wind | impact | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/wind/wind_vortex_02/preview.webp" width="72" alt="wind_vortex_02"> | [`wind_vortex_02`](assets/wind/wind_vortex_02/) | wind | vortex | 56 (8x7) | 否 | 2026-10-29 |
+| <img src="assets/wind/wind_vortex_03/preview.webp" width="72" alt="wind_vortex_03"> | [`wind_vortex_03`](assets/wind/wind_vortex_03/) | wind | vortex | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/dark/dark_aura_01/preview.webp" width="72" alt="dark_aura_01"> | [`dark_aura_01`](assets/dark/dark_aura_01/) | dark | aura | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/dark/dark_charge_01/preview.webp" width="72" alt="dark_charge_01"> | [`dark_charge_01`](assets/dark/dark_charge_01/) | dark | charge | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/dark/dark_shield_01/preview.webp" width="72" alt="dark_shield_01"> | [`dark_shield_01`](assets/dark/dark_shield_01/) | dark | shield | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/dark/dark_slash_01/preview.webp" width="72" alt="dark_slash_01"> | [`dark_slash_01`](assets/dark/dark_slash_01/) | dark | slash | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/fire/fire_aura_01/preview.webp" width="72" alt="fire_aura_01"> | [`fire_aura_01`](assets/fire/fire_aura_01/) | fire | aura | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/fire/fire_charge_01/preview.webp" width="72" alt="fire_charge_01"> | [`fire_charge_01`](assets/fire/fire_charge_01/) | fire | charge | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/fire/fire_shield_01/preview.webp" width="72" alt="fire_shield_01"> | [`fire_shield_01`](assets/fire/fire_shield_01/) | fire | shield | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/fire/fire_slash_01/preview.webp" width="72" alt="fire_slash_01"> | [`fire_slash_01`](assets/fire/fire_slash_01/) | fire | slash | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/ice/ice_aura_01/preview.webp" width="72" alt="ice_aura_01"> | [`ice_aura_01`](assets/ice/ice_aura_01/) | ice | aura | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/ice/ice_charge_01/preview.webp" width="72" alt="ice_charge_01"> | [`ice_charge_01`](assets/ice/ice_charge_01/) | ice | charge | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/ice/ice_shield_01/preview.webp" width="72" alt="ice_shield_01"> | [`ice_shield_01`](assets/ice/ice_shield_01/) | ice | shield | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/ice/ice_slash_01/preview.webp" width="72" alt="ice_slash_01"> | [`ice_slash_01`](assets/ice/ice_slash_01/) | ice | slash | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/light/light_aura_01/preview.webp" width="72" alt="light_aura_01"> | [`light_aura_01`](assets/light/light_aura_01/) | light | aura | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/light/light_charge_01/preview.webp" width="72" alt="light_charge_01"> | [`light_charge_01`](assets/light/light_charge_01/) | light | charge | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/light/light_shield_01/preview.webp" width="72" alt="light_shield_01"> | [`light_shield_01`](assets/light/light_shield_01/) | light | shield | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/light/light_slash_01/preview.webp" width="72" alt="light_slash_01"> | [`light_slash_01`](assets/light/light_slash_01/) | light | slash | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/poison/poison_aura_01/preview.webp" width="72" alt="poison_aura_01"> | [`poison_aura_01`](assets/poison/poison_aura_01/) | poison | aura | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/poison/poison_charge_01/preview.webp" width="72" alt="poison_charge_01"> | [`poison_charge_01`](assets/poison/poison_charge_01/) | poison | charge | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/poison/poison_shield_01/preview.webp" width="72" alt="poison_shield_01"> | [`poison_shield_01`](assets/poison/poison_shield_01/) | poison | shield | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/poison/poison_slash_01/preview.webp" width="72" alt="poison_slash_01"> | [`poison_slash_01`](assets/poison/poison_slash_01/) | poison | slash | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/rock/rock_aura_01/preview.webp" width="72" alt="rock_aura_01"> | [`rock_aura_01`](assets/rock/rock_aura_01/) | rock | aura | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/rock/rock_charge_01/preview.webp" width="72" alt="rock_charge_01"> | [`rock_charge_01`](assets/rock/rock_charge_01/) | rock | charge | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/rock/rock_shield_01/preview.webp" width="72" alt="rock_shield_01"> | [`rock_shield_01`](assets/rock/rock_shield_01/) | rock | shield | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/rock/rock_slash_01/preview.webp" width="72" alt="rock_slash_01"> | [`rock_slash_01`](assets/rock/rock_slash_01/) | rock | slash | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/thunder/thunder_aura_01/preview.webp" width="72" alt="thunder_aura_01"> | [`thunder_aura_01`](assets/thunder/thunder_aura_01/) | thunder | aura | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/thunder/thunder_charge_01/preview.webp" width="72" alt="thunder_charge_01"> | [`thunder_charge_01`](assets/thunder/thunder_charge_01/) | thunder | charge | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/thunder/thunder_shield_01/preview.webp" width="72" alt="thunder_shield_01"> | [`thunder_shield_01`](assets/thunder/thunder_shield_01/) | thunder | shield | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/thunder/thunder_slash_01/preview.webp" width="72" alt="thunder_slash_01"> | [`thunder_slash_01`](assets/thunder/thunder_slash_01/) | thunder | slash | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/water/water_aura_01/preview.webp" width="72" alt="water_aura_01"> | [`water_aura_01`](assets/water/water_aura_01/) | water | aura | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/water/water_charge_01/preview.webp" width="72" alt="water_charge_01"> | [`water_charge_01`](assets/water/water_charge_01/) | water | charge | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/water/water_shield_01/preview.webp" width="72" alt="water_shield_01"> | [`water_shield_01`](assets/water/water_shield_01/) | water | shield | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/water/water_slash_01/preview.webp" width="72" alt="water_slash_01"> | [`water_slash_01`](assets/water/water_slash_01/) | water | slash | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/wind/wind_aura_01/preview.webp" width="72" alt="wind_aura_01"> | [`wind_aura_01`](assets/wind/wind_aura_01/) | wind | aura | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/wind/wind_charge_01/preview.webp" width="72" alt="wind_charge_01"> | [`wind_charge_01`](assets/wind/wind_charge_01/) | wind | charge | 64 (8x8) | 否 | 2026-10-29 |
+| <img src="assets/wind/wind_shield_01/preview.webp" width="72" alt="wind_shield_01"> | [`wind_shield_01`](assets/wind/wind_shield_01/) | wind | shield | 40 (8x5) | 是 | 2026-10-29 |
+| <img src="assets/wind/wind_slash_01/preview.webp" width="72" alt="wind_slash_01"> | [`wind_slash_01`](assets/wind/wind_slash_01/) | wind | slash | 64 (8x8) | 否 | 2026-10-29 |
 <!-- assets:end -->
 
 形态（form）：`projectile` 飞行时循环播放；`impact` 命中时播放一次；`column` 从地面升起的柱子；`vortex` 原地旋转的旋涡；
-`strike` 从上方落到地面。命名规则为 `元素_形态_编号`（`element_form_NN`）。
+`strike` 从上方落到地面；`shield` 围绕角色循环播放；`aura` 在角色脚下循环播放；`charge` 是蓄力施法（可与同元素的所有
+projectile 搭配）；`slash` 是近战命中。命名规则为 `元素_形态_编号`（`element_form_NN`）：`_01` 是经典样式，`_02` 和 `_03`
+是风格变体（例如 `fire_projectile_02` 是魂火，`fire_projectile_03` 是陨石）。每个特效的类别由配方决定（变体也可能是
+`area`、`beam` 或 `buff`）。
+
+## 分层特效（配方）
+
+每个特效还有一份**配方**（recipe，写在 `catalog.json` 和它的 sidecar 里），把这张图变成拿来就能用的技能特效：类别和用途、
+搭配的特效（蓄力、飞行物、命中）、放置方式（中心或地面；广告牌、直立、平铺，或沿飞行方向旋转）、以米为单位的大小、命中帧，
+以及二级图层：命中闪光、冲击波环、火花、碎片、赛璐璐风烟雾、地面贴花、带强度曲线的灯光、镜头震动、顿帧（hit stop）和音效。
+Unity 包据此生成 `<id>_fx.prefab`，Godot 插件生成 `SakugaEffect3D`，`web/sakuga-fx.js` 则在 canvas 上播放。共用的白色纹理、
+贴花和音效在 [`assets/_shared/`](assets/_shared/) 中。
+
+```sh
+python tools/sakuga.py suggest "ice arrow hitting a slime"
+#  17.5  ice_projectile_02  projectile glacier  ice lance, ice arrow, ice shard
+#  ...
+#  chain: ice_charge_01 -> ice_projectile_02 -> ice_impact_01
+```
+
+```csharp
+SakugaFX.Cast("ice_projectile_02", hand.position, slime, p => slime.Damage(10));   // Unity: charge, flight, impact
+```
+
+编程代理（coding agent）请先看 [AGENTS.md](AGENTS.md)（以及 [llms.txt](llms.txt)）。
 
 ## 下载
 
@@ -200,6 +296,16 @@ python -m pytest -q               # 校验、隐私和包测试
 
 `python tools/sakuga.py install unity <UnityProject>` / `install godot <GodotProject>` 会把包和精灵图复制到项目中用于测试。
 CI 在每次推送时运行测试；推送 `v*` 标签会把 zip 发布到 GitHub Release，并把图库发布到 GitHub Pages。
+
+```
+assets/<element>/<id>/   <id>.png, <id>.flipbook.json, preview.webp
+catalog.json             one line per effect
+tools/                   validate, sync, add, build, install (MIT)
+unity/                   UPM package com.kanaworks.sakuga-vfx (MIT)
+godot/                   addon + demo scenes (MIT)
+web/                     player, gallery, examples (MIT)
+tests/                   pytest
+```
 
 <br>
 

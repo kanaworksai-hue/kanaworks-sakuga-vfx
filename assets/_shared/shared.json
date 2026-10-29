@@ -1,0 +1,221 @@
+{
+  "textures": {
+    "T_Flash": {
+      "grid": [
+        1,
+        1
+      ],
+      "use": "contact flash (star)",
+      "file": "textures/T_Flash.png"
+    },
+    "T_Ring": {
+      "grid": [
+        1,
+        1
+      ],
+      "use": "shockwave ring",
+      "file": "textures/T_Ring.png"
+    },
+    "T_Spark": {
+      "grid": [
+        1,
+        1
+      ],
+      "use": "spark streak, points along +x",
+      "file": "textures/T_Spark.png"
+    },
+    "T_Glow": {
+      "grid": [
+        1,
+        1
+      ],
+      "use": "soft glow, trail puff, ground glow",
+      "file": "textures/T_Glow.png"
+    },
+    "T_Smoke_2x2": {
+      "grid": [
+        2,
+        2
+      ],
+      "use": "cel smoke puffs (4 variants)",
+      "file": "textures/T_Smoke_2x2.png"
+    },
+    "T_Debris_2x2": {
+      "grid": [
+        2,
+        2
+      ],
+      "use": "rock / ice chunks (4 variants)",
+      "file": "textures/T_Debris_2x2.png"
+    }
+  },
+  "decals": {
+    "decal_water": "decals/decal_water.png",
+    "decal_fire": "decals/decal_fire.png",
+    "decal_thunder": "decals/decal_thunder.png",
+    "decal_wind": "decals/decal_wind.png",
+    "decal_poison": "decals/decal_poison.png",
+    "decal_ice": "decals/decal_ice.png",
+    "decal_rock": "decals/decal_rock.png",
+    "decal_light": "decals/decal_light.png",
+    "decal_dark": "decals/decal_dark.png"
+  },
+  "sfx": {
+    "water_cast.wav": {
+      "file": "sfx/water_cast.wav",
+      "seconds": 1.2,
+      "loop": false
+    },
+    "water_travel_loop.wav": {
+      "file": "sfx/water_travel_loop.wav",
+      "seconds": 2.25,
+      "loop": true
+    },
+    "water_impact.wav": {
+      "file": "sfx/water_impact.wav",
+      "seconds": 1.48,
+      "loop": false
+    },
+    "fire_cast.wav": {
+      "file": "sfx/fire_cast.wav",
+      "seconds": 1.2,
+      "loop": false
+    },
+    "fire_travel_loop.wav": {
+      "file": "sfx/fire_travel_loop.wav",
+      "seconds": 2.25,
+      "loop": true
+    },
+    "fire_impact.wav": {
+      "file": "sfx/fire_impact.wav",
+      "seconds": 1.48,
+      "loop": false
+    },
+    "thunder_cast.wav": {
+      "file": "sfx/thunder_cast.wav",
+      "seconds": 1.2,
+      "loop": false
+    },
+    "thunder_travel_loop.wav": {
+      "file": "sfx/thunder_travel_loop.wav",
+      "seconds": 2.25,
+      "loop": true
+    },
+    "thunder_impact.wav": {
+      "file": "sfx/thunder_impact.wav",
+      "seconds": 1.48,
+      "loop": false
+    },
+    "wind_cast.wav": {
+      "file": "sfx/wind_cast.wav",
+      "seconds": 1.2,
+      "loop": false
+    },
+    "wind_travel_loop.wav": {
+      "file": "sfx/wind_travel_loop.wav",
+      "seconds": 2.25,
+      "loop": true
+    },
+    "wind_impact.wav": {
+      "file": "sfx/wind_impact.wav",
+      "seconds": 1.48,
+      "loop": false
+    },
+    "poison_cast.wav": {
+      "file": "sfx/poison_cast.wav",
+      "seconds": 1.2,
+      "loop": false
+    },
+    "poison_travel_loop.wav": {
+      "file": "sfx/poison_travel_loop.wav",
+      "seconds": 2.25,
+      "loop": true
+    },
+    "poison_impact.wav": {
+      "file": "sfx/poison_impact.wav",
+      "seconds": 1.48,
+      "loop": false
+    },
+    "ice_cast.wav": {
+      "file": "sfx/ice_cast.wav",
+      "seconds": 1.2,
+      "loop": false
+    },
+    "ice_travel_loop.wav": {
+      "file": "sfx/ice_travel_loop.wav",
+      "seconds": 2.25,
+      "loop": true
+    },
+    "ice_impact.wav": {
+      "file": "sfx/ice_impact.wav",
+      "seconds": 1.48,
+      "loop": false
+    },
+    "rock_cast.wav": {
+      "file": "sfx/rock_cast.wav",
+      "seconds": 1.2,
+      "loop": false
+    },
+    "rock_travel_loop.wav": {
+      "file": "sfx/rock_travel_loop.wav",
+      "seconds": 2.25,
+      "loop": true
+    },
+    "rock_impact.wav": {
+      "file": "sfx/rock_impact.wav",
+      "seconds": 1.48,
+      "loop": false
+    },
+    "light_cast.wav": {
+      "file": "sfx/light_cast.wav",
+      "seconds": 1.2,
+      "loop": false
+    },
+    "light_travel_loop.wav": {
+      "file": "sfx/light_travel_loop.wav",
+      "seconds": 2.25,
+      "loop": true
+    },
+    "light_impact.wav": {
+      "file": "sfx/light_impact.wav",
+      "seconds": 1.48,
+      "loop": false
+    },
+    "dark_cast.wav": {
+      "file": "sfx/dark_cast.wav",
+      "seconds": 1.2,
+      "loop": false
+    },
+    "dark_travel_loop.wav": {
+      "file": "sfx/dark_travel_loop.wav",
+      "seconds": 2.25,
+      "loop": true
+    },
+    "dark_impact.wav": {
+      "file": "sfx/dark_impact.wav",
+      "seconds": 1.48,
+      "loop": false
+    },
+    "shield_loop.wav": {
+      "file": "sfx/shield_loop.wav",
+      "seconds": 4.0,
+      "loop": true
+    },
+    "charge.wav": {
+      "file": "sfx/charge.wav",
+      "seconds": 1.6,
+      "loop": false
+    },
+    "slash.wav": {
+      "file": "sfx/slash.wav",
+      "seconds": 0.8,
+      "loop": false
+    },
+    "aura_loop.wav": {
+      "file": "sfx/aura_loop.wav",
+      "seconds": 4.0,
+      "loop": true
+    }
+  },
+  "note": "White textures are tinted at runtime. Decals and sounds may be missing: skip that layer."
+}

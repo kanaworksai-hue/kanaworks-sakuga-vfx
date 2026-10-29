@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAKUGA VFX - layered effects (Canvas2D)</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin: 0; background: #14151c; color: #dfe2ee; font: 14px/1.5 system-ui, sans-serif; display: grid; place-items: center; min-height: 100vh; }
+  main { width: min(960px, 100vw - 24px); }
+  canvas { width: 100%; aspect-ratio: 16 / 9; background: #1d1f2b; border-radius: 10px; display: block; }
+  .bar { display: flex; gap: 8px; align-items: center; margin: 10px 0; flex-wrap: wrap; }
+  select, button { background: #262938; color: inherit; border: 1px solid #3a3e52; border-radius: 6px; padding: 6px 10px; }
+  small { opacity: .7; }
+</style>
+</head>
+<body>
+<main>
+  <canvas id="c" width="960" height="540"></canvas>
+  <div class="bar">
+    <button id="prev">&larr;</button><select id="pick"></select><button id="next">&rarr;</button>
+    <button id="replay">Replay (Space)</button>
+    <label><input type="checkbox" id="snd"> sound</label>
+    <span id="info"></span>
+  </div>
+  <small>Main flipbook + flash + ring + sparks + ground glow + decal + shake, from the recipe in each sidecar. Projectiles fly into their paired impact.
+  VFX: KanaWorks_AI (@KanaWorks_AI) - KanaWorks_AI VFX Asset License.</small>
+</main>
+<script type="module">
+import { load } from '../sakuga-player.js';
+import { SakugaFx, Shaker, loadShared } from '../sakuga-fx.js';
+
+const ROOT = '../../';
+const catalog = await (await fetch(ROOT + 'catalog.json')).json();
+const assets = catalog.assets.filter((a) => (a.status ?? 'published') === 'published');
+const byId = Object.fromEntries(assets.map((a) => [a.id, a]));
+const shared = await loadShared(ROOT + 'assets/_shared/');
+const cache = new Map();
+const get = async (id) => {
+  if (!cache.has(id)) { const a = byId[id]; cache.set(id, load(`${ROOT}assets/${a.element}/${id}/${id}.flipbook.json`)); }
+  return cache.get(id);
+};
+const canvas = document.getElementById('c'), ctx = canvas.getContext('2d');
+const PPM = 80, FLOOR = 430, shaker = new Shaker(PPM);
+const pick = document.getElementById('pick');
+for (const a of assets) pick.add(new Option(`${a.id}  (${a.category}, ${a.style})`, a.id));
+let live = [], index = 0, flying = null;
+
+async function show(i) {
+  index = (i + assets.length) % assets.length;
+  pick.value = assets[index].id;
+  const a = assets[index];
+  document.getElementById('info').textContent = (a.use_cases || []).slice(0, 2).join(', ');
+  live = []; flying = null;
+  const sound = document.getElementById('snd').checked;
+  const make = async (id, o = {}) => new SakugaFx(await get(id), shared, { sound, onshake: (amp, d) => shaker.add(amp, d), ...o });
+  if (a.category === 'projectile') {
+    const fx = (await make(a.id, { flip: false })).play();
+    flying = { fx, x: 200, y: FLOOR - 1.1 * PPM, to: 700, impact: a.pairs?.impact };
+    live.push(flying);
+  } else {
+    const ground = a.anchor === 'ground';
+    live.push({ fx: (await make(a.id, { direction: a.category === 'impact' ? 0.0001 : 0 })).play(), x: 480, y: ground ? FLOOR : FLOOR - 1.1 * PPM });
+  }
+}
+
+let last = performance.now();
+function frame(now) {
+  const dt = Math.min(0.05, (now - last) / 1000); last = now;
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.fillStyle = '#1d1f2b'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+  const [sx, sy] = shaker.offset(dt);
+  ctx.translate(sx, sy);
+  ctx.fillStyle = '#2a2d3d'; ctx.fillRect(-20, FLOOR, canvas.width + 40, canvas.height - FLOOR + 20);
+  ctx.fillStyle = '#c9cbd8'; ctx.beginPath(); ctx.ellipse(700, FLOOR - 0.55 * PPM, 0.5 * PPM, 0.55 * PPM, 0, 0, Math.PI * 2); ctx.fill();
+  if (flying) {
+    flying.x += 14 * PPM * dt;
+    if (flying.x >= flying.to) {
+      live = live.filter((l) => l !== flying);
+      if (flying.impact) get(flying.impact).then((src) => live.push({ fx: new SakugaFx(src, shared, { sound: document.getElementById('snd').checked, direction: 0.0001, onshake: (a, d) => shaker.add(a, d) }).play(), x: flying?.to ?? 700, y: FLOOR - 1.1 * PPM }));
+      flying.x = flying.to; flying = null;
+    }
+  }
+  for (const l of live) { l.fx.update(dt); l.fx.draw(ctx, l.x, l.y, PPM); }
+  if (live.length && live.every((l) => l.fx.done) && !flying) setTimeout(() => show(index), 0), live = [];
+  requestAnimationFrame(frame);
+}
+pick.onchange = () => show(assets.findIndex((a) => a.id === pick.value));
+document.getElementById('prev').onclick = () => show(index - 1);
+document.getElementById('next').onclick = () => show(index + 1);
+document.getElementById('replay').onclick = () => show(index);
+addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft') show(index - 1); else if (e.key === 'ArrowRight') show(index + 1); else if (e.key === ' ') { e.preventDefault(); show(index); }
+});
+await show(0);
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>

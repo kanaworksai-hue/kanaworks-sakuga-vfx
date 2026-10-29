@@ -1,0 +1,109 @@
+{
+  "grid": [
+    8,
+    8
+  ],
+  "cell": [
+    256,
+    256
+  ],
+  "frames": 64,
+  "bottom_inset": 0.1172,
+  "source": "light_impact_02.png",
+  "id": "light_impact_02",
+  "element": "light",
+  "form": "impact",
+  "fps": 30,
+  "loop": false,
+  "blend": "alpha",
+  "pivot": [
+    0.5,
+    0.5
+  ],
+  "alpha": "straight",
+  "version": "1.0.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "buff",
+  "style": "blessing",
+  "base_id": "light_impact_01",
+  "anchor": "center",
+  "orientation": "billboard",
+  "world_size_m": 2.0,
+  "duration_s": 2.13,
+  "contact_frame": 0,
+  "loop_range": null,
+  "pairs": {
+    "cast": "light_charge_01",
+    "projectile": null,
+    "impact": null
+  },
+  "tags": [
+    "blessing",
+    "buff",
+    "divine",
+    "heal",
+    "holy",
+    "impact",
+    "light",
+    "resurrect",
+    "support"
+  ],
+  "use_cases": [
+    "heal pickup",
+    "buff gain",
+    "buff gained",
+    "power up",
+    "pickup"
+  ],
+  "fx": {
+    "flash": {
+      "color": "#e6fade",
+      "size": 0.75,
+      "frames": 2
+    },
+    "ring": {
+      "color": "#d1f5c1",
+      "size": 1.76,
+      "duration": 0.38,
+      "plane": "ground"
+    },
+    "sparks": {
+      "count": 12,
+      "speed": 5.0,
+      "color": "#c6f3b3",
+      "gravity": -0.35,
+      "drag": 2.0,
+      "size": 0.06,
+      "life": 1.1,
+      "direction": "rise"
+    },
+    "debris": null,
+    "smoke": null,
+    "decal": null,
+    "light": {
+      "color": "#b8f0a0",
+      "intensity": 3.5,
+      "range": 4.4,
+      "curve": [
+        0.0,
+        1.0,
+        0.08,
+        0.7,
+        0.35,
+        0.15,
+        0.6,
+        0.0
+      ]
+    },
+    "trail": null,
+    "shake": null,
+    "hit_stop_s": 0.0,
+    "sfx": {
+      "cast": null,
+      "loop": null,
+      "impact": "charge.wav"
+    }
+  }
+}

@@ -24,5 +24,99 @@
   "version": "1.0.0",
   "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
   "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
-  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx"
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "impact",
+  "style": "classic",
+  "base_id": "ice_impact_01",
+  "anchor": "center",
+  "orientation": "billboard",
+  "world_size_m": 2.0,
+  "duration_s": 2.13,
+  "contact_frame": 1,
+  "loop_range": null,
+  "pairs": {
+    "cast": null,
+    "projectile": "ice_projectile_01",
+    "impact": null
+  },
+  "tags": [
+    "classic",
+    "freeze",
+    "frost",
+    "ice",
+    "impact"
+  ],
+  "use_cases": [
+    "ice shatter",
+    "freeze hit",
+    "hit effect",
+    "projectile impact",
+    "melee hit",
+    "explosion",
+    "on-hit feedback"
+  ],
+  "fx": {
+    "flash": {
+      "color": "#d8f5ff",
+      "size": 1.5,
+      "frames": 3
+    },
+    "ring": {
+      "color": "#b6edff",
+      "size": 2.2,
+      "duration": 0.4,
+      "plane": "view"
+    },
+    "sparks": {
+      "count": 16,
+      "speed": 5.0,
+      "color": "#a5e9ff",
+      "gravity": 1.2,
+      "drag": 2.0,
+      "size": 0.06,
+      "life": 0.5,
+      "direction": "radial"
+    },
+    "debris": {
+      "count": 8,
+      "speed": 4.0,
+      "color": "#a0e7ff",
+      "gravity": 1.0,
+      "size": 0.18,
+      "life": 0.9
+    },
+    "smoke": null,
+    "decal": {
+      "texture": "decal_ice.png",
+      "size": 1.8,
+      "life": 3.0,
+      "tint": "#ffffff"
+    },
+    "light": {
+      "color": "#8fe3ff",
+      "intensity": 2.5,
+      "range": 4.4,
+      "curve": [
+        0.0,
+        1.0,
+        0.08,
+        0.7,
+        0.35,
+        0.15,
+        0.6,
+        0.0
+      ]
+    },
+    "trail": null,
+    "shake": {
+      "amplitude": 0.1,
+      "duration": 0.24
+    },
+    "hit_stop_s": 0.06,
+    "sfx": {
+      "cast": null,
+      "loop": null,
+      "impact": "ice_impact.wav"
+    }
+  }
 }

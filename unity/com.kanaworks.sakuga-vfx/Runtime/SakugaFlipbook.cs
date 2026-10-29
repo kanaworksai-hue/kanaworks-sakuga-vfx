@@ -34,10 +34,16 @@ namespace KanaWorks.SakugaVFX
         [Tooltip("Frame shown in the editor while not playing.")]
         [Min(0)] public int previewFrame = 16;
 
+        /// <summary>Set by SakugaEffect: the frame comes from outside (ShowFrame), nothing plays on its own.</summary>
+        [HideInInspector] public bool externallyDriven;
+
         /// <summary>Raised once when a one-shot passes its last frame.</summary>
         public event Action<SakugaFlipbook> Finished;
 
         static readonly int FrameId = Shader.PropertyToID("_Frame");
+        static readonly int InstanceColorId = Shader.PropertyToID("_InstanceColor");
+        static readonly int RecolorId = Shader.PropertyToID("_Recolor");
+        static readonly int RecolorTintId = Shader.PropertyToID("_RecolorTint");
         MeshRenderer rend;
         MaterialPropertyBlock block;
         float time;
@@ -82,8 +88,26 @@ namespace KanaWorks.SakugaVFX
             Show(-1);
         }
 
+        /// <summary>Show one frame (-1 hides the quad). For external drivers such as SakugaEffect.</summary>
+        public void ShowFrame(int frame) => Show(frame);
+
+        /// <summary>Per-instance colour multiplier (alpha fades the whole sheet) and recolour toward a tint
+        /// (0 = original colours, 1 = the sheet re-ramped to the tint by brightness).</summary>
+        public void SetLook(Color multiply, float recolor, Color recolorTint)
+        {
+            if (!rend) rend = GetComponent<MeshRenderer>();
+            if (!rend) return;
+            block ??= new MaterialPropertyBlock();
+            rend.GetPropertyBlock(block);
+            block.SetColor(InstanceColorId, multiply);
+            block.SetFloat(RecolorId, recolor);
+            block.SetColor(RecolorTintId, recolorTint);
+            rend.SetPropertyBlock(block);
+        }
+
         void OnEnable()
         {
+            if (externallyDriven) return;
             if (Application.isPlaying && playOnEnable) Play();
             else if (!Application.isPlaying) Show(Mathf.Clamp(previewFrame, 0, frames - 1));
             else Show(-1);
@@ -93,12 +117,12 @@ namespace KanaWorks.SakugaVFX
         {
             grid = Vector2Int.Max(grid, Vector2Int.one);
             frames = Mathf.Clamp(frames, 1, grid.x * grid.y);
-            if (!Application.isPlaying && isActiveAndEnabled) Show(Mathf.Clamp(previewFrame, 0, frames - 1));
+            if (!Application.isPlaying && isActiveAndEnabled && !externallyDriven) Show(Mathf.Clamp(previewFrame, 0, frames - 1));
         }
 
         void Update()
         {
-            if (!playing || !Application.isPlaying) return;
+            if (!playing || !Application.isPlaying || externallyDriven) return;
             time += (useUnscaledTime ? Time.unscaledDeltaTime : Time.deltaTime) * speed;
             int f = FrameAt(time, fps, frames, loop);
             if (f >= frames) { Finish(); return; }

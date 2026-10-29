@@ -1,0 +1,102 @@
+{
+  "grid": [
+    8,
+    8
+  ],
+  "cell": [
+    256,
+    256
+  ],
+  "frames": 64,
+  "bottom_inset": 0.1555,
+  "source": "rock_slash_01.png",
+  "id": "rock_slash_01",
+  "element": "rock",
+  "form": "slash",
+  "fps": 30,
+  "loop": false,
+  "blend": "alpha",
+  "pivot": [
+    0.5,
+    0.5
+  ],
+  "alpha": "straight",
+  "version": "1.0.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "slash",
+  "style": "classic",
+  "base_id": "rock_slash_01",
+  "anchor": "center",
+  "orientation": "billboard",
+  "world_size_m": 2.4,
+  "duration_s": 2.13,
+  "contact_frame": 0,
+  "loop_range": null,
+  "pairs": {
+    "cast": null,
+    "projectile": null,
+    "impact": null
+  },
+  "tags": [
+    "classic",
+    "earth",
+    "rock",
+    "slash",
+    "stone"
+  ],
+  "use_cases": [
+    "melee swing",
+    "sword slash",
+    "claw attack",
+    "combo hit"
+  ],
+  "fx": {
+    "flash": {
+      "color": "#f2dfbc",
+      "size": 1.44,
+      "frames": 2
+    },
+    "ring": null,
+    "sparks": {
+      "count": 10,
+      "speed": 4.38,
+      "color": "#e1b667",
+      "gravity": 1.0,
+      "drag": 1.0,
+      "size": 0.066,
+      "life": 0.5,
+      "direction": "forward"
+    },
+    "debris": null,
+    "smoke": null,
+    "decal": null,
+    "light": {
+      "color": "#d9a441",
+      "intensity": 1.05,
+      "range": 5.28,
+      "curve": [
+        0.0,
+        1.0,
+        0.08,
+        0.7,
+        0.35,
+        0.15,
+        0.6,
+        0.0
+      ]
+    },
+    "trail": null,
+    "shake": {
+      "amplitude": 0.131,
+      "duration": 0.26
+    },
+    "hit_stop_s": 0.08,
+    "sfx": {
+      "cast": null,
+      "loop": null,
+      "impact": "slash.wav"
+    }
+  }
+}

@@ -7,6 +7,7 @@ const INDEX := "res://addons/kanaworks_sakuga_vfx/flipbooks/index.json"
 var fails := 0
 var frames_run := 0
 var demos: Array = []
+var effects: Array = []
 
 
 func check(ok: bool, what: String) -> void:
@@ -37,7 +38,19 @@ func _initialize() -> void:
 			var sheet: Texture2D = tex.atlas
 			check(sheet != null and sheet.get_width() == int(meta["grid"][0]) * int(meta["cell"][0])
 				and sheet.get_height() == int(meta["grid"][1]) * int(meta["cell"][1]), a["id"] + " sheet size")
-	for path in ["res://sakuga_demo/demo_2d.tscn", "res://sakuga_demo/demo_3d.tscn"]:
+	var cats := DirAccess.get_files_at("res://addons/kanaworks_sakuga_vfx/effects")
+	check(cats.size() >= 5, "one SakugaEffect3D scene per category")
+	for f in cats:
+		if not f.ends_with(".tscn"):
+			continue
+		var ps: PackedScene = load("res://addons/kanaworks_sakuga_vfx/effects/" + f)
+		check(ps != null, "load effect scene " + f)
+		if ps:
+			var fx = ps.instantiate()
+			root.add_child(fx)
+			check(fx.has_signal("shake_requested") and fx.has_signal("hit_stop") and fx.has_signal("finished"), f + " signals")
+			effects.append(fx)
+	for path in ["res://sakuga_demo/demo_2d.tscn", "res://sakuga_demo/demo_3d.tscn", "res://sakuga_demo/demo_fx.tscn"]:
 		var scene: PackedScene = load(path)
 		check(scene != null, "load " + path)
 		if scene:
@@ -58,6 +71,12 @@ func _process(_delta: float) -> bool:
 				advanced2d += 1
 			elif c is MeshInstance3D and c.get("current_frame") != null and int(c.get("current_frame")) > 0:
 				advanced3d += 1
+	var contacted := 0
+	for fx in effects:
+		check(fx.get_child_count() >= 2 or fx.get("finished_once"), str(fx.name) + " builds its layers")
+		if fx.get("_contacted") or float(fx.get("time")) > 0.0:
+			contacted += 1
+	check(contacted == effects.size(), "every category scene plays (%d of %d)" % [contacted, effects.size()])
 	check(advanced2d > 0, "2D demo animations advance")
 	check(advanced3d > 0, "3D demo animations advance")
 	print("SAKUGA_GODOT_CHECK " + ("OK" if fails == 0 else "FAILED %d" % fails))

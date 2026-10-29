@@ -95,7 +95,35 @@ namespace KanaWorks.SakugaVFX.EditorTools
             Debug.Log("[SAKUGA] demo scene saved to " + DemoScene + ": press Play");
         }
 
-        [MenuItem(Menu + "Credit and license", priority = 20)]
+        [MenuItem(Menu + "Build layered effects (fx prefabs and library)", priority = 3)]
+        public static void BuildFx() => SakugaFxBuilder.BuildAll();
+
+        [MenuItem(Menu + "Demo scenes/Build all four", priority = 10)]
+        public static void BuildDemoScenes() { if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) SakugaDemoBuilder.BuildAll(); }
+
+        [MenuItem(Menu + "Demo scenes/Arena (action RPG)", priority = 11)]
+        public static void OpenArena() => OpenOrBuild(SakugaDemoBuilder.Arena, SakugaDemoBuilder.BuildArena);
+
+        [MenuItem(Menu + "Demo scenes/Top-down shooter", priority = 12)]
+        public static void OpenTopDown() => OpenOrBuild(SakugaDemoBuilder.TopDown, SakugaDemoBuilder.BuildTopDown);
+
+        [MenuItem(Menu + "Demo scenes/Tower defense", priority = 13)]
+        public static void OpenTowerDefense() => OpenOrBuild(SakugaDemoBuilder.TowerDefense, SakugaDemoBuilder.BuildTowerDefense);
+
+        [MenuItem(Menu + "Demo scenes/Gallery (every effect)", priority = 14)]
+        public static void OpenGallery() => OpenOrBuild(SakugaDemoBuilder.Gallery, SakugaDemoBuilder.BuildGallery);
+
+        [MenuItem(Menu + "Demo scenes/Render stills of the demos", priority = 30)]
+        public static void RenderStills() => SakugaBatch.RenderDemoStills();
+
+        static void OpenOrBuild(string path, System.Action build)
+        {
+            if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) return;
+            if (!SakugaFX.Library || SakugaFX.Library.entries.Count == 0) SakugaFxBuilder.BuildAll();
+            if (File.Exists(path)) EditorSceneManager.OpenScene(path); else build();
+        }
+
+        [MenuItem(Menu + "Credit and license", priority = 50)]
         public static void OpenHomepage() => Application.OpenURL(Homepage);
     }
 }

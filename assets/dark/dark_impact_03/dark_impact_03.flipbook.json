@@ -1,0 +1,113 @@
+{
+  "grid": [
+    8,
+    8
+  ],
+  "cell": [
+    256,
+    256
+  ],
+  "frames": 64,
+  "bottom_inset": 0.2773,
+  "source": "dark_impact_03.png",
+  "id": "dark_impact_03",
+  "element": "dark",
+  "form": "impact",
+  "fps": 30,
+  "loop": true,
+  "blend": "alpha",
+  "pivot": [
+    0.5,
+    0.5
+  ],
+  "alpha": "straight",
+  "version": "1.0.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "area",
+  "style": "crimson",
+  "base_id": "dark_impact_01",
+  "anchor": "ground",
+  "orientation": "ground",
+  "world_size_m": 3.5,
+  "duration_s": 2.13,
+  "contact_frame": 0,
+  "loop_range": [
+    0,
+    63
+  ],
+  "pairs": {
+    "cast": "dark_charge_01",
+    "projectile": null,
+    "impact": null
+  },
+  "tags": [
+    "area",
+    "blood",
+    "crimson",
+    "curse",
+    "dark",
+    "debuff",
+    "impact",
+    "shadow",
+    "void"
+  ],
+  "use_cases": [
+    "curse circle debuff",
+    "ground AoE",
+    "hazard zone",
+    "debuff field"
+  ],
+  "fx": {
+    "flash": {
+      "color": "#f4b4c0",
+      "size": 1.05,
+      "frames": 2
+    },
+    "ring": {
+      "color": "#eb7389",
+      "size": 4.62,
+      "duration": 0.42,
+      "plane": "ground"
+    },
+    "sparks": {
+      "count": 8,
+      "speed": 6.61,
+      "color": "#e6536e",
+      "gravity": 0.0,
+      "drag": 3.0,
+      "size": 0.093,
+      "life": 0.6,
+      "direction": "up"
+    },
+    "debris": null,
+    "smoke": null,
+    "decal": {
+      "texture": "decal_dark.png",
+      "size": 3.85,
+      "life": 3.63,
+      "tint": "#f6bec9"
+    },
+    "light": {
+      "color": "#e0284a",
+      "intensity": 2.4,
+      "range": 7.7,
+      "curve": [
+        0.0,
+        1.0
+      ]
+    },
+    "trail": null,
+    "shake": {
+      "amplitude": 0.04,
+      "duration": 0.2
+    },
+    "hit_stop_s": 0.0,
+    "sfx": {
+      "cast": "dark_cast.wav",
+      "loop": null,
+      "impact": "dark_impact.wav"
+    }
+  }
+}

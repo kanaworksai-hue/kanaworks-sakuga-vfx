@@ -1,0 +1,118 @@
+{
+  "grid": [
+    8,
+    7
+  ],
+  "cell": [
+    224,
+    400
+  ],
+  "frames": 56,
+  "bottom_inset": 0.0278,
+  "source": "light_column_03.png",
+  "id": "light_column_03",
+  "element": "light",
+  "form": "column",
+  "fps": 30,
+  "loop": false,
+  "blend": "alpha",
+  "pivot": [
+    0.5,
+    0.9722
+  ],
+  "alpha": "straight",
+  "version": "1.0.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "column",
+  "style": "judgement",
+  "base_id": "light_column_01",
+  "anchor": "ground",
+  "orientation": "upright",
+  "world_size_m": 4.32,
+  "duration_s": 1.87,
+  "contact_frame": 5,
+  "loop_range": null,
+  "pairs": {
+    "cast": "light_charge_01",
+    "projectile": null,
+    "impact": null
+  },
+  "tags": [
+    "column",
+    "divine",
+    "holy",
+    "judgement",
+    "light",
+    "nova",
+    "ultimate"
+  ],
+  "use_cases": [
+    "holy AoE",
+    "ultimate",
+    "holy pillar",
+    "heal beam",
+    "ground eruption",
+    "AoE pillar",
+    "boss attack",
+    "summon"
+  ],
+  "fx": {
+    "flash": {
+      "color": "#ffeaba",
+      "size": 1.94,
+      "frames": 2
+    },
+    "ring": {
+      "color": "#ffd77f",
+      "size": 6.18,
+      "duration": 0.43,
+      "plane": "ground"
+    },
+    "sparks": {
+      "count": 20,
+      "speed": 7.35,
+      "color": "#ffce61",
+      "gravity": -0.1,
+      "drag": 2.0,
+      "size": 0.088,
+      "life": 0.7,
+      "direction": "up"
+    },
+    "debris": null,
+    "smoke": null,
+    "decal": {
+      "texture": "decal_light.png",
+      "size": 4.75,
+      "life": 3.37,
+      "tint": "#ffedc4"
+    },
+    "light": {
+      "color": "#ffc23a",
+      "intensity": 6.5,
+      "range": 9.5,
+      "curve": [
+        -0.1,
+        0.0,
+        0.0,
+        1.0,
+        0.94,
+        0.6,
+        1.87,
+        0.0
+      ]
+    },
+    "trail": null,
+    "shake": {
+      "amplitude": 0.138,
+      "duration": 0.26
+    },
+    "hit_stop_s": 0.0,
+    "sfx": {
+      "cast": "light_cast.wav",
+      "loop": null,
+      "impact": "light_impact.wav"
+    }
+  }
+}

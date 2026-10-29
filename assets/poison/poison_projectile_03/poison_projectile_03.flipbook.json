@@ -1,0 +1,96 @@
+{
+  "grid": [
+    8,
+    5
+  ],
+  "cell": [
+    256,
+    256
+  ],
+  "frames": 40,
+  "bottom_inset": 0.1602,
+  "source": "poison_projectile_03.png",
+  "id": "poison_projectile_03",
+  "element": "poison",
+  "form": "projectile",
+  "fps": 30,
+  "loop": true,
+  "blend": "alpha",
+  "pivot": [
+    0.5,
+    0.5
+  ],
+  "alpha": "straight",
+  "version": "1.0.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "projectile",
+  "style": "miasma",
+  "base_id": "poison_projectile_01",
+  "anchor": "center",
+  "orientation": "travel",
+  "world_size_m": 1.0,
+  "duration_s": 1.33,
+  "contact_frame": 0,
+  "loop_range": [
+    0,
+    39
+  ],
+  "pairs": {
+    "cast": "poison_charge_01",
+    "projectile": null,
+    "impact": "poison_impact_01"
+  },
+  "tags": [
+    "cloud",
+    "curse",
+    "debuff",
+    "miasma",
+    "poison",
+    "projectile",
+    "spore",
+    "toxic",
+    "venom"
+  ],
+  "use_cases": [
+    "spore bolt",
+    "curse bolt",
+    "poison spit",
+    "venom bolt",
+    "spell projectile",
+    "magic bolt",
+    "ranged attack",
+    "bullet"
+  ],
+  "fx": {
+    "flash": null,
+    "ring": null,
+    "sparks": null,
+    "debris": null,
+    "smoke": null,
+    "decal": null,
+    "light": {
+      "color": "#c05ce0",
+      "intensity": 1.08,
+      "range": 2.2,
+      "curve": [
+        0.0,
+        1.0
+      ]
+    },
+    "trail": {
+      "color": "#c974e5",
+      "rate": 14,
+      "size": 0.5,
+      "life": 0.35
+    },
+    "shake": null,
+    "hit_stop_s": 0.0,
+    "sfx": {
+      "cast": "poison_cast.wav",
+      "loop": "poison_travel_loop.wav",
+      "impact": null
+    }
+  }
+}

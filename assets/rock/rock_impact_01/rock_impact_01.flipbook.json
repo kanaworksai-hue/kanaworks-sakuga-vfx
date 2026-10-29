@@ -24,5 +24,106 @@
   "version": "1.0.0",
   "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
   "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
-  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx"
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "impact",
+  "style": "classic",
+  "base_id": "rock_impact_01",
+  "anchor": "center",
+  "orientation": "billboard",
+  "world_size_m": 2.0,
+  "duration_s": 2.13,
+  "contact_frame": 0,
+  "loop_range": null,
+  "pairs": {
+    "cast": null,
+    "projectile": null,
+    "impact": null
+  },
+  "tags": [
+    "classic",
+    "earth",
+    "impact",
+    "rock",
+    "stone"
+  ],
+  "use_cases": [
+    "rock smash",
+    "ground pound",
+    "hit effect",
+    "projectile impact",
+    "melee hit",
+    "explosion",
+    "on-hit feedback"
+  ],
+  "fx": {
+    "flash": {
+      "color": "#f2dfbc",
+      "size": 1.5,
+      "frames": 3
+    },
+    "ring": {
+      "color": "#e6c484",
+      "size": 2.2,
+      "duration": 0.4,
+      "plane": "view"
+    },
+    "sparks": {
+      "count": 10,
+      "speed": 4.0,
+      "color": "#e1b667",
+      "gravity": 1.0,
+      "drag": 1.0,
+      "size": 0.06,
+      "life": 0.5,
+      "direction": "radial"
+    },
+    "debris": {
+      "count": 12,
+      "speed": 5.0,
+      "color": "#dfb25e",
+      "gravity": 1.0,
+      "size": 0.25,
+      "life": 1.1
+    },
+    "smoke": {
+      "count": 5,
+      "color": "#b89a72",
+      "size": 1.3,
+      "rise": 0.4,
+      "life": 1.5,
+      "delay": 0.08
+    },
+    "decal": {
+      "texture": "decal_rock.png",
+      "size": 1.8,
+      "life": 3.0,
+      "tint": "#ffffff"
+    },
+    "light": {
+      "color": "#d9a441",
+      "intensity": 1.5,
+      "range": 4.4,
+      "curve": [
+        0.0,
+        1.0,
+        0.08,
+        0.7,
+        0.35,
+        0.15,
+        0.6,
+        0.0
+      ]
+    },
+    "trail": null,
+    "shake": {
+      "amplitude": 0.2,
+      "duration": 0.3
+    },
+    "hit_stop_s": 0.08,
+    "sfx": {
+      "cast": null,
+      "loop": null,
+      "impact": "rock_impact.wav"
+    }
+  }
 }

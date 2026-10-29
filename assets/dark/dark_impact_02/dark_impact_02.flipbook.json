@@ -1,0 +1,118 @@
+{
+  "grid": [
+    8,
+    8
+  ],
+  "cell": [
+    256,
+    256
+  ],
+  "frames": 64,
+  "bottom_inset": 0.1016,
+  "source": "dark_impact_02.png",
+  "id": "dark_impact_02",
+  "element": "dark",
+  "form": "impact",
+  "fps": 30,
+  "loop": false,
+  "blend": "alpha",
+  "pivot": [
+    0.5,
+    0.5
+  ],
+  "alpha": "straight",
+  "version": "1.0.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "impact",
+  "style": "void",
+  "base_id": "dark_impact_01",
+  "anchor": "center",
+  "orientation": "billboard",
+  "world_size_m": 2.0,
+  "duration_s": 2.13,
+  "contact_frame": 0,
+  "loop_range": null,
+  "pairs": {
+    "cast": null,
+    "projectile": "dark_projectile_02",
+    "impact": null
+  },
+  "tags": [
+    "black hole",
+    "dark",
+    "gravity",
+    "impact",
+    "implosion",
+    "shadow",
+    "void"
+  ],
+  "use_cases": [
+    "implosion: pull, then burst",
+    "shadow burst",
+    "curse hit",
+    "hit effect",
+    "projectile impact",
+    "melee hit",
+    "explosion",
+    "on-hit feedback"
+  ],
+  "fx": {
+    "flash": {
+      "color": "#d0ccff",
+      "size": 1.5,
+      "frames": 3
+    },
+    "ring": {
+      "color": "#a99fff",
+      "size": 2.2,
+      "duration": 0.4,
+      "plane": "view"
+    },
+    "sparks": {
+      "count": 16,
+      "speed": -4.0,
+      "color": "#9589ff",
+      "gravity": 0.0,
+      "drag": 0.5,
+      "size": 0.07,
+      "life": 0.6,
+      "direction": "radial"
+    },
+    "debris": null,
+    "smoke": null,
+    "decal": {
+      "texture": "decal_dark.png",
+      "size": 1.8,
+      "life": 3.0,
+      "tint": "#d7d3ff"
+    },
+    "light": {
+      "color": "#7a6cff",
+      "intensity": 3.0,
+      "range": 4.4,
+      "curve": [
+        0.0,
+        1.0,
+        0.08,
+        0.7,
+        0.35,
+        0.15,
+        0.6,
+        0.0
+      ]
+    },
+    "trail": null,
+    "shake": {
+      "amplitude": 0.1,
+      "duration": 0.24
+    },
+    "hit_stop_s": 0.06,
+    "sfx": {
+      "cast": null,
+      "loop": null,
+      "impact": "dark_impact.wav"
+    }
+  }
+}

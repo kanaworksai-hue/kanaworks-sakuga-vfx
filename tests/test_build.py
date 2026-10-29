@@ -120,8 +120,10 @@ def test_packages_contain_what_each_engine_needs(built):
     manifest = json.loads((out / 'downloads/manifest.json').read_text(encoding='utf-8'))
     assert set(manifest['packages']) == {'unity', 'godot', 'web', 'flipbooks'}
     assert (out / 'site/downloads/manifest.json').is_file() and (out / 'site/web/index.html').is_file()
+    assert not list((out / 'site/downloads').rglob('*.zip'))   # zips live on the GitHub release, not Pages
+    assert manifest['release'].endswith('/releases/download/v0.1.0/') and manifest['assets']['fire_impact_01']['zip'] == 'fire_impact_01.zip'
     sums = (out / 'downloads/SHA256SUMS.txt').read_text(encoding='utf-8')
-    assert 'kanaworks-sakuga-vfx-0.1.0-unity.zip' in sums and 'assets/fire_impact_01.zip' in sums
+    assert 'kanaworks-sakuga-vfx-0.1.0-unity.zip' in sums and '  fire_impact_01.zip' in sums
 
 
 def test_zips_are_reproducible(built):

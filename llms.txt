@@ -1,0 +1,23 @@
+# KanaWorks SAKUGA VFX
+
+> Free anime-style (sakuga) game effects with a hand-drawn look: 90 layered skill effects (9 elements: water, fire, thunder, wind, poison, ice, rock, light, dark) as flipbook sprite sheets plus an engine-agnostic recipe (flash, ring, sparks, debris, smoke, ground decal, light curve, camera shake, hit stop, sound) with players for Unity 6 URP, Godot 4 and the web. Credit: VFX: KanaWorks_AI (@KanaWorks_AI). Code MIT; assets under the KanaWorks_AI VFX Asset License.
+
+Pick an effect: `python tools/sakuga.py suggest "<what happens in the game>"` ranks ids and prints a cast -> projectile -> impact chain. Categories: projectile, impact, area, column, strike, beam, vortex, buff, shield, cast, slash, aura. Ids are element_form_NN; _01 classic, _02 and _03 style variants.
+
+## Docs
+
+- [AGENTS.md](AGENTS.md): how a coding agent picks effects by use case and wires them in Unity, Godot and the web
+- [README.md](README.md): overview, downloads, quick start per engine, license
+- [catalog.json](catalog.json): every effect with its recipe (category, use_cases, tags, style, pairs, anchor, orientation, world_size_m, duration_s, contact_frame, loop_range, fx)
+- [assets/_shared/shared.json](assets/_shared/shared.json): shared white textures, ground decals and sound effects
+
+## Engines
+
+- [Unity package](unity/com.kanaworks.sakuga-vfx/README.md): SakugaFX.Play / Cast / Attach / Beam, SakugaEffect (Simulate(t) for offline rendering), SakugaProjectile, SakugaCameraShake, SakugaHitStop, demo scenes
+- [Godot addon](godot/addons/kanaworks_sakuga_vfx/README.md): SakugaEffect3D.spawn(id, parent, position), one scene per category, SakugaFlipbook2D / 3D
+- [Web player](web/sakuga-fx.js): SakugaFx (layered), Shaker, loadShared; [plain flipbook player](web/sakuga-player.js)
+
+## Tools
+
+- [tools/sakuga.py](tools/sakuga.py): validate, sync, add, build, install, shared, suggest
+- [tools/sakugakit/recipes.py](tools/sakugakit/recipes.py): where recipes come from (element defaults, category scaling, styles)

@@ -88,4 +88,47 @@ def test_unity_scripts_compile_against_unity(tmp_path):
         assert r.returncode == 0, r.stdout[-3000:]
 
     compile_(tmp_path / 'rt.dll', sorted((UNITY / 'Runtime').glob('*.cs')))
-    compile_(tmp_path / 'ed.dll', sorted((UNITY / 'Editor').glob('*.cs')), [f'-r:{tmp_path / "rt.dll"}'])
+    compile_(tmp_path / 'demo.dll', sorted((UNITY / 'Runtime/Demo').glob('*.cs')), [f'-r:{tmp_path / "rt.dll"}'])
+    compile_(tmp_path / 'ed.dll', sorted((UNITY / 'Editor').glob('*.cs')),
+             [f'-r:{tmp_path / "rt.dll"}', f'-r:{tmp_path / "demo.dll"}'])
+
+
+def test_unity_layered_api_is_there():
+    rt = {p.name: p.read_text(encoding='utf-8') for p in (UNITY / 'Runtime').rglob('*.cs')}
+    fx = rt['SakugaFX.cs']
+    for sig in ('public static SakugaEffect Play(string id, Vector3 position', 'public static SakugaProjectile Cast(',
+                'public static SakugaEffect Attach(', 'public static SakugaEffect Beam(', 'public static void ClearAll()',
+                'ShakeRequested', 'HitStopRequested', 'AutoShake', 'AutoHitStop'):
+        assert sig in fx, sig
+    eff = rt['SakugaEffect.cs']
+    for sig in ('public void Simulate(float t', 'public void Play()', 'public void Stop()', 'event Action<SakugaEffect> Finished',
+                'ShakeRequested', 'public SakugaSize size', 'public bool overrideColor', 'public float speed'):
+        assert sig in eff, sig
+    assert 'beginCameraRendering' in rt['SakugaCameraShake.cs'] and 'endCameraRendering' in rt['SakugaCameraShake.cs']
+    assert 'interface ISakugaStepper' in eff and 'ISakugaStepper' in rt['SakugaProjectile.cs']
+    shader = (UNITY / 'Runtime/Shaders/SakugaFlipbook.shader').read_text(encoding='utf-8')
+    for prop in ('_SoftFade', '_CoreBoost', '_CamPush', '_Recolor', '_InstanceColor', '_SakugaDepthReady'):
+        assert prop in shader, prop
+    demo = json.loads((UNITY / 'Runtime/Demo/KanaWorks.SakugaVFX.Demo.asmdef').read_text(encoding='utf-8'))
+    assert demo['versionDefines'][0]['define'] == 'SAKUGA_INPUT_SYSTEM'
+    ed = (UNITY / 'Editor/SakugaDemoBuilder.cs').read_text(encoding='utf-8')
+    for scene in ('Sakuga_Arena', 'Sakuga_TopDown', 'Sakuga_TowerDefense', 'Sakuga_Gallery'):
+        assert scene in ed
+    # the runtime reaches URP only through reflection, so it compiles without a URP reference
+    assert 'Unity.RenderPipelines' not in json.loads((UNITY / 'Runtime/KanaWorks.SakugaVFX.asmdef').read_text())['references']
+
+
+def test_staged_engines_carry_shared_assets_and_category_scenes(tmp_path):
+    from sakugakit.build import stage_godot, stage_unity
+    from sakugakit.common import load_catalog, published
+    cat = load_catalog(ROOT / 'catalog.json')
+    assets = [a for a in published(cat) if a['id'] in ('fire_impact_01', 'fire_projectile_01', 'water_shield_01')]
+    u = stage_unity(ROOT, assets, cat['defaults'], tmp_path / 'u')
+    assert (u / 'Assets/KanaWorksSakugaVFX/Shared/textures/T_Flash.png').is_file()
+    assert (u / 'Assets/KanaWorksSakugaVFX/Shared/shared.json').is_file()
+    g = stage_godot(ROOT, assets, cat['defaults'], tmp_path / 'g')
+    scenes = sorted(p.name for p in (g / 'addons/kanaworks_sakuga_vfx/effects').glob('*.tscn'))
+    assert scenes == ['sakuga_impact.tscn', 'sakuga_projectile.tscn', 'sakuga_shield.tscn']
+    idx = json.loads((g / 'addons/kanaworks_sakuga_vfx/flipbooks/index.json').read_text(encoding='utf-8'))
+    assert all(a['sidecar'].endswith('.flipbook.json') for a in idx['assets'])
+    assert (g / 'addons/kanaworks_sakuga_vfx/shared/textures/T_Ring.png').is_file()

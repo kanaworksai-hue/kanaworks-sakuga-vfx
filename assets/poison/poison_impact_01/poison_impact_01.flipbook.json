@@ -24,5 +24,99 @@
   "version": "1.0.0",
   "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
   "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
-  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx"
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "impact",
+  "style": "classic",
+  "base_id": "poison_impact_01",
+  "anchor": "center",
+  "orientation": "billboard",
+  "world_size_m": 2.0,
+  "duration_s": 2.13,
+  "contact_frame": 1,
+  "loop_range": null,
+  "pairs": {
+    "cast": null,
+    "projectile": "poison_projectile_01",
+    "impact": null
+  },
+  "tags": [
+    "classic",
+    "impact",
+    "poison",
+    "toxic",
+    "venom"
+  ],
+  "use_cases": [
+    "poison splash",
+    "toxic hit",
+    "hit effect",
+    "projectile impact",
+    "melee hit",
+    "explosion",
+    "on-hit feedback"
+  ],
+  "fx": {
+    "flash": {
+      "color": "#d9f5c1",
+      "size": 1.5,
+      "frames": 3
+    },
+    "ring": {
+      "color": "#b9ec8b",
+      "size": 2.2,
+      "duration": 0.4,
+      "plane": "view"
+    },
+    "sparks": {
+      "count": 12,
+      "speed": 3.2,
+      "color": "#a9e871",
+      "gravity": 1.5,
+      "drag": 1.0,
+      "size": 0.09,
+      "life": 0.7,
+      "direction": "radial"
+    },
+    "debris": null,
+    "smoke": {
+      "count": 4,
+      "color": "#5d7a2a",
+      "size": 1.2,
+      "rise": 0.3,
+      "life": 1.6,
+      "delay": 0.08
+    },
+    "decal": {
+      "texture": "decal_poison.png",
+      "size": 1.8,
+      "life": 3.0,
+      "tint": "#ffffff"
+    },
+    "light": {
+      "color": "#93e24d",
+      "intensity": 1.8,
+      "range": 4.4,
+      "curve": [
+        0.0,
+        1.0,
+        0.08,
+        0.7,
+        0.35,
+        0.15,
+        0.6,
+        0.0
+      ]
+    },
+    "trail": null,
+    "shake": {
+      "amplitude": 0.05,
+      "duration": 0.21
+    },
+    "hit_stop_s": 0.04,
+    "sfx": {
+      "cast": null,
+      "loop": null,
+      "impact": "poison_impact.wav"
+    }
+  }
 }

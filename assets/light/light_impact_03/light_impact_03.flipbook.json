@@ -1,0 +1,118 @@
+{
+  "grid": [
+    8,
+    8
+  ],
+  "cell": [
+    256,
+    256
+  ],
+  "frames": 64,
+  "bottom_inset": 0.0391,
+  "source": "light_impact_03.png",
+  "id": "light_impact_03",
+  "element": "light",
+  "form": "impact",
+  "fps": 30,
+  "loop": false,
+  "blend": "alpha",
+  "pivot": [
+    0.5,
+    0.5
+  ],
+  "alpha": "straight",
+  "version": "1.0.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "impact",
+  "style": "judgement",
+  "base_id": "light_impact_01",
+  "anchor": "center",
+  "orientation": "billboard",
+  "world_size_m": 2.7,
+  "duration_s": 2.13,
+  "contact_frame": 3,
+  "loop_range": null,
+  "pairs": {
+    "cast": null,
+    "projectile": null,
+    "impact": null
+  },
+  "tags": [
+    "divine",
+    "holy",
+    "impact",
+    "judgement",
+    "light",
+    "nova",
+    "ultimate"
+  ],
+  "use_cases": [
+    "radiant nova",
+    "crit",
+    "holy burst",
+    "smite",
+    "hit effect",
+    "projectile impact",
+    "melee hit",
+    "explosion"
+  ],
+  "fx": {
+    "flash": {
+      "color": "#ffeaba",
+      "size": 2.03,
+      "frames": 3
+    },
+    "ring": {
+      "color": "#ffd77f",
+      "size": 2.97,
+      "duration": 0.4,
+      "plane": "view"
+    },
+    "sparks": {
+      "count": 20,
+      "speed": 5.81,
+      "color": "#ffce61",
+      "gravity": -0.1,
+      "drag": 2.0,
+      "size": 0.07,
+      "life": 0.7,
+      "direction": "radial"
+    },
+    "debris": null,
+    "smoke": null,
+    "decal": {
+      "texture": "decal_light.png",
+      "size": 2.43,
+      "life": 3.0,
+      "tint": "#ffedc4"
+    },
+    "light": {
+      "color": "#ffc23a",
+      "intensity": 5.0,
+      "range": 5.94,
+      "curve": [
+        0.0,
+        1.0,
+        0.08,
+        0.7,
+        0.35,
+        0.15,
+        0.6,
+        0.0
+      ]
+    },
+    "trail": null,
+    "shake": {
+      "amplitude": 0.091,
+      "duration": 0.23
+    },
+    "hit_stop_s": 0.04,
+    "sfx": {
+      "cast": null,
+      "loop": null,
+      "impact": "light_impact.wav"
+    }
+  }
+}

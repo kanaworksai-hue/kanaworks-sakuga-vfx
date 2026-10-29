@@ -53,6 +53,24 @@ namespace KanaWorks.SakugaVFX.EditorTools
             {
                 foreach (var p in sidecars) SakugaAssetBuilder.Build(p, overwrite: false);
                 AssetDatabase.SaveAssets();
+                // and the layered <id>_fx.prefab from the recipe in the same sidecar, registered in the library
+                var sh = SakugaFxBuilder.Shared();
+                var lib = SakugaFxBuilder.LoadOrCreateLibrary();
+                foreach (var p in sidecars)
+                {
+                    if (!p.StartsWith(SakugaFxBuilder.Root + "/Flipbooks/") || p.Contains("_1024.") || p.Contains("_add.")) continue;
+                    var fx = SakugaFxBuilder.BuildFx(p, sh);
+                    if (!fx) continue;
+                    lib.entries.RemoveAll(e => e == null || e.id == fx.id);
+                    lib.entries.Add(new SakugaLibrary.Entry
+                    {
+                        id = fx.id, element = fx.element, category = fx.recipe.category, style = fx.recipe.style, prefab = fx,
+                        tags = fx.recipe.tags, useCases = fx.recipe.use_cases,
+                    });
+                }
+                lib.entries.Sort((a, b) => string.CompareOrdinal(a.id, b.id));
+                EditorUtility.SetDirty(lib);
+                AssetDatabase.SaveAssets();
             };
         }
     }
@@ -88,13 +106,23 @@ namespace KanaWorks.SakugaVFX.EditorTools
             var shader = Shader.Find(ShaderName);
             if (!shader) { Debug.LogError("[SAKUGA] shader " + ShaderName + " not found: is the package installed and URP active?"); return null; }
 
+            var recipe = SakugaFlipbookInfo.RecipeFromJson(File.ReadAllText(sidecarPath));
             var mat = Mat(dir + "/M_" + id + ".mat", shader, m =>
             {
                 m.SetTexture("_MainTex", tex);
                 m.SetVector("_Grid", new Vector4(info.grid[0], info.grid[1], info.frames, 0));
                 m.SetFloat("_Frame", 0);
                 m.SetFloat("_Additive", info.Additive ? 1 : 0);
-                m.SetFloat("_Billboard", info.GroundRooted ? 2 : 1);
+                m.SetFloat("_Billboard", string.IsNullOrEmpty(info.orientation) ? (info.GroundRooted ? 2 : 1)
+                                                                                 : SakugaFxBuilder.BillboardMode(info.orientation));
+                // soft edge where it meets the floor or a body; flat ground sheets lie on the floor and must not fade
+                m.SetFloat("_SoftFade", info.orientation == "ground" ? 0f : 0.25f);
+                // hits float a little toward the camera so the target's body does not cut them
+                m.SetFloat("_CamPush", recipe.category == "impact" || recipe.category == "slash" ? 0.45f
+                                     : recipe.category == "shield" || recipe.category == "aura" || recipe.category == "buff" ? 0.6f : 0f);
+                // light and white-cored sheets are bright already: a small boost, or Bloom turns them into a white blob
+                m.SetFloat("_CoreBoost", info.element == "light" ? 0.15f : info.element == "ice" || info.element == "wind" ? 0.3f : 0.6f);
+                m.SetFloat("_CoreThreshold", 0.8f);
             });
             Mat(dir + "/M_" + id + "_Particles.mat", shader, m =>
             {

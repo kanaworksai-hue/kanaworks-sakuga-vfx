@@ -1,0 +1,133 @@
+{
+  "grid": [
+    8,
+    8
+  ],
+  "cell": [
+    256,
+    256
+  ],
+  "frames": 64,
+  "bottom_inset": 0.0859,
+  "source": "fire_impact_03.png",
+  "id": "fire_impact_03",
+  "element": "fire",
+  "form": "impact",
+  "fps": 30,
+  "loop": false,
+  "blend": "alpha",
+  "pivot": [
+    0.5,
+    0.5
+  ],
+  "alpha": "straight",
+  "version": "1.0.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "impact",
+  "style": "meteor",
+  "base_id": "fire_impact_01",
+  "anchor": "center",
+  "orientation": "billboard",
+  "world_size_m": 2.7,
+  "duration_s": 2.13,
+  "contact_frame": 3,
+  "loop_range": null,
+  "pairs": {
+    "cast": null,
+    "projectile": "fire_projectile_03",
+    "impact": null
+  },
+  "tags": [
+    "bomb",
+    "burn",
+    "cannonball",
+    "fire",
+    "flame",
+    "heavy",
+    "impact",
+    "meteor"
+  ],
+  "use_cases": [
+    "large explosion",
+    "bomb",
+    "fire explosion",
+    "burn hit",
+    "hit effect",
+    "projectile impact",
+    "melee hit",
+    "explosion"
+  ],
+  "fx": {
+    "flash": {
+      "color": "#ffc5b1",
+      "size": 2.03,
+      "frames": 3
+    },
+    "ring": {
+      "color": "#ff946d",
+      "size": 2.97,
+      "duration": 0.4,
+      "plane": "view"
+    },
+    "sparks": {
+      "count": 22,
+      "speed": 6.97,
+      "color": "#ff7b4c",
+      "gravity": -0.15,
+      "drag": 2.5,
+      "size": 0.07,
+      "life": 0.75,
+      "direction": "radial"
+    },
+    "debris": {
+      "count": 10,
+      "speed": 6.97,
+      "color": "#3a2a26",
+      "gravity": 1.0,
+      "size": 0.256,
+      "life": 1.1
+    },
+    "smoke": {
+      "count": 7,
+      "color": "#3e3836",
+      "size": 2.03,
+      "rise": 1.0,
+      "life": 1.8,
+      "delay": 0.08
+    },
+    "decal": {
+      "texture": "decal_fire.png",
+      "size": 2.43,
+      "life": 3.0,
+      "tint": "#ffcebc"
+    },
+    "light": {
+      "color": "#ff5a1f",
+      "intensity": 4.0,
+      "range": 5.94,
+      "curve": [
+        0.0,
+        1.0,
+        0.08,
+        0.7,
+        0.35,
+        0.15,
+        0.6,
+        0.0
+      ]
+    },
+    "trail": null,
+    "shake": {
+      "amplitude": 0.209,
+      "duration": 0.31
+    },
+    "hit_stop_s": 0.03,
+    "sfx": {
+      "cast": null,
+      "loop": null,
+      "impact": "fire_impact.wav"
+    }
+  }
+}

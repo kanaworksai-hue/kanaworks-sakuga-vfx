@@ -70,6 +70,15 @@ def bottom_inset(im, cols, rows, alpha=0.25):
     return round(float(np.percentile(gaps, 10)), 4) if gaps else 0.0
 
 
+def coverage(im, grid, frames=None):
+    """Opaque area of each frame (fraction of the cell with alpha > 0.25): how big the shape is over time."""
+    cols, rows = int(grid[0]), int(grid[1])
+    a = np.asarray(im.getchannel('A')) > 64
+    h, w = a.shape[0] // rows, a.shape[1] // cols
+    n = cols * rows if frames is None else min(int(frames), cols * rows)
+    return [float(a[(i // cols) * h:(i // cols + 1) * h, (i % cols) * w:(i % cols + 1) * w].mean()) for i in range(n)]
+
+
 def gutter_alpha(im, grid):
     """Highest alpha on any cell's outer border pixel (0 means frames cannot bleed into each other)."""
     cols, rows = grid

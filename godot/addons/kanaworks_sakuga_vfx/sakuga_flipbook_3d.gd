@@ -113,6 +113,13 @@ func _process(delta: float) -> void:
 	_show(f)
 
 
+## Show one frame (-1 hides it). For drivers such as SakugaEffect3D: call stop() first so it does not play itself.
+func show_frame(f: int) -> void:
+	visible = f >= 0
+	if f >= 0:
+		_show(f)
+
+
 func _finish() -> void:
 	_playing = false
 	match end_action:

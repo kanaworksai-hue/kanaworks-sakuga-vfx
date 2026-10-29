@@ -1,0 +1,105 @@
+{
+  "grid": [
+    8,
+    8
+  ],
+  "cell": [
+    256,
+    256
+  ],
+  "frames": 64,
+  "bottom_inset": 0.1012,
+  "source": "dark_charge_01.png",
+  "id": "dark_charge_01",
+  "element": "dark",
+  "form": "charge",
+  "fps": 30,
+  "loop": false,
+  "blend": "alpha",
+  "pivot": [
+    0.5,
+    0.5
+  ],
+  "alpha": "straight",
+  "version": "1.0.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "cast",
+  "style": "classic",
+  "base_id": "dark_charge_01",
+  "anchor": "center",
+  "orientation": "billboard",
+  "world_size_m": 1.4,
+  "duration_s": 2.13,
+  "contact_frame": 18,
+  "loop_range": null,
+  "pairs": {
+    "cast": null,
+    "projectile": "dark_projectile_01",
+    "impact": null
+  },
+  "tags": [
+    "cast",
+    "charge",
+    "classic",
+    "dark",
+    "shadow",
+    "void"
+  ],
+  "use_cases": [
+    "cast",
+    "charge-up",
+    "muzzle flash",
+    "spell start"
+  ],
+  "fx": {
+    "flash": {
+      "color": "#eac5f1",
+      "size": 0.63,
+      "frames": 2
+    },
+    "ring": {
+      "color": "#d894e6",
+      "size": 0.92,
+      "duration": 0.36,
+      "plane": "view"
+    },
+    "sparks": {
+      "count": 8,
+      "speed": 4.18,
+      "color": "#cf7be0",
+      "gravity": 0.0,
+      "drag": 3.0,
+      "size": 0.059,
+      "life": 0.6,
+      "direction": "radial"
+    },
+    "debris": null,
+    "smoke": null,
+    "decal": null,
+    "light": {
+      "color": "#c35ad8",
+      "intensity": 2.4,
+      "range": 3.08,
+      "curve": [
+        0.0,
+        1.0,
+        0.08,
+        0.7,
+        0.35,
+        0.15,
+        0.6,
+        0.0
+      ]
+    },
+    "trail": null,
+    "shake": null,
+    "hit_stop_s": 0.0,
+    "sfx": {
+      "cast": "charge.wav",
+      "loop": null,
+      "impact": null
+    }
+  }
+}

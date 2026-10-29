@@ -24,5 +24,92 @@
   "version": "1.0.0",
   "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
   "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
-  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx"
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "impact",
+  "style": "classic",
+  "base_id": "wind_impact_01",
+  "anchor": "center",
+  "orientation": "billboard",
+  "world_size_m": 2.0,
+  "duration_s": 1.37,
+  "contact_frame": 0,
+  "loop_range": null,
+  "pairs": {
+    "cast": null,
+    "projectile": null,
+    "impact": null
+  },
+  "tags": [
+    "air",
+    "classic",
+    "gust",
+    "impact",
+    "wind"
+  ],
+  "use_cases": [
+    "wind slash hit",
+    "gust hit",
+    "hit effect",
+    "projectile impact",
+    "melee hit",
+    "explosion",
+    "on-hit feedback"
+  ],
+  "fx": {
+    "flash": {
+      "color": "#c1f6ea",
+      "size": 1.5,
+      "frames": 3
+    },
+    "ring": {
+      "color": "#8defd9",
+      "size": 2.2,
+      "duration": 0.4,
+      "plane": "view"
+    },
+    "sparks": {
+      "count": 14,
+      "speed": 7.0,
+      "color": "#72ebd0",
+      "gravity": 0.0,
+      "drag": 3.0,
+      "size": 0.07,
+      "life": 0.45,
+      "direction": "radial"
+    },
+    "debris": null,
+    "smoke": null,
+    "decal": {
+      "texture": "decal_wind.png",
+      "size": 1.8,
+      "life": 3.0,
+      "tint": "#ffffff"
+    },
+    "light": {
+      "color": "#4fe6c4",
+      "intensity": 1.2,
+      "range": 4.4,
+      "curve": [
+        0.0,
+        1.0,
+        0.08,
+        0.7,
+        0.35,
+        0.15,
+        0.6,
+        0.0
+      ]
+    },
+    "trail": null,
+    "shake": {
+      "amplitude": 0.06,
+      "duration": 0.22
+    },
+    "hit_stop_s": 0.03,
+    "sfx": {
+      "cast": null,
+      "loop": null,
+      "impact": "wind_impact.wav"
+    }
+  }
 }

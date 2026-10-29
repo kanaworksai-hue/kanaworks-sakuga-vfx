@@ -15,4 +15,19 @@ SakugaFlipbook2D.spawn(FIRE_HIT, self, hit_position)          # 2D: plays once, 
 SakugaFlipbook3D.spawn(FIRE_HIT, self, hit_point_3d)          # 3D: same .tres
 ```
 
-Demo scenes: `res://sakuga_demo/demo_2d.tscn` and `res://sakuga_demo/demo_3d.tscn`.
+Layered effects (the flipbook plus the secondary layers of its recipe: flash, ring, sparks, debris, smoke, ground
+decal, light, sound):
+
+- `SakugaEffect3D` (Node3D): set `effect_id` (or call `SakugaEffect3D.spawn("fire_impact_01", self, hit_point)`).
+  Size S / M / L, scale, colour override, speed, lifetime for loops. Signals: `contact`,
+  `shake_requested(amplitude, duration)`, `hit_stop(seconds)`, `finished`.
+- `effects/sakuga_<category>.tscn`: one ready-made scene per category (projectile, impact, area, column, strike,
+  beam, vortex, buff, shield, cast, slash, aura); change `effect_id` in the Inspector.
+- `shared/`: the white layer textures, ground decals and sound effects the recipes refer to.
+
+Not in the Godot version yet: projectile flight (move the node yourself and spawn `recipe.pairs.impact` on arrival,
+as `sakuga_demo/demo_fx.gd` does), offline `simulate(t)`, stretched spark trails, and ground detection for decals
+under mid-air hits (they sit 0.9 m below the effect).
+
+Demo scenes: `res://sakuga_demo/demo_2d.tscn`, `res://sakuga_demo/demo_3d.tscn` and `res://sakuga_demo/demo_fx.tscn`
+(layered effects; Left / Right to browse, Enter to replay).

@@ -1,0 +1,96 @@
+{
+  "grid": [
+    8,
+    5
+  ],
+  "cell": [
+    256,
+    256
+  ],
+  "frames": 40,
+  "bottom_inset": 0.2578,
+  "source": "fire_projectile_02.png",
+  "id": "fire_projectile_02",
+  "element": "fire",
+  "form": "projectile",
+  "fps": 30,
+  "loop": true,
+  "blend": "alpha",
+  "pivot": [
+    0.5,
+    0.5
+  ],
+  "alpha": "straight",
+  "version": "1.0.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "projectile",
+  "style": "soulfire",
+  "base_id": "fire_projectile_01",
+  "anchor": "center",
+  "orientation": "travel",
+  "world_size_m": 1.0,
+  "duration_s": 1.33,
+  "contact_frame": 0,
+  "loop_range": [
+    0,
+    39
+  ],
+  "pairs": {
+    "cast": "fire_charge_01",
+    "projectile": null,
+    "impact": "fire_impact_02"
+  },
+  "tags": [
+    "blue fire",
+    "burn",
+    "fire",
+    "flame",
+    "magic",
+    "projectile",
+    "soulfire",
+    "spirit",
+    "undead"
+  ],
+  "use_cases": [
+    "magic fireball",
+    "undead fireball",
+    "fireball",
+    "spell projectile",
+    "magic bolt",
+    "ranged attack",
+    "bullet",
+    "tower shot"
+  ],
+  "fx": {
+    "flash": null,
+    "ring": null,
+    "sparks": null,
+    "debris": null,
+    "smoke": null,
+    "decal": null,
+    "light": {
+      "color": "#5c8cff",
+      "intensity": 2.4,
+      "range": 2.2,
+      "curve": [
+        0.0,
+        1.0
+      ]
+    },
+    "trail": {
+      "color": "#749dff",
+      "rate": 14,
+      "size": 0.5,
+      "life": 0.35
+    },
+    "shake": null,
+    "hit_stop_s": 0.0,
+    "sfx": {
+      "cast": "fire_cast.wav",
+      "loop": "fire_travel_loop.wav",
+      "impact": null
+    }
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "grid": [
+    8,
+    8
+  ],
+  "cell": [
+    256,
+    256
+  ],
+  "frames": 64,
+  "bottom_inset": 0.0773,
+  "source": "wind_vortex_03.png",
+  "id": "wind_vortex_03",
+  "element": "wind",
+  "form": "vortex",
+  "fps": 30,
+  "loop": false,
+  "blend": "alpha",
+  "pivot": [
+    0.5,
+    0.5
+  ],
+  "alpha": "straight",
+  "version": "1.0.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "cast",
+  "style": "sakura",
+  "base_id": "wind_vortex_01",
+  "anchor": "center",
+  "orientation": "billboard",
+  "world_size_m": 1.4,
+  "duration_s": 2.13,
+  "contact_frame": 28,
+  "loop_range": null,
+  "pairs": {
+    "cast": null,
+    "projectile": null,
+    "impact": null
+  },
+  "tags": [
+    "air",
+    "cast",
+    "cherry blossom",
+    "crit",
+    "elegant",
+    "gust",
+    "petal",
+    "sakura",
+    "vortex",
+    "wind"
+  ],
+  "use_cases": [
+    "charge-up gather",
+    "buff",
+    "cast",
+    "charge-up",
+    "muzzle flash",
+    "spell start"
+  ],
+  "fx": {
+    "flash": {
+      "color": "#ffd8ec",
+      "size": 0.63,
+      "frames": 2
+    },
+    "ring": {
+      "color": "#ffb6db",
+      "size": 0.92,
+      "duration": 0.36,
+      "plane": "view"
+    },
+    "sparks": {
+      "count": 7,
+      "speed": 5.86,
+      "color": "#ffa5d3",
+      "gravity": 0.15,
+      "drag": 1.5,
+      "size": 0.075,
+      "life": 1.2,
+      "direction": "radial"
+    },
+    "debris": null,
+    "smoke": null,
+    "decal": null,
+    "light": {
+      "color": "#ff8fc8",
+      "intensity": 0.96,
+      "range": 3.08,
+      "curve": [
+        0.0,
+        1.0,
+        0.08,
+        0.7,
+        0.35,
+        0.15,
+        0.6,
+        0.0
+      ]
+    },
+    "trail": null,
+    "shake": null,
+    "hit_stop_s": 0.0,
+    "sfx": {
+      "cast": "charge.wav",
+      "loop": null,
+      "impact": null
+    }
+  }
+}

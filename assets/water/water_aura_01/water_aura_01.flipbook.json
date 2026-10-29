@@ -1,0 +1,97 @@
+{
+  "grid": [
+    8,
+    5
+  ],
+  "cell": [
+    224,
+    400
+  ],
+  "frames": 40,
+  "bottom_inset": 0.0625,
+  "source": "water_aura_01.png",
+  "id": "water_aura_01",
+  "element": "water",
+  "form": "aura",
+  "fps": 30,
+  "loop": true,
+  "blend": "alpha",
+  "pivot": [
+    0.5,
+    0.9375
+  ],
+  "alpha": "straight",
+  "version": "1.0.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "category": "aura",
+  "style": "classic",
+  "base_id": "water_aura_01",
+  "anchor": "ground",
+  "orientation": "upright",
+  "world_size_m": 2.4,
+  "duration_s": 1.33,
+  "contact_frame": 0,
+  "loop_range": [
+    0,
+    39
+  ],
+  "pairs": {
+    "cast": "water_charge_01",
+    "projectile": null,
+    "impact": null
+  },
+  "tags": [
+    "aqua",
+    "aura",
+    "classic",
+    "splash",
+    "water"
+  ],
+  "use_cases": [
+    "status aura",
+    "power-up loop",
+    "buff loop",
+    "enrage"
+  ],
+  "fx": {
+    "flash": null,
+    "ring": {
+      "color": "#8dd0ff",
+      "size": 1.58,
+      "duration": 0.36,
+      "plane": "ground"
+    },
+    "sparks": {
+      "count": 10,
+      "speed": 5.48,
+      "color": "#72c5ff",
+      "gravity": -1.15,
+      "drag": 2.0,
+      "size": 0.088,
+      "life": 0.55,
+      "direction": "rise"
+    },
+    "debris": null,
+    "smoke": null,
+    "decal": null,
+    "light": {
+      "color": "#4fb6ff",
+      "intensity": 1.5,
+      "range": 5.28,
+      "curve": [
+        0.0,
+        1.0
+      ]
+    },
+    "trail": null,
+    "shake": null,
+    "hit_stop_s": 0.0,
+    "sfx": {
+      "cast": "charge.wav",
+      "loop": "aura_loop.wav",
+      "impact": null
+    }
+  }
+}

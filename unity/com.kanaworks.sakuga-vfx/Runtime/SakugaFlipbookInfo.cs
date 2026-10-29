@@ -41,10 +41,22 @@ namespace KanaWorks.SakugaVFX
             return info;
         }
 
+        /// <summary>Recipe fields (category, anchor, orientation, fx layers...) written next to the sheet fields.</summary>
+        public string orientation;
+
         public bool Additive => string.Equals(blend, "additive", StringComparison.OrdinalIgnoreCase);
 
-        /// <summary>Columns and strikes stand on the ground and turn only around their up axis.</summary>
-        public bool GroundRooted => form == "column" || form == "strike";
+        /// <summary>Columns, strikes and auras stand on the ground and turn only around their up axis.</summary>
+        public bool GroundRooted => orientation == "upright" || (string.IsNullOrEmpty(orientation) && (form == "column" || form == "strike"));
+
+        /// <summary>The layered-effect recipe stored in the same sidecar (empty layers when the sidecar predates recipes).</summary>
+        public static SakugaRecipe RecipeFromJson(string json)
+        {
+            var r = JsonUtility.FromJson<SakugaRecipe>(json) ?? new SakugaRecipe();
+            r.pairs ??= new SakugaPairs();
+            r.fx ??= new SakugaFxLayers();
+            return r;
+        }
 
         /// <summary>Pivot in UV space (origin bottom-left, y up).</summary>
         public Vector2 PivotUV
