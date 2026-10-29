@@ -1,0 +1,28 @@
+{
+  "grid": [
+    8,
+    8
+  ],
+  "cell": [
+    256,
+    256
+  ],
+  "frames": 64,
+  "bottom_inset": 0.1289,
+  "source": "fire_impact_01.png",
+  "id": "fire_impact_01",
+  "element": "fire",
+  "form": "impact",
+  "fps": 30,
+  "loop": false,
+  "blend": "alpha",
+  "pivot": [
+    0.5,
+    0.5
+  ],
+  "alpha": "straight",
+  "version": "1.0.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx"
+}

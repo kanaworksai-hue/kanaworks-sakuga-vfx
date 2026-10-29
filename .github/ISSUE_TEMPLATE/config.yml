@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Make your own effects (effekseer-vfx-skill)
+    url: https://github.com/kanaworksai-hue/effekseer-vfx-skill
+    about: An agent skill for making real-time game VFX yourself.

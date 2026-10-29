@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>SAKUGA VFX - Phaser 3 example</title>
+<style>body { margin: 0; background: #101118; color: #c9cdd9; font: 14px system-ui, sans-serif; } p { margin: 8px 12px; }</style>
+<script src="https://cdn.jsdelivr.net/npm/phaser@3.88.2/dist/phaser.min.js"></script>
+</head>
+<body>
+<p>Phaser 3: <code>load.spritesheet</code> with the cell size from the sidecar, one animation per effect. VFX: KanaWorks_AI (@KanaWorks_AI)</p>
+<script type="module">
+// MIT. Phaser's load.atlas(key, png, '<id>.atlas.json') works too with the release zip.
+const ROOT = '../../';
+const catalog = await (await fetch(ROOT + 'catalog.json')).json();
+const assets = catalog.assets.filter((a) => (a.status ?? 'published') === 'published');
+const metas = await Promise.all(assets.map(async (a) =>
+  ({ dir: `${ROOT}assets/${a.element}/${a.id}/`, ...(await (await fetch(`${ROOT}assets/${a.element}/${a.id}/${a.id}.flipbook.json`)).json()) })));
+const cols = Math.min(6, metas.length);
+
+class Demo extends Phaser.Scene {
+  preload() {
+    for (const m of metas) this.load.spritesheet(m.id, m.dir + m.source, { frameWidth: m.cell[0], frameHeight: m.cell[1], endFrame: m.frames - 1 });
+  }
+  create() {
+    window.sakugaExample = { sprites: [] };
+    metas.forEach((m, i) => {
+      this.anims.create({ key: m.id, frames: this.anims.generateFrameNumbers(m.id, { start: 0, end: m.frames - 1 }),
+        frameRate: m.fps, repeat: m.loop ? -1 : 0 });
+      const cx = 110 + (i % cols) * 190, cy = 170 + Math.floor(i / cols) * 290;
+      const s = this.add.sprite(cx, m.pivot[1] > 0.6 ? cy + 100 : cy, m.id).setOrigin(m.pivot[0], m.pivot[1]).setScale(0.6);
+      if (m.blend === 'additive') s.setBlendMode(Phaser.BlendModes.ADD);
+      s.on('animationcomplete', () => this.time.delayedCall(400, () => s.play(m.id)));
+      s.play(m.id);
+      window.sakugaExample.sprites.push(s);
+    });
+  }
+}
+new Phaser.Game({ type: Phaser.AUTO, width: 1180, height: 640, backgroundColor: '#101118', scene: Demo });
+</script>
+</body>
+</html>

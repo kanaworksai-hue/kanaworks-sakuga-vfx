@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>SAKUGA VFX - Three.js example</title>
+<style>body { margin: 0; background: #101118; color: #c9cdd9; font: 14px system-ui, sans-serif; overflow: hidden; }
+p { position: absolute; margin: 8px 12px; } canvas { display: block; }</style>
+</head>
+<body>
+<p>Three.js: each flipbook on a <code>Sprite</code> (always faces the camera), frame chosen with texture offset/repeat. VFX: KanaWorks_AI (@KanaWorks_AI)</p>
+<script type="module">
+// MIT. 256 px = 1 world unit; sprite.center puts the sheet's pivot (a column's root) on the sprite position.
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js';
+import { frameAt } from '../sakuga-player.js';
+
+const ROOT = '../../';
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(devicePixelRatio);
+renderer.setSize(innerWidth, innerHeight);
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene();
+scene.background = new THREE.Color('#101118');
+const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 100);
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(20, 6), new THREE.MeshBasicMaterial({ color: '#262935' }));
+ground.rotation.x = -Math.PI / 2;
+scene.add(ground);
+
+const catalog = await (await fetch(ROOT + 'catalog.json')).json();
+const assets = catalog.assets.filter((a) => (a.status ?? 'published') === 'published');
+const loader = new THREE.TextureLoader();
+const fx = [];
+for (const [i, a] of assets.entries()) {
+  const dir = `${ROOT}assets/${a.element}/${a.id}/`;
+  const meta = await (await fetch(`${dir}${a.id}.flipbook.json`)).json();
+  const tex = await loader.loadAsync(dir + meta.source);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.generateMipmaps = false;
+  tex.minFilter = THREE.LinearFilter;
+  tex.repeat.set(1 / meta.grid[0], 1 / meta.grid[1]);
+  const mat = new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false,
+    blending: meta.blend === 'additive' ? THREE.AdditiveBlending : THREE.NormalBlending });
+  const sprite = new THREE.Sprite(mat);
+  sprite.scale.set(meta.cell[0] / 256, meta.cell[1] / 256, 1);
+  sprite.center.set(meta.pivot[0], 1 - meta.pivot[1]);
+  const rooted = meta.pivot[1] > 0.6;
+  sprite.position.set((i - (assets.length - 1) / 2) * 1.5, rooted ? 0 : 0.9, 0);
+  scene.add(sprite);
+  fx.push({ meta, tex, sprite, t: 0, frame: -1 });
+}
+
+const clock = new THREE.Clock();
+renderer.setAnimationLoop(() => {
+  const dt = Math.min(0.1, clock.getDelta());
+  const a = Math.sin(clock.elapsedTime * 0.3) * 0.35;      // sway left and right so the billboards turn
+  const halfWidth = (assets.length * 1.5) / 2 + 0.8;
+  const r = Math.max(5, halfWidth / (Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * camera.aspect));
+  camera.position.set(Math.sin(a) * r, 1.6, Math.cos(a) * r);
+  camera.lookAt(0, 0.8, 0);
+  for (const f of fx) {
+    const m = f.meta;
+    f.t += dt;
+    let n = frameAt(f.t, m.fps, m.frames, m.loop);
+    if (n >= m.frames) { if (f.t > m.frames / m.fps + 0.4) f.t = 0; f.sprite.visible = false; continue; }
+    f.sprite.visible = true;
+    f.frame = n;
+    const col = n % m.grid[0], row = Math.floor(n / m.grid[0]);
+    f.tex.offset.set(col / m.grid[0], 1 - (row + 1) / m.grid[1]);   // first frame is the top-left cell
+  }
+  renderer.render(scene, camera);
+});
+addEventListener('resize', () => {
+  camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight);
+});
+window.sakugaExample = { fx };
+</script>
+</body>
+</html>

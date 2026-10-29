@@ -1,0 +1,64 @@
+name: Asset request / 素材リクエスト
+description: Ask for a new effect. Text only, please. / 新しいエフェクトのリクエスト（文章のみ）
+title: "[request] <element> <form>"
+labels: ["asset request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the idea. The library may be updated if people like it, but there is no schedule and no promise that a request will be made.
+        **Describe the effect in words.** Please don't attach screenshots, clips or links to other people's work.
+
+        リクエストありがとうございます。好評であれば更新することがありますが、予定はなく、必ず制作されるとは限りません。
+        **エフェクトは文章で説明してください。** 他の人の作品のスクリーンショット・動画・リンクは添付しないでください。
+  - type: dropdown
+    id: element
+    attributes:
+      label: Element / 属性
+      options: [water, fire, thunder, wind, poison, ice, rock, light, dark, other (describe below)]
+    validations:
+      required: true
+  - type: dropdown
+    id: form
+    attributes:
+      label: Form / 形
+      options:
+        - projectile (loops while flying)
+        - impact (plays once on hit)
+        - column (rises from the ground)
+        - vortex (swirls in place)
+        - strike (comes down onto the ground)
+        - other (describe below)
+    validations:
+      required: true
+  - type: dropdown
+    id: engine
+    attributes:
+      label: Engine / エンジン
+      multiple: true
+      options: [Unity, Godot, Web (Canvas / PixiJS / Phaser / Three.js), Video editing, Other]
+    validations:
+      required: true
+  - type: textarea
+    id: use-case
+    attributes:
+      label: What is it for? / 用途
+      placeholder: "e.g. the hit effect of an ice spell in a 2D action game; seen from the side; about 1/4 of the screen"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description (text only) / 説明（文章のみ）
+      placeholder: "Shape, motion, timing, colours, mood. No screenshots or links to other people's work."
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Before you send / 送信前に
+      options:
+        - label: I described the effect in words and attached no one else's work. / 文章で説明し、他の人の作品を添付していません。
+          required: true
+        - label: I understand there is no schedule and requests may not be made. / 予定はなく、制作されない場合があることを理解しています。
+          required: true

@@ -1,0 +1,7 @@
+{
+  "name": "KanaWorks.SakugaVFX.Editor",
+  "rootNamespace": "KanaWorks.SakugaVFX.EditorTools",
+  "references": ["KanaWorks.SakugaVFX"],
+  "includePlatforms": ["Editor"],
+  "autoReferenced": true
+}

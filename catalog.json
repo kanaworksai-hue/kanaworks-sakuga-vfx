@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "name": "KanaWorks SAKUGA VFX",
+  "version": "0.1.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx",
+  "license": {
+    "assets": "KanaWorks_AI VFX Asset License",
+    "code": "MIT",
+    "file": "LICENSE.md"
+  },
+  "defaults": {
+    "fps": 30,
+    "blend": "alpha"
+  },
+  "assets": [
+    {"id": "water_column_01", "element": "water", "form": "column", "grid": [8, 7], "cell": [224, 400], "frames": 56, "fps": 30, "loop": false, "blend": "alpha", "bottom_inset": 0.0875, "added": "2026-10-29", "version": "1.0.0"},
+    {"id": "water_impact_01", "element": "water", "form": "impact", "grid": [8, 8], "cell": [256, 256], "frames": 64, "fps": 30, "loop": false, "blend": "alpha", "bottom_inset": 0.1172, "added": "2026-10-29", "version": "1.0.0"},
+    {"id": "fire_projectile_01", "element": "fire", "form": "projectile", "grid": [8, 5], "cell": [256, 256], "frames": 40, "fps": 30, "loop": true, "blend": "alpha", "bottom_inset": 0.0977, "added": "2026-10-29", "version": "1.0.0"},
+    {"id": "fire_impact_01", "element": "fire", "form": "impact", "grid": [8, 8], "cell": [256, 256], "frames": 64, "fps": 30, "loop": false, "blend": "alpha", "bottom_inset": 0.1289, "added": "2026-10-29", "version": "1.0.0"},
+    {"id": "thunder_impact_01", "element": "thunder", "form": "impact", "grid": [8, 8], "cell": [256, 256], "frames": 64, "fps": 30, "loop": false, "blend": "alpha", "bottom_inset": 0.1133, "added": "2026-10-29", "version": "1.0.0"},
+    {"id": "wind_vortex_01", "element": "wind", "form": "vortex", "grid": [8, 8], "cell": [256, 256], "frames": 64, "fps": 30, "loop": false, "blend": "alpha", "bottom_inset": 0.1367, "added": "2026-10-29", "version": "1.0.0"},
+    {"id": "poison_impact_01", "element": "poison", "form": "impact", "grid": [8, 8], "cell": [256, 256], "frames": 64, "fps": 30, "loop": false, "blend": "alpha", "bottom_inset": 0.1094, "added": "2026-10-29", "version": "1.0.0"}
+  ]
+}

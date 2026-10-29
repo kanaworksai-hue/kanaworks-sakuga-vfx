@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>SAKUGA VFX - PixiJS example</title>
+<style>body { margin: 0; background: #101118; color: #c9cdd9; font: 14px system-ui, sans-serif; } p { margin: 8px 12px; }</style>
+</head>
+<body>
+<p>PixiJS 8: every flipbook as an <code>AnimatedSprite</code> from a TexturePacker-style sheet. VFX: KanaWorks_AI (@KanaWorks_AI)</p>
+<script type="module">
+// MIT. The sprite-sheet data is built from the sidecar (or load <id>.atlas.json from the release zip instead).
+import * as PIXI from 'https://cdn.jsdelivr.net/npm/pixi.js@8.6.6/dist/pixi.min.mjs';
+import { spritesheetData } from '../sakuga-player.js';
+
+const ROOT = '../../';
+const app = new PIXI.Application();
+await app.init({ background: '#101118', width: 1180, height: 640, antialias: true });
+document.body.appendChild(app.canvas);
+const catalog = await (await fetch(ROOT + 'catalog.json')).json();
+const assets = catalog.assets.filter((a) => (a.status ?? 'published') === 'published');
+const cols = Math.min(6, assets.length);
+const sprites = [];
+for (const [i, a] of assets.entries()) {
+  const dir = `${ROOT}assets/${a.element}/${a.id}/`;
+  const meta = await (await fetch(`${dir}${a.id}.flipbook.json`)).json();
+  const texture = await PIXI.Assets.load(`${dir}${a.id}.png`);
+  const sheet = new PIXI.Spritesheet(texture, spritesheetData(meta));
+  await sheet.parse();
+  const fx = new PIXI.AnimatedSprite(sheet.animations[meta.id]);
+  fx.anchor.set(meta.pivot[0], meta.pivot[1]);
+  fx.animationSpeed = meta.fps / 60;               // Pixi counts in 60 Hz ticks
+  fx.loop = meta.loop;
+  fx.scale.set(0.6);
+  if (meta.blend === 'additive') fx.blendMode = 'add';
+  const cx = 110 + (i % cols) * 190, cy = 170 + Math.floor(i / cols) * 290;
+  fx.position.set(cx, meta.pivot[1] > 0.6 ? cy + 100 : cy);
+  fx.onComplete = () => setTimeout(() => fx.gotoAndPlay(0), 400);
+  fx.play();
+  app.stage.addChild(fx);
+  sprites.push(fx);
+}
+window.sakugaExample = { sprites };
+</script>
+</body>
+</html>

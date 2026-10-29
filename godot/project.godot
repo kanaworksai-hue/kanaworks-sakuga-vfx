@@ -1,0 +1,15 @@
+; Development project for the addon. Run `python tools/sakuga.py install godot godot` once to copy the
+; flipbooks in (they are generated and git-ignored here), then open this folder in Godot 4.3+.
+
+config_version=5
+
+[application]
+
+config/name="KanaWorks SAKUGA VFX demo"
+run/main_scene="res://sakuga_demo/demo_3d.tscn"
+config/features=PackedStringArray("4.3")
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720

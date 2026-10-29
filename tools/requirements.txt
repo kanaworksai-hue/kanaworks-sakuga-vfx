@@ -1,0 +1,3 @@
+# Build tools only (players and engine packages need nothing). Python 3.10+.
+pillow>=10.3
+numpy>=1.26

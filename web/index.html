@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KanaWorks SAKUGA VFX</title>
+<meta name="description" content="Free hand-drawn anime-style game VFX flipbooks for Unity, Godot and the web. VFX: KanaWorks_AI (@KanaWorks_AI).">
+<link rel="icon" href="../docs/brand/kanaworks-mark.png">
+<style>
+  :root {
+    --bg: #0f1016; --panel: #181a23; --panel2: #20232f; --line: #2c3040; --text: #e7e9f2; --dim: #9aa0b4;
+    --accent: #ff6aa2; --radius: 14px;
+    --water: #4aa8ff; --fire: #ff7a2e; --thunder: #b48cff; --wind: #5fe0c0; --poison: #8ad04a;
+    --ice: #9fe6ff; --rock: #c49a66; --light: #ffe27a; --dark: #9b6cff;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif; }
+  a { color: var(--accent); }
+  header, main, footer { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
+  header { padding-top: 32px; display: grid; gap: 14px; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand img { height: 40px; }
+  h1 { margin: 0; font-size: clamp(24px, 4vw, 34px); letter-spacing: .02em; }
+  h1 b { color: var(--accent); }
+  .lead { margin: 0; color: var(--dim); max-width: 760px; }
+  .credit { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 12px; }
+  .credit code { font-size: 14px; background: var(--panel2); padding: 4px 8px; border-radius: 8px; }
+  button, .btn { font: inherit; color: var(--text); background: var(--panel2); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+  button:hover, .btn:hover { border-color: var(--dim); }
+  button[aria-pressed="true"] { background: var(--text); color: var(--bg); }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 14px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 14px; margin-bottom: 40px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px; cursor: pointer; text-align: left; display: grid; gap: 6px; align-content: start; color: inherit; font: inherit; }
+  .card:hover, .card:focus-visible { border-color: var(--el, var(--dim)); outline: none; }
+  .thumb { aspect-ratio: 1; display: grid; place-items: center; background: radial-gradient(circle at 50% 55%, #23263300, #0b0c11 90%), #14161e; border-radius: 10px; overflow: hidden; }
+  .thumb img { max-width: 100%; max-height: 100%; }
+  .card .id { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px; }
+  .card .tags { display: flex; gap: 6px; flex-wrap: wrap; color: var(--dim); font-size: 12px; }
+  .tag { border: 1px solid var(--line); border-radius: 999px; padding: 0 8px; }
+  .empty { color: var(--dim); padding: 30px 0; }
+  dialog { width: min(920px, calc(100vw - 32px)); border: 1px solid var(--line); border-radius: 18px; background: var(--panel); color: var(--text); padding: 0; }
+  dialog::backdrop { background: #000a; }
+  .dlg { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); }
+  .stage { position: relative; background: #0b0c11; border-radius: 18px 0 0 18px; display: grid; place-items: center; min-height: 360px; }
+  .stage canvas { width: 100%; max-width: 480px; aspect-ratio: 1; display: block; }
+  .stage.light { background: #e9ebf2; }
+  .stage.checker { background: repeating-conic-gradient(#3a3d4a 0 25%, #2a2c36 0 50%) 0 0 / 24px 24px; }
+  .side { padding: 18px; display: grid; gap: 12px; align-content: start; }
+  .side h2 { margin: 0; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 18px; word-break: break-all; }
+  .row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .row label { color: var(--dim); font-size: 13px; min-width: 76px; }
+  table { border-collapse: collapse; font-size: 13px; }
+  td { padding: 2px 12px 2px 0; } td:first-child { color: var(--dim); }
+  .downloads { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 24px; }
+  .close { position: absolute; top: 10px; right: 10px; }
+  footer { border-top: 1px solid var(--line); padding: 22px 16px 40px; color: var(--dim); font-size: 13px; display: grid; gap: 6px; }
+  @media (max-width: 720px) {
+    .dlg { grid-template-columns: 1fr; }
+    .stage { border-radius: 18px 18px 0 0; min-height: 280px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><img src="../docs/brand/kanaworks-mark.png" alt=""><h1>KanaWorks <b>SAKUGA</b> VFX</h1></div>
+  <p class="lead">Free hand-drawn anime-style game VFX flipbooks: transparent sprite sheets with a sidecar for Unity, Godot,
+    PixiJS, Phaser, Three.js or any engine. Click an effect to preview it and download it.</p>
+  <div class="credit"><span>Credit wherever you use or repost them:</span><code id="credit">VFX: KanaWorks_AI (@KanaWorks_AI)</code>
+    <button id="copy" type="button">Copy</button></div>
+</header>
+<main>
+  <nav class="filters" id="filters" aria-label="Filter by element"></nav>
+  <section class="grid" id="grid" aria-live="polite"></section>
+  <div class="downloads" id="packages"></div>
+</main>
+<footer>
+  <div>Effects: <b>KanaWorks_AI VFX Asset License</b>. Free for individuals and companies under USD 1M annual revenue,
+    commercial use included; credit required; do not resell or redistribute the assets as an asset pack.
+    <a href="../LICENSE.md">Full license</a>. Players and tools: MIT.</div>
+  <div>May be updated if people like it; there is no schedule. Requests: <a href="https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx/issues">GitHub Issues</a>.
+    Make your own: <a href="https://github.com/kanaworksai-hue/effekseer-vfx-skill">effekseer-vfx-skill</a>.</div>
+  <div>&copy; 東京AI映像合同会社 (Tokyo AI Visuals LLC) &middot; <a href="https://x.com/KanaWorks_AI">@KanaWorks_AI</a></div>
+</footer>
+
+<dialog id="dlg" aria-labelledby="dlg-title">
+  <div class="dlg">
+    <div class="stage" id="stage"><canvas id="cv" width="480" height="480" aria-label="Effect preview"></canvas></div>
+    <div class="side">
+      <h2 id="dlg-title"></h2>
+      <div class="row"><label>Background</label>
+        <button type="button" data-bg="" aria-pressed="true">Dark</button>
+        <button type="button" data-bg="light" aria-pressed="false">Light</button>
+        <button type="button" data-bg="checker" aria-pressed="false">Checker</button></div>
+      <div class="row"><label>Blend</label>
+        <button type="button" data-blend="alpha" aria-pressed="true">Alpha</button>
+        <button type="button" data-blend="additive" aria-pressed="false">Additive</button></div>
+      <div class="row"><label>Speed</label>
+        <input id="fps" type="range" min="6" max="60" step="1" value="30" aria-label="Frames per second"><span id="fps-v">30 fps</span></div>
+      <div class="row"><label>Playback</label><button type="button" id="replay">Replay</button><button type="button" id="loop" aria-pressed="false">Loop</button></div>
+      <table id="info"></table>
+      <div class="downloads" id="dl"></div>
+    </div>
+  </div>
+  <button class="close" type="button" id="close" aria-label="Close">&times;</button>
+</dialog>
+
+<script type="module">
+import { load, Flipbook, mount } from './sakuga-player.js';
+
+const ROOT = '../';
+const $ = (s) => document.querySelector(s);
+const catalog = await (await fetch(ROOT + 'catalog.json')).json();
+const assets = catalog.assets.filter((a) => (a.status ?? 'published') === 'published');
+let manifest = null;   // the published site's catalog names its downloads manifest; a plain checkout has none
+if (catalog.downloads) try { const r = await fetch(ROOT + catalog.downloads); if (r.ok) manifest = await r.json(); } catch {}
+
+const folder = (a) => `${ROOT}assets/${a.element}/${a.id}/`;
+const elements = [...new Set(assets.map((a) => a.element))];
+let filter = new URLSearchParams(location.search).get('element') ?? '';
+
+function chip(label, value) {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.innerHTML = value ? `<span class="dot" style="background:var(--${value})"></span>${label}` : label;
+  b.setAttribute('aria-pressed', String(filter === value));
+  b.onclick = () => { filter = value; render(); };
+  return b;
+}
+
+function render() {
+  const nav = $('#filters');
+  nav.replaceChildren(chip(`All (${assets.length})`, ''), ...elements.map((e) => chip(e, e)));
+  const grid = $('#grid');
+  const shown = assets.filter((a) => !filter || a.element === filter);
+  grid.replaceChildren(...shown.map((a) => {
+    const c = document.createElement('button');
+    c.type = 'button';
+    c.className = 'card';
+    c.style.setProperty('--el', `var(--${a.element})`);
+    c.innerHTML = `<div class="thumb"><img loading="lazy" src="${folder(a)}preview.webp" alt=""></div>
+      <span class="id">${a.id}</span>
+      <span class="tags"><span class="tag"><span class="dot" style="background:var(--${a.element})"></span> ${a.element}</span>
+      <span class="tag">${a.form}</span><span class="tag">${a.frames}f${a.loop ? ' loop' : ''}</span></span>`;
+    c.onclick = () => open(a);
+    return c;
+  }));
+  if (!shown.length) grid.innerHTML = '<p class="empty">No effects for this element yet.</p>';
+}
+
+let player = null;
+async function open(a) {
+  $('#dlg-title').textContent = a.id;
+  const sidecar = `${folder(a)}${a.id}.flipbook.json`;
+  $('#info').innerHTML = [['element', a.element], ['form', a.form], ['grid', `${a.grid[0]} x ${a.grid[1]}`],
+    ['cell', `${a.cell[0]} x ${a.cell[1]} px`], ['frames', a.frames], ['fps', a.fps], ['loop', a.loop ? 'yes' : 'no (one-shot)'],
+    ['added', a.added], ['version', a.version]].map(([k, v]) => `<tr><td>${k}</td><td>${v}</td></tr>`).join('');
+  const links = [[`${folder(a)}${a.id}.png`, 'PNG 2048'], [sidecar, 'flipbook.json']];
+  const m = manifest?.assets?.[a.id];
+  if (m) {
+    links.unshift([`${ROOT}downloads/${m.zip}`, `All formats (.zip, ${Math.round(m.bytes / 1024)} KB)`]);
+    links.push([`${folder(a)}${a.id}_1024.png`, 'PNG 1024'], [`${folder(a)}${a.id}_add.png`, 'Additive (black)'],
+      [`${folder(a)}${a.id}.atlas.json`, 'atlas.json (Pixi/Phaser)']);
+  }
+  $('#dl').innerHTML = links.map(([href, t]) => `<a class="btn" href="${href}" download>${t}</a>`).join('');
+  player?.stop();
+  $('#dlg').showModal();
+  const fb = new Flipbook(await load(sidecar));
+  player = mount($('#cv'), fb);
+  $('#fps').value = fb.fps; $('#fps-v').textContent = `${fb.fps} fps`;
+  $('#loop').setAttribute('aria-pressed', String(fb.loop));
+  setPressed('[data-blend]', fb.additive ? 'additive' : 'alpha', 'blend');
+  window.sakugaPlayer = player;   // handy in the console (and for automated checks)
+}
+
+function setPressed(sel, value, key) {
+  document.querySelectorAll(sel).forEach((b) => b.setAttribute('aria-pressed', String(b.dataset[key] === value)));
+}
+document.querySelectorAll('[data-bg]').forEach((b) => b.onclick = () => {
+  $('#stage').className = 'stage ' + b.dataset.bg; setPressed('[data-bg]', b.dataset.bg, 'bg');
+});
+document.querySelectorAll('[data-blend]').forEach((b) => b.onclick = () => {
+  if (player) player.flipbook.additive = b.dataset.blend === 'additive';
+  setPressed('[data-blend]', b.dataset.blend, 'blend');
+});
+$('#fps').oninput = (e) => { if (player) player.flipbook.fps = +e.target.value; $('#fps-v').textContent = `${e.target.value} fps`; };
+$('#replay').onclick = () => player?.flipbook.play();
+$('#loop').onclick = (e) => {
+  if (!player) return; player.flipbook.loop = !player.flipbook.loop;
+  e.currentTarget.setAttribute('aria-pressed', String(player.flipbook.loop)); player.flipbook.play();
+};
+$('#close').onclick = () => $('#dlg').close();
+$('#dlg').addEventListener('close', () => { player?.stop(); player = null; });
+$('#copy').onclick = async () => {
+  try { await navigator.clipboard.writeText($('#credit').textContent); $('#copy').textContent = 'Copied'; }
+  catch { getSelection().selectAllChildren($('#credit')); }
+};
+if (manifest) {
+  const names = { unity: 'Unity (URP)', godot: 'Godot 4', web: 'Web (Canvas / Pixi / Phaser / Three)', flipbooks: 'All sheets (any engine)' };
+  $('#packages').innerHTML = '<span style="color:var(--dim)">Packages:</span>' + Object.entries(manifest.packages).map(([k, p]) =>
+    `<a class="btn" href="${ROOT}downloads/${p.file}" download>${names[k] ?? k} (${(p.bytes / 1048576).toFixed(1)} MB)</a>`).join('');
+}
+render();
+</script>
+</body>
+</html>

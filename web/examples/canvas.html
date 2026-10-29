@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>SAKUGA VFX - Canvas2D example</title>
+<style>
+  body { margin: 0; background: #101118; color: #c9cdd9; font: 14px system-ui, sans-serif; }
+  canvas { display: block; width: 100vw; height: calc(100vh - 32px); cursor: crosshair; }
+  p { margin: 0; height: 32px; line-height: 32px; padding: 0 12px; }
+</style>
+</head>
+<body>
+<canvas id="cv"></canvas>
+<p>Click to spawn a random one-shot. Uses only <code>sakuga-player.js</code>. VFX: KanaWorks_AI (@KanaWorks_AI)</p>
+<script type="module">
+// Dependency-free: the player module draws flipbooks with Canvas2D. MIT.
+import { load, Flipbook } from '../sakuga-player.js';
+
+const ROOT = '../../';
+const cv = document.getElementById('cv');
+const ctx = cv.getContext('2d');
+const catalog = await (await fetch(ROOT + 'catalog.json')).json();
+const assets = catalog.assets.filter((a) => (a.status ?? 'published') === 'published');
+const sources = Object.fromEntries(await Promise.all(assets.map(async (a) =>
+  [a.id, await load(`${ROOT}assets/${a.element}/${a.id}/${a.id}.flipbook.json`)])));
+const oneShots = assets.filter((a) => !a.loop).map((a) => a.id);
+const loops = assets.filter((a) => a.loop).map((a) => a.id);
+
+const live = [];   // {fb, x, y, vx}
+function spawn(id, x, y, vx = 0) {
+  const fb = new Flipbook(sources[id], { scale: 0.8 });
+  live.push({ fb, x, y, vx });
+}
+cv.addEventListener('pointerdown', (e) => {
+  const r = cv.getBoundingClientRect();
+  spawn(oneShots[Math.floor(Math.random() * oneShots.length)], (e.clientX - r.left) * devicePixelRatio, (e.clientY - r.top) * devicePixelRatio);
+});
+let t0 = performance.now(), nextShot = 0;
+function frame(now) {
+  const dt = Math.min(0.1, (now - t0) / 1000); t0 = now;
+  cv.width = cv.clientWidth * devicePixelRatio; cv.height = cv.clientHeight * devicePixelRatio;
+  if (loops.length && (nextShot -= dt) <= 0) { spawn(loops[0], -100, cv.height * 0.5, cv.width * 0.45); nextShot = 2.5; }
+  for (let i = live.length - 1; i >= 0; i--) {
+    const p = live[i];
+    p.fb.update(dt); p.x += p.vx * dt;
+    if (p.fb.loop && p.x > cv.width * 0.7) { live.splice(i, 1); spawn(oneShots.find((id) => id.startsWith('fire')) ?? oneShots[0], p.x, p.y); continue; }
+    if (p.fb.done) { live.splice(i, 1); continue; }
+    p.fb.draw(ctx, p.x, p.y);
+  }
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+window.sakugaExample = { live };
+</script>
+</body>
+</html>
