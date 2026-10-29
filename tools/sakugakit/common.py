@@ -47,7 +47,8 @@ def read_json(path):
 def write_text(path, text):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(text, encoding='utf-8', newline='\n')
+    with open(path, 'w', encoding='utf-8', newline='\n') as f:   # Path.write_text(newline=) needs Python 3.10
+        f.write(text)
 
 
 def dump_json(data):

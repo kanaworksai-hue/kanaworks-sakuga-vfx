@@ -47,10 +47,16 @@ namespace KanaWorks.SakugaVFX.EditorTools
             cam.clearFlags = CameraClearFlags.SolidColor;
             cam.backgroundColor = new Color(0.08f, 0.085f, 0.11f);
 
-            var ground = GameObject.CreatePrimitive(PrimitiveType.Plane);
-            ground.name = "Ground";
-            float spacing = 1.6f, width = prefabs.Count * spacing;
-            ground.transform.localScale = new Vector3(width / 10f + 0.4f, 1, 0.6f);
+            const int perRow = 6;                                    // shelves of 6, stacked upwards, so 18+ effects stay readable
+            int cols = Mathf.Min(perRow, prefabs.Count), rows = (prefabs.Count + perRow - 1) / perRow;
+            float spacing = 1.6f, rowGap = 2.3f, width = cols * spacing, height = rows * rowGap;
+            for (int r = 0; r < rows; r++)
+            {
+                var shelf = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                shelf.name = "Shelf " + (r + 1);
+                shelf.transform.localScale = new Vector3(width + 0.4f, 0.04f, 1.2f);
+                shelf.transform.position = new Vector3(0, (rows - 1 - r) * rowGap - 0.02f, 0.2f);
+            }
 
             var root = new GameObject("SAKUGA VFX demo");
             root.AddComponent<SakugaDemoReplay>();
@@ -60,14 +66,14 @@ namespace KanaWorks.SakugaVFX.EditorTools
                 var go = (GameObject)PrefabUtility.InstantiatePrefab(prefabs[i], root.transform);
                 var fb = go.GetComponent<SakugaFlipbook>();
                 bool grounded = fb.GetComponent<Renderer>().sharedMaterial.GetFloat("_Billboard") > 1.5f;   // upright = ground-rooted
-                float x = (i - (prefabs.Count - 1) * 0.5f) * spacing;
-                go.transform.position = new Vector3(x, grounded ? 0f : 0.9f, 0f);
+                int col = i % perRow, row = i / perRow;
+                float x = (col - (cols - 1) * 0.5f) * spacing, y = (rows - 1 - row) * rowGap;
+                go.transform.position = new Vector3(x, y + (grounded ? 0f : 0.9f), 0f);
                 if (font)
                 {
                     var label = new GameObject("Label");
                     label.transform.SetParent(root.transform, false);
-                    label.transform.position = new Vector3(x, 0.02f, -0.75f);
-                    label.transform.rotation = Quaternion.Euler(90, 0, 0);
+                    label.transform.position = new Vector3(x, y - 0.18f, -0.45f);
                     var tm = label.AddComponent<TextMesh>();
                     tm.text = prefabs[i].name;
                     tm.font = font;
@@ -80,9 +86,9 @@ namespace KanaWorks.SakugaVFX.EditorTools
             }
             float vfov = cam.fieldOfView * Mathf.Deg2Rad;
             float hfov = 2f * Mathf.Atan(Mathf.Tan(vfov / 2f) * (16f / 9f));
-            float dist = Mathf.Max(5f, (width * 0.5f + 0.5f) / Mathf.Tan(hfov / 2f));
-            cam.transform.position = new Vector3(0, 1.4f, -dist);
-            cam.transform.rotation = Quaternion.Euler(6f, 0, 0);
+            float dist = Mathf.Max(5f, (width * 0.5f + 0.5f) / Mathf.Tan(hfov / 2f), (height * 0.5f + 0.4f) / Mathf.Tan(vfov / 2f));
+            cam.transform.position = new Vector3(0, height * 0.5f - 0.35f, -dist);
+            cam.transform.rotation = Quaternion.identity;
 
             Directory.CreateDirectory(Path.GetDirectoryName(DemoScene));
             EditorSceneManager.SaveScene(scene, DemoScene);

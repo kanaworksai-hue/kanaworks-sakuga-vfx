@@ -1,0 +1,28 @@
+{
+  "grid": [
+    8,
+    7
+  ],
+  "cell": [
+    224,
+    400
+  ],
+  "frames": 56,
+  "bottom_inset": 0.083,
+  "source": "thunder_strike_01.png",
+  "id": "thunder_strike_01",
+  "element": "thunder",
+  "form": "strike",
+  "fps": 30,
+  "loop": false,
+  "blend": "alpha",
+  "pivot": [
+    0.5,
+    0.917
+  ],
+  "alpha": "straight",
+  "version": "1.0.0",
+  "credit": "VFX: KanaWorks_AI (@KanaWorks_AI)",
+  "license": "KanaWorks_AI VFX Asset License (see LICENSE.md)",
+  "homepage": "https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx"
+}

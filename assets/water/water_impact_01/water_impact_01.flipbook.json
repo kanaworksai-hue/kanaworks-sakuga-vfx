@@ -7,8 +7,8 @@
     256,
     256
   ],
-  "frames": 64,
-  "bottom_inset": 0.1172,
+  "frames": 45,
+  "bottom_inset": 0.127,
   "source": "water_impact_01.png",
   "id": "water_impact_01",
   "element": "water",

@@ -15,11 +15,22 @@
   },
   "assets": [
     {"id": "water_column_01", "element": "water", "form": "column", "grid": [8, 7], "cell": [224, 400], "frames": 56, "fps": 30, "loop": false, "blend": "alpha", "bottom_inset": 0.0875, "added": "2026-10-29", "version": "1.0.0"},
-    {"id": "water_impact_01", "element": "water", "form": "impact", "grid": [8, 8], "cell": [256, 256], "frames": 64, "fps": 30, "loop": false, "blend": "alpha", "bottom_inset": 0.1172, "added": "2026-10-29", "version": "1.0.0"},
+    {"id": "water_impact_01", "element": "water", "form": "impact", "grid": [8, 8], "cell": [256, 256], "frames": 45, "fps": 30, "loop": false, "blend": "alpha", "bottom_inset": 0.127, "added": "2026-10-29", "version": "1.0.0"},
     {"id": "fire_projectile_01", "element": "fire", "form": "projectile", "grid": [8, 5], "cell": [256, 256], "frames": 40, "fps": 30, "loop": true, "blend": "alpha", "bottom_inset": 0.0977, "added": "2026-10-29", "version": "1.0.0"},
-    {"id": "fire_impact_01", "element": "fire", "form": "impact", "grid": [8, 8], "cell": [256, 256], "frames": 64, "fps": 30, "loop": false, "blend": "alpha", "bottom_inset": 0.1289, "added": "2026-10-29", "version": "1.0.0"},
+    {"id": "fire_impact_01", "element": "fire", "form": "impact", "grid": [8, 8], "cell": [256, 256], "frames": 64, "fps": 30, "loop": false, "blend": "alpha", "bottom_inset": 0.1371, "added": "2026-10-29", "version": "1.0.0"},
     {"id": "thunder_impact_01", "element": "thunder", "form": "impact", "grid": [8, 8], "cell": [256, 256], "frames": 64, "fps": 30, "loop": false, "blend": "alpha", "bottom_inset": 0.1133, "added": "2026-10-29", "version": "1.0.0"},
     {"id": "wind_vortex_01", "element": "wind", "form": "vortex", "grid": [8, 8], "cell": [256, 256], "frames": 64, "fps": 30, "loop": false, "blend": "alpha", "bottom_inset": 0.1367, "added": "2026-10-29", "version": "1.0.0"},
-    {"id": "poison_impact_01", "element": "poison", "form": "impact", "grid": [8, 8], "cell": [256, 256], "frames": 64, "fps": 30, "loop": false, "blend": "alpha", "bottom_inset": 0.1094, "added": "2026-10-29", "version": "1.0.0"}
+    {"id": "poison_impact_01", "element": "poison", "form": "impact", "grid": [8, 8], "cell": [256, 256], "frames": 64, "fps": 30, "loop": false, "blend": "alpha", "bottom_inset": 0.1094, "added": "2026-10-29", "version": "1.0.0"},
+    {"id": "dark_impact_01", "element": "dark", "form": "impact", "grid": [8, 8], "cell": [256, 256], "frames": 64, "fps": 30, "loop": false, "blend": "alpha", "bottom_inset": 0.1055, "added": "2026-10-29", "version": "1.0.0"},
+    {"id": "dark_projectile_01", "element": "dark", "form": "projectile", "grid": [8, 5], "cell": [256, 256], "frames": 40, "fps": 30, "loop": true, "blend": "alpha", "bottom_inset": 0.1016, "added": "2026-10-29", "version": "1.0.0"},
+    {"id": "ice_impact_01", "element": "ice", "form": "impact", "grid": [8, 8], "cell": [256, 256], "frames": 64, "fps": 30, "loop": false, "blend": "alpha", "bottom_inset": 0.1211, "added": "2026-10-29", "version": "1.0.0"},
+    {"id": "ice_projectile_01", "element": "ice", "form": "projectile", "grid": [8, 5], "cell": [256, 256], "frames": 40, "fps": 30, "loop": true, "blend": "alpha", "bottom_inset": 0.1207, "added": "2026-10-29", "version": "1.0.0"},
+    {"id": "light_column_01", "element": "light", "form": "column", "grid": [8, 7], "cell": [224, 400], "frames": 56, "fps": 30, "loop": false, "blend": "alpha", "bottom_inset": 0.095, "added": "2026-10-29", "version": "1.0.0"},
+    {"id": "light_impact_01", "element": "light", "form": "impact", "grid": [8, 8], "cell": [256, 256], "frames": 64, "fps": 30, "loop": false, "blend": "alpha", "bottom_inset": 0.1172, "added": "2026-10-29", "version": "1.0.0"},
+    {"id": "poison_projectile_01", "element": "poison", "form": "projectile", "grid": [8, 5], "cell": [256, 256], "frames": 40, "fps": 30, "loop": true, "blend": "alpha", "bottom_inset": 0.1324, "added": "2026-10-29", "version": "1.0.0"},
+    {"id": "rock_column_01", "element": "rock", "form": "column", "grid": [8, 7], "cell": [224, 400], "frames": 56, "fps": 30, "loop": false, "blend": "alpha", "bottom_inset": 0.1, "added": "2026-10-29", "version": "1.0.0"},
+    {"id": "rock_impact_01", "element": "rock", "form": "impact", "grid": [8, 8], "cell": [256, 256], "frames": 64, "fps": 30, "loop": false, "blend": "alpha", "bottom_inset": 0.1094, "added": "2026-10-29", "version": "1.0.0"},
+    {"id": "thunder_strike_01", "element": "thunder", "form": "strike", "grid": [8, 7], "cell": [224, 400], "frames": 56, "fps": 30, "loop": false, "blend": "alpha", "bottom_inset": 0.083, "added": "2026-10-29", "version": "1.0.0"},
+    {"id": "wind_impact_01", "element": "wind", "form": "impact", "grid": [8, 8], "cell": [256, 256], "frames": 41, "fps": 30, "loop": false, "blend": "alpha", "bottom_inset": 0.1328, "added": "2026-10-29", "version": "1.0.0"}
   ]
 }
