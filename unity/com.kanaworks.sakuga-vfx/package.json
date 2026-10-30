@@ -1,7 +1,7 @@
 {
   "name": "com.kanaworks.sakuga-vfx",
   "displayName": "KanaWorks SAKUGA VFX (URP flipbook player)",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "unity": "6000.0",
   "description": "Plays the KanaWorks SAKUGA VFX anime-style flipbooks (hand-drawn look) in URP: an unlit flipbook shader (alpha blend or additive, camera or upright billboard, Particle System texture-sheet compatible), a small play-once / loop component, an importer that builds a material and a prefab from each .flipbook.json sidecar, and a demo scene builder. Code is MIT; the flipbook images are under the KanaWorks_AI VFX Asset License.",
   "dependencies": { "com.unity.render-pipelines.universal": "17.0.0" },

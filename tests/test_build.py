@@ -109,7 +109,7 @@ def test_packages_contain_what_each_engine_needs(built):
         assert base + n in godot, n
     assert 'sakuga_demo/demo_3d.tscn' in godot and 'project.godot' not in godot
     web = set(z['web'].namelist())
-    pre = 'kanaworks-sakuga-vfx-0.1.0-web/'
+    pre = 'kanaworks-sakuga-vfx-1.0.0-web/'
     for n in ('index.html', 'web/index.html', 'web/sakuga-player.js', 'web/examples/pixi.html', 'catalog.json',
               'LICENSE.md', 'assets/fire/fire_impact_01/fire_impact_01_1024.png',
               'assets/fire/fire_impact_01/fire_impact_01.atlas.json', 'assets/fire/fire_impact_01/preview.webp'):
@@ -121,9 +121,9 @@ def test_packages_contain_what_each_engine_needs(built):
     assert set(manifest['packages']) == {'unity', 'godot', 'web', 'flipbooks'}
     assert (out / 'site/downloads/manifest.json').is_file() and (out / 'site/web/index.html').is_file()
     assert not list((out / 'site/downloads').rglob('*.zip'))   # zips live on the GitHub release, not Pages
-    assert manifest['release'].endswith('/releases/download/v0.1.0/') and manifest['assets']['fire_impact_01']['zip'] == 'fire_impact_01.zip'
+    assert manifest['release'].endswith('/releases/download/v1.0.0/') and manifest['assets']['fire_impact_01']['zip'] == 'fire_impact_01.zip'
     sums = (out / 'downloads/SHA256SUMS.txt').read_text(encoding='utf-8')
-    assert 'kanaworks-sakuga-vfx-0.1.0-unity.zip' in sums and '  fire_impact_01.zip' in sums
+    assert 'kanaworks-sakuga-vfx-1.0.0-unity.zip' in sums and '  fire_impact_01.zip' in sums
 
 
 def test_zips_are_reproducible(built):
