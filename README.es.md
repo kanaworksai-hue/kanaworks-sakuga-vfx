@@ -2,7 +2,6 @@
 
 <div align="center">
 
-<!-- TODO(banner): docs/assets/banner.jpg se está haciendo en otra sesión. Mantén esta ruta. -->
 <img src="docs/assets/banner.jpg" alt="KanaWorks SAKUGA VFX: flipbooks gratuitos de efectos de juego de anime con estilo dibujado a mano" width="820">
 
 <p>
@@ -11,7 +10,7 @@
   <img alt="Unity 6 URP" src="https://img.shields.io/badge/Unity_6-URP-111?style=flat-square&logo=unity">
   <img alt="Godot 4" src="https://img.shields.io/badge/Godot-4-478cbf?style=flat-square&logo=godotengine&logoColor=white">
   <img alt="Web" src="https://img.shields.io/badge/Web-Canvas_·_PixiJS_·_Phaser_·_Three.js-19b8d6?style=flat-square">
-  <a href="https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx"><img alt="Star on GitHub" src="https://img.shields.io/badge/Star_on_GitHub-%E2%98%85-f5c518?style=flat-square&logo=github"></a>
+  <a href="https://github.com/kanaworksai-hue/kanaworks-sakuga-vfx"><img alt="Star on GitHub" src="docs/assets/star-badge.svg"></a>
 </p>
 
 <p><a href="https://github.com/kanaworksai-hue"><img src="docs/brand/kanaworks-mark.png" height="22" alt="" align="absmiddle"></a>&nbsp;<a href="https://github.com/kanaworksai-hue"><b>A KanaWorks_AI project</b></a></p>
